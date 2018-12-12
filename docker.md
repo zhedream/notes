@@ -9,7 +9,7 @@ sudo apt install  docker.io
 
 
 
-## docker-compose
+## docker-compose  
 
 ## 是什么
 是docker 的管理工具
@@ -25,3 +25,9 @@ docker-compose up -d
 
 重新 docker-compose build
 然后 docker-compose up -d
+
+
+## 网卡/网桥
+
+// 移除无用网卡
+docker network prune	//Remove all unused networks
