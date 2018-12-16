@@ -31,3 +31,10 @@ docker-compose up -d
 
 // 移除无用网卡
 docker network prune	//Remove all unused networks
+
+### redis
+docker run --name myRedis -d -p 6379:6379 redis
+
+### mysql 
+
+docker run -d -p 33060:3306 --name Mymysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7 
