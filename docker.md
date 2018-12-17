@@ -37,4 +37,4 @@ docker run --name myRedis -d -p 6379:6379 redis
 
 ### mysql 
 
-docker run -d -p 33060:3306 --name Mymysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7 
+docker run -d -p 33060:3306 --name Mymysql -e MYSQL_ROOT_PASSWORD=anheng mysql:5.7
