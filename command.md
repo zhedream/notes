@@ -47,3 +47,38 @@ scp -r ./b.txt  root@120.78.212.90:/home/b2ali.txt
 ### tail
 tail -n 10 a.txt // 查看文件 后几行
 tail -F b.txt  // 监事文件变化
+
+### SSH
+
+```bash
+# 生成/添加SSH公钥
+ssh-keygen -t rsa -C "l19517863@163.com"
+# 查看
+cat ~/.ssh/id_rsa.pub
+
+lhz@lhz:~$ ssh-keygen -t rsa -C "l19517863@163.com"
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/lhz/.ssh/id_rsa):    
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/lhz/.ssh/id_rsa.
+Your public key has been saved in /home/lhz/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:cqWy0gV5ZJ0QqJJTuENSbW1WigUVKI4u8162Y0atDqc l19517863@163.com
+The key's randomart image is:
++---[RSA 2048]----+
+| ..o.=++*+ .     |
+|. + =o==  o      |
+| = *.++ . .      |
+|. B .  o o       |
+|.  + .o S        |
+|o.  ...*         |
+|.o..=.o          |
+|  .*=o           |
+| .E+o.           |
++----[SHA256]-----+
+
+
+```
+
+

@@ -14,3 +14,12 @@ https://blog.csdn.net/tmosk/article/details/77523576
 ```
 sudo gedit /etc/bash.bashrc
 source /etc/bash.bashrc
+
+
+### 快捷键
+设置>设备>键盘 (最后 有一个 + 号 添加)
+
+
+###　截图工具　flameshot
+把　命令　添加到　快捷键
+flameshot gui
