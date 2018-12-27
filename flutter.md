@@ -24,6 +24,8 @@ https://developer.android.com/studio/
 
 打开Android Stuido 软件，然后找到Plugin的配置，搜索Flutter插件。
 安装AVD虚拟机
-
+## 安装java
+sudo apt install openjdk-11-jre-headless
+sudo apt install default-jre           
 ##  允许协议
 flutter doctor --android-licenses
