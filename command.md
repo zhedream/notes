@@ -82,3 +82,9 @@ The key's randomart image is:
 ```
 
 
+### opener 
+可以打开 GUI 方式打开文件夹
+opener .  // 打开当前目录
+
+### gedit 
+文本编辑器

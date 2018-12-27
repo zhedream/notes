@@ -62,4 +62,11 @@ desktop-file-validate android-studio.desktop
 desktop-file-install android-studio.desktop
 ```
 
+## 常用快捷键
+
+super + 1 2 3   切换应用
+按super 键 可拖动应用至工作区 组成 一组工作区应用
+切换应用时 可以同时显示 同组应用
+ctrl + Alt + T 打开控制台
+Ctrl + Shitf + C/V 可在控制台 复制/粘贴
 
