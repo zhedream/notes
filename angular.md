@@ -4,7 +4,7 @@
 ng seve --open  // 启动服务 且 打开浏览器
 ng generate component heroes // 生成新的组件
 ng generate service message // 创建服务
-
+ng serve --port 4200 --host=192.168.2.219 // 内网访问
 ### 服务
 你把数据访问逻辑重构到了 HeroService 类中。
 
@@ -44,3 +44,15 @@ HTTP 部分
 
 /home/lhz/wwwroot/ng-app/src/app/hero.service.ts
 private heroesUrl = 'api/heroes';  
+
+
+## debug-vscode
+
+安装 Debugger for Chrome 插件
+
+### 打断点
+F5 进行调试 会弹出 一个新的 浏览窗口
+先 在需要打断点的地方 console.log   在 vscode 调试控制台可见
+点击可跳转 到 一个 文件（特殊的一样的文件）
+在里面 在进行 断点 即可
+
