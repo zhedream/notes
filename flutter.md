@@ -29,3 +29,7 @@ sudo apt install openjdk-11-jre-headless
 sudo apt install default-jre           
 ##  允许协议
 flutter doctor --android-licenses
+
+## 安装flutter 包
+https://pub.dartlang.org/flutter/
+在pubspec 中 添加 保存即可 插件自动安装下载
