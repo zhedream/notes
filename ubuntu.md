@@ -70,3 +70,7 @@ super + 1 2 3   切换应用
 ctrl + Alt + T 打开控制台
 Ctrl + Shitf + C/V 可在控制台 复制/粘贴
 
+## 网速 slurm
+sudo apt-get install slurm  (Ubuntu系统)查看网速命令
+slurm -i eth0  (etho为网卡名)
+ifconfig 查看网卡
