@@ -74,3 +74,5 @@ Ctrl + Shitf + C/V 可在控制台 复制/粘贴
 sudo apt-get install slurm  (Ubuntu系统)查看网速命令
 slurm -i eth0  (etho为网卡名)
 ifconfig 查看网卡
+
+## 数据库管理工具 DBeaver
