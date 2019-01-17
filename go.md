@@ -32,3 +32,23 @@ go install github.com/ramya-rao-a/go-outline  后
 会在 ~/go/bin/go-outline   产生文件
  #### 项目引入的包　
 直接　 clone 不需要　install
+
+## 条件断点调试
+
+## 包
+
+一个GO 应用 由 多个 包组成
+
+项目根目录 为 主应用包
+
+每个文件夹 对应一个包
+
+### gjson
+
+
+### Map
+
+```go
+	var fixedData map[string]coor
+  fixedData = make(map[string]coor)
+  ```
