@@ -56,3 +56,6 @@ git commit
 
 ## 分支
 
+### 删除分支
+git branch -dr {remote} {branch}
+git branch -d {branch}
