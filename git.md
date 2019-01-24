@@ -57,5 +57,8 @@ git commit
 ## 分支
 
 ### 删除分支
-git branch -dr {remote} {branch}
+
+git branch -dr {remote} {branch}  -- 本地的远程 fetch 缓存记录 并没有真的删除远程
 git branch -d {branch}
+
+git push --delete {remote} {branch} -- 真正删除远程分之
