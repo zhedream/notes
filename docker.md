@@ -27,6 +27,11 @@ docker-compose up -d
 然后 docker-compose up -d
 
 
+## 图形管理web
+
+docker pull portainer/portainer
+docker run -d --name portainerUI -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer
+
 ## 网卡/网桥
 
 // 移除无用网卡
