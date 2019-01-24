@@ -37,3 +37,22 @@ cat ~/.ssh/id_rsa.pub
 **使用**
  把地址改成 SSH 的即可 
  不用输入账户密码
+
+## 忽略已提交文件
+
+取消跟踪已经commit 的文件
+添加到忽略文件
+一:  删除
+git rm -r --cached .
+git add .
+OR
+git rm  --cached prisma/src/generated/prisma.graphql
+git commit
+以上的网上的都是坑，或许是版本的不同
+有效方法
+git rm prisma/src/generated/prisma.graphql
+添加忽略
+git commit
+
+## 分支
+
