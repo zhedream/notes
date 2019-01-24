@@ -62,3 +62,9 @@ git branch -dr {remote} {branch}  -- 本地的远程 fetch 缓存记录 并没�
 git branch -d {branch}
 
 git push --delete {remote} {branch} -- 真正删除远程分之
+
+### 推送拉取
+
+git push origin database:pp -- 把本地 database 推送到 origin/pp  没有则 创建 origin/pp
+git pull origin pp:pp1 -- 把 origin/pp 拉取为 pp1 ,并合pp并到当前分之
+git checkout origin/pp -- 拉取并切换到 pp
