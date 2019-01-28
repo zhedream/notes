@@ -72,6 +72,7 @@ sudo apt install docker-compose
 docker pull registry.docker-cn.com/library/mysql:5.7
 docker pull registry.docker-cn.com/prismagraphql/prisma:1.21
 
+usermod -aG docker www
 ### prisma
 
 sudo npm install -g cnpm --registry=https://registry.npm.taobao.org

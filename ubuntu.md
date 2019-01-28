@@ -76,3 +76,8 @@ slurm -i eth0  (etho为网卡名)
 ifconfig 查看网卡
 
 ## 数据库管理工具 DBeaver
+
+## 用户
+
+useradd www
+password www -> password
