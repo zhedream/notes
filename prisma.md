@@ -10,3 +10,5 @@ prisma export
 ## 导入数据
 
 prisma import --data
+
+## 权限 token

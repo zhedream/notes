@@ -90,6 +90,12 @@ sudo apt install npm
 sudo npm cache clean -f
 sudo npm install -g n
 sudo n stable
+OR 
+link : https://segmentfault.com/a/1190000009025883
+apt install nodejs
+npm install -g n
+n stable
+npm -g install npm@next
 
 ## 
 mysql -u 用户名 -p密码 -h 服务器IP地址 -P 服务器端MySQL端口号 -D 数据库名
