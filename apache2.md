@@ -77,3 +77,16 @@ Listen 8080
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 
 ```
+
+
+## 反向代理&Alias
+link : https://www.jianshu.com/p/47eca94680aa
+加载 模块 重启
+a2enmod proxy proxy_balancer proxy_http 
+
+	ProxyPass /ahgraphql http://127.0.0.1:7200
+	ProxyPassReverse /ahgraphql http://127.0.0.1:7200
+
+	Alias /api  "/home/lhz/wwwroot/ams/webpage/api"
+
+	反向代理 / Alias 将无效

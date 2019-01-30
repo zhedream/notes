@@ -56,6 +56,13 @@ git commit
 
 ## 分支
 
+### 重命名
+git branch -m old new
+
+### 切换分支
+git checkout {branch}
+git checkout -b {newBranch} // 创建并且换到 新的分支
+
 ### 删除分支
 
 git branch -dr {remote} {branch}  -- 本地的远程 fetch 缓存记录 并没有真的删除远程
