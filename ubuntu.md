@@ -81,3 +81,7 @@ ifconfig 查看网卡
 
 useradd www
 password www -> password
+
+## 修改 HOST
+
+sudo gedit /etc/hosts
