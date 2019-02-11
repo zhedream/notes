@@ -90,3 +90,10 @@ a2enmod proxy proxy_balancer proxy_http
 	Alias /api  "/home/lhz/wwwroot/ams/webpage/api"
 
 	反向代理 / Alias 将无效
+
+
+## 运行用户
+link:
+https://blog.csdn.net/huangwu_188/article/details/78213153
+ubuntu 18.10
+vi /etc/apache2/envvars
