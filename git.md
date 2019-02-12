@@ -75,3 +75,12 @@ git push --delete {remote} {branch} -- 真正删除远程分之
 git push origin database:pp -- 把本地 database 推送到 origin/pp  没有则 创建 origin/pp
 git pull origin pp:pp1 -- 把 origin/pp 拉取为 pp1 ,并合pp并到当前分之
 git checkout origin/pp -- 拉取并切换到 pp
+
+### 查看修改
+git diff HEAD -- <文件>
+
+### 取消修改
+1. git checkout -- <文件>
+2. git add . && git checkout -f  // 撤销所有更改
+### git checkout -f
+

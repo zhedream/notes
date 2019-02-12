@@ -13,3 +13,9 @@ ng g ng-alain:list sim -m=manage
 ng g ng-alain:view view -m=manage -t=sim
 
 ng g ng-alain:view view -m=project -t=site
+
+### today-ng 
+
+ng generate module app-routing --flat --module=app
+
+ng g m pages/setup --module=app // 制定

@@ -7,6 +7,7 @@
 ssh -i ~/.ssh/aliserver.pem root@120.78.212.90
 ###  sshfs
 sshfs  -o cache=yes root@120.78.212.90:/home/wwwroot ~/code     -- 挂载
+sshfs  -o cache=yes www@lims:/home/www/ams /home/lhz/wwwroot/ams-online/
 fusemount –u /home/user/code -- 卸载
 -- sshfs  -i ~/.ssh/aliserver.pem  –o cache=yes,allow_other root@120.78.212.90:/home/wwwroot home/lhz/code
 ### 快捷方式
@@ -88,3 +89,13 @@ opener .  // 打开当前目录
 
 ### gedit 
 文本编辑器
+
+### 自定义ubuntu 函数命令
+
+.可以考虑在 ~/.bashrc 中写一个 bash 函数：
+gedit ~/.bashrc
+function docker_ip() {
+    sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' $1
+}
+source ~/.bashrc 
+docker_ip <container-ID>
