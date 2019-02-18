@@ -69,3 +69,5 @@ git 放弃根改 重兴 执行
 
 // @ 符 什么意思
 import { StartupService } from '@core/startup/startup.service';
+
+rm -rf ~/wwwroot/ams-online/www/* && cp -R ~/wwwroot/ams/www/* ~/wwwroot/ams-online/www/

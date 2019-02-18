@@ -113,20 +113,4 @@ sudo apt install amule
 远程控制工具
 
 
-### today-ng 
-ng generate module app-routing --flat --module=app
-
-ng g m pages/setup --module=app // 制定
-
-
-
-
-
-
-
-
-
-## yarn
-
-
 

@@ -99,3 +99,6 @@ function docker_ip() {
 }
 source ~/.bashrc 
 docker_ip <container-ID>
+
+### 替换文件夹文件 
+cp -R aaa/* bbb/

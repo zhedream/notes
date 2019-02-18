@@ -16,3 +16,6 @@ prisma export
 prisma import --data
 
 ## 权限 token
+
+prisma token 的内容 { data: { service: 'ams@default', roles: [ 'admin' ] },iat: 1550406234, exp: 1551011034 }
+login 获取的token 为  
