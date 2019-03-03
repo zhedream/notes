@@ -84,3 +84,32 @@ git diff HEAD -- <文件>
 2. git add . && git checkout -f  // 撤销所有更改
 ### git checkout -f
 
+## git 用户全局忽略文件
+git config --global core.excludesfile ~/.gitignore_global
+vim ~/.gitignore_global && echo '.vscode' // 当前用户 所有仓库 不会检查 设置的文件
+
+## CHECKCOUT
+git diff   // 工作区修改
+git diff --staged   // 暂存区修改
+
+## checkout
+git checkout HEAD^ -- index.html  / git checkout <指针^^commint次数> <分之> 文件  //  
+
+## LOG
+
+## git log --online
+
+## revert 
+git revert {commitID} // 丢弃的commitID 的提交  , 如果有 后面的提交 和 commitID 相关有关联  应该报错 或 是危险的
+
+## reset 
+偏移 头部指针
+git resety {模式}
+### 模式
+--sort  (软重置) 
+1. 更改指针 为 commitID, 将commitID之后的 修改 应用/添加到缓存区
+2. 不影响工作区，不影响缓存区。 会把后面的 commit 的修改， 应用/添加到`缓存区`
+--mixed (默认) 
+1. 更改指针 为 commitID, 将commitID之后的 修改和 缓存区内容 应用/添加到`工作区`
+2. 重置暂存区的的修改到 工作区 , 将后面的 commit 修改 应用到工作区 ,  当行有修改 则不应用到当前行，以当前工作区修改为主
+--hard (硬重置) 直接重置 工作区与缓存区
