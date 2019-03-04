@@ -19,3 +19,9 @@ prisma import --data
 
 prisma token 的内容 { data: { service: 'ams@default', roles: [ 'admin' ] },iat: 1550406234, exp: 1551011034 }
 login 获取的token 为  
+
+## pm2 
+作用：进程守护
+yarn global add pm2
+pm2 start ecosystem.config.js --env production --watch
+ 报错/文件更改自动重启

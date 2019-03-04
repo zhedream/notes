@@ -138,3 +138,7 @@ git tag  v0.0
 git tag -a {commit | 空(HEAD)} -m '注释'
 git show {vtag | HEAD | commit } // 文件详细
 git tag -d vtag // 删除标签
+
+## WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
+清空 known_hosts 
+vi /home/${USER}/.ssh/known_hosts

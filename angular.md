@@ -59,3 +59,13 @@ F5 进行调试 会弹出 一个新的 浏览窗口
 ## 打包
 ng build --prod
 
+## 打包过大
+https://stackoverflow.com/questions/53995948/warning-in-budgets-maximum-exceeded-for-initial
+"budgets": [
+   {
+      "type": "initial",
+      "maximumWarning": "2mb",
+      "maximumError": "5mb"
+   }
+]
+
