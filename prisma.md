@@ -25,3 +25,12 @@ login 获取的token 为
 yarn global add pm2
 pm2 start ecosystem.config.js --env production --watch
  报错/文件更改自动重启
+
+ ## 增删改
+
+ ## 查询
+ ### 聚合函数/count
+ ### 条件查询/变量/fragment
+ 
+ ## 订阅
+
