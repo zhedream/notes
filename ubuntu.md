@@ -104,3 +104,7 @@ C-a a	发送 C-a到当前窗口
 C-a d	暂时断开screen会话
 C-a k	杀掉当前回话
 C-a [	进入拷贝/回滚模式
+
+### alias 指令 别名
+
+alias clearr="printf '\033c'"

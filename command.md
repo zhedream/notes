@@ -9,6 +9,8 @@ ssh -i ~/.ssh/aliserver.pem root@120.78.212.90
 sshfs  -o cache=yes root@120.78.212.90:/home/wwwroot ~/code     -- 挂载
 sshfs  -o cache=yes www@lims:/home/www/ams /home/lhz/wwwroot/ams-online/
 sshfs  -o cache=yes tcw@eyb:/home/tcw/limspro /home/lhz/wwwroot/limspro-eyb/
+#### rjh
+sshfs  -o cache=yes rjh@192.168.2.109:/home/rjh/www/limspro /home/lhz/wwwroot/sshfs/
 fusemount –u /home/user/code -- 卸载
 -- sshfs  -i ~/.ssh/aliserver.pem  –o cache=yes,allow_other root@120.78.212.90:/home/wwwroot home/lhz/code
 ### 快捷方式
