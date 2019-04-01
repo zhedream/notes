@@ -43,3 +43,8 @@ docker run --name myRedis -d -p 6379:6379 redis
 ### mysql 
 
 docker run -d -p 33060:3306 --name Mymysql -e MYSQL_ROOT_PASSWORD=anheng mysql:5.7
+
+## 命令
+
+docker inspect $(docker ps -q -f "name=mysql") | grep "IPAddress"
+docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q -f "name=mysql")

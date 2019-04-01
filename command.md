@@ -105,3 +105,15 @@ docker_ip <container-ID>
 
 ### 替换文件夹文件 
 cp -R aaa/* bbb/
+
+### ln 连接
+作用： 让文件的具有同步性
+#### 硬连接: 
+ln 源文件 只能链接存在的文件  
+修改会同步 / 删除不同步 / 有多个真实文件(占空间)
+#### 软连接
+ln -s 源文件 链接文件/目录 可预链接不存在的连接
+修改会同步 / 删除不同步 / 投影 / 几乎不占空间  / win 快捷 / 类变量引用
+
+### vi 
+link : http://wiki.jikexueyuan.com/project/linux-command/chap13.html
