@@ -97,3 +97,8 @@ link:
 https://blog.csdn.net/huangwu_188/article/details/78213153
 ubuntu 18.10
 vi /etc/apache2/envvars
+
+## gzip压缩
+	<IfModule deflate_module>
+		AddOutputFilterByType DEFLATE application/json application/javascript text/css text/html text/javascript text/plain text/xml
+	</IfModule>

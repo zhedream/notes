@@ -1,3 +1,7 @@
+## 常用命令
+sshfs  -o cache=yes www@lims:/home/www/ams /home/lhz/wwwroot/ams-online/
+./buildprod-ams.sh && ./up-ams.sh
+## 
 克隆 到 指定目录
 1. git clone http://leakview.vip:9300/anheng/ams.git ams5
 2. 修改 docker-compose.yml   
