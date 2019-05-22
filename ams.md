@@ -1,5 +1,5 @@
 ## 常用命令
-sshfs  -o cache=yes www@lims:/home/www/ams /home/lhz/wwwroot/ams-online/
+sshfs  -o cache=yes www@lims:/home/www/ams/home/lhz/wwwroot/ams-online/
 ./buildprod-ams.sh && ./up-ams.sh
 ## 
 克隆 到 指定目录

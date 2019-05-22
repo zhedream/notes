@@ -10,7 +10,6 @@ sudo cnpm install -g prisma
 ## 导出数据
 
 prisma export
-
 ## 导入数据
 
 prisma import --data
@@ -19,6 +18,7 @@ prisma import --data
 
 prisma token 的内容 { data: { service: 'ams@default', roles: [ 'admin' ] },iat: 1550406234, exp: 1551011034 }
 login 获取的token 为  
+PRISMA_MANAGEMENT_API_SECRET=iow-2018
 
 ## pm2 
 作用：进程守护

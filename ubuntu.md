@@ -108,3 +108,9 @@ C-a [	进入拷贝/回滚模式
 ### alias 指令 别名
 
 alias clearr="printf '\033c'"
+
+### 安装使用wps
+安装包
+https://www.wps.cn/product/wpslinux/#
+字体
+https://blog.csdn.net/jiangshangchunjiezi/article/details/79942118
