@@ -10,6 +10,8 @@ sshfs  -o cache=yes root@120.78.212.90:/home/wwwroot ~/code     -- 挂载
 sshfs  -o cache=yes www@lims:/home/www/ams /home/lhz/wwwroot/ams-online/
 sshfs  -o cache=yes tcw@eyb:/home/tcw/limspro /home/lhz/wwwroot/limspro-eyb/
 sshfs  -o cache=yes lichenghao@192.168.2.214:/var/www/limspro /home/lhz/wwwroot/hubei/
+sshfs  -o cache=yes root@192.168.14.132:/home/limspro /home/lhz/wwwroot/hubei_limspro/ 6350cxkj8790
+sshfs  -o cache=yes root@192.168.14.132:/home/water /home/lhz/wwwroot/hubei_water/ 6350cxkj8790
 #### rjh
 sshfs  -o cache=yes rjh@192.168.2.109:/home/rjh/www/limspro /home/lhz/wwwroot/sshfs/
 fusemount –u /home/user/code -- 卸载
