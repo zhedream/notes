@@ -48,3 +48,5 @@ docker run -d -p 33060:3306 --name Mymysql -e MYSQL_ROOT_PASSWORD=anheng mysql:5
 
 docker inspect $(docker ps -q -f "name=mysql") | grep "IPAddress"
 docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q -f "name=mysql")
+### docker 阿里云加速
+https://cr.console.aliyun.com/undefined/instances/mirrors
