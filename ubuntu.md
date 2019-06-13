@@ -114,3 +114,13 @@ alias clearr="printf '\033c'"
 https://www.wps.cn/product/wpslinux/#
 字体
 https://blog.csdn.net/jiangshangchunjiezi/article/details/79942118
+
+### wget 下载目录
+wget -c -r -np -k -L -p http://192.168.2.219/.git/
+
+### nmap 端口扫描
+nmap -Pn --script vuln dandingkeji.top
+
+## 内网穿透
+
+## 梯子

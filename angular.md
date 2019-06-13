@@ -73,4 +73,6 @@ https://stackoverflow.com/questions/53995948/warning-in-budgets-maximum-exceeded
 
 ## 父子组件双向数据绑定
 
-## 
+## 编译部署调试
+ng build --baseHref=/ngapp/ --deployUrl=/ngapp/ --outputPath=../wwwroot/ngapp  --prod --watch
+ng build --watch 

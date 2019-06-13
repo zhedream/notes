@@ -1,6 +1,6 @@
 # ANPG
 1. angular + apollo
-2. ng-zorro + ng-alain + ng-grid
+2. ng-zorro + ng-alain + ag-grid
 3. graphql + prisma
 
 ## 简单介绍
