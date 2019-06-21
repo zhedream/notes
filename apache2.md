@@ -102,3 +102,6 @@ vi /etc/apache2/envvars
 	<IfModule deflate_module>
 		AddOutputFilterByType DEFLATE application/json application/javascript text/css text/html text/javascript text/plain text/xml
 	</IfModule>
+
+## 重启 apache2
+/etc/init.d/apache2 restart 

@@ -124,3 +124,7 @@ nmap -Pn --script vuln dandingkeji.top
 ## 内网穿透
 
 ## 梯子
+
+## 生成目录书结构
+https://blog.csdn.net/feifei159/article/details/68488693
+tree -L 3 -I "node_modules"
