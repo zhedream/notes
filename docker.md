@@ -30,7 +30,7 @@ docker-compose up -d
 ## 图形管理web
 
 docker pull portainer/portainer
-docker run -d --name portainerUI -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer
+docker run -d --name portkainerUI -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer
 
 ## 网卡/网桥
 
@@ -50,3 +50,6 @@ docker inspect $(docker ps -q -f "name=mysql") | grep "IPAddress"
 docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q -f "name=mysql")
 ### docker 阿里云加速
 https://cr.console.aliyun.com/undefined/instances/mirrors
+
+### sudo
+sudo usermod -aG docker $USER

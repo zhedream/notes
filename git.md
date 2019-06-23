@@ -26,6 +26,7 @@ SSH 秘钥用于身份验证
 ```bash
 # 生成/添加SSH公钥 默认回车即可
 ssh-keygen -t rsa -C "l19517863@163.com"
+ssh-keygen -t rsa -C "120.78.212.90:www"
 # 查看
 cat ~/.ssh/id_rsa.pub
 ```

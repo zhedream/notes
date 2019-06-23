@@ -119,4 +119,15 @@ ln -s 源文件 链接文件/目录 可预链接不存在的连接
 修改会同步 / 删除不同步 / 投影 / 几乎不占空间  / win 快捷 / 类变量引用
 
 ### vi 
-link : http://wiki.jikexueyuan.com/project/linux-command/chap13.html
+link : http://wiki.jikexueyuan.com/project/linux-command/chap13.
+
+### SSH-KEYGEN
+ssh-keygen -t rsa -b 2048 -f private.key
+openssl rsa -in private.key -pubout -outform PEM -out public.key
+rsa -in private.key -pubout -out public.pem
+
+openssl genrsa -out private.key 2048
+openssl rsa -in private.key -pubout -out public.key
+openssl req -new -key private.key -out you.csr
+
+openssl genrsa -out private2.key 2048

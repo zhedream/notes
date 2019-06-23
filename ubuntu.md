@@ -128,3 +128,6 @@ nmap -Pn --script vuln dandingkeji.top
 ## 生成目录书结构
 https://blog.csdn.net/feifei159/article/details/68488693
 tree -L 3 -I "node_modules"
+## 新建用户
+sudo useradd -r -m -s /bin/bash www
+passwd  user
