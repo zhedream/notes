@@ -52,3 +52,13 @@ go install github.com/ramya-rao-a/go-outline  后
 	var fixedData map[string]coor
   fixedData = make(map[string]coor)
   ```
+
+## beego 
+开发 Go 应用程序的开源框架
+## go-macaron
+一款具有高生产力和模块化设计的 Go Web 框架
+## goconfig
+支持注释的 Go 语言配置文件解析器
+## Hugo
+可用来构建 `博客`
+Hugo是一个用Go编写的静态HTML和CSS网站生成器 . 号称 世界上最快的网站构建框架

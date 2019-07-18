@@ -39,5 +39,7 @@
 
   simKeys = { id: 'ID!', 'iccid': 'String!', 'tel': 'String!',cust:'String',code: 'String',state: 'Int',product: 'String',tab: 'String',group: 'String',g4: 'String',g3: 'String',lastTime:'DateTime',type:'String',createdAt:'DateTime',activeTime:'DateTime',site: 'Sites'};
 
-    
+## 2019年07月15日
+1. swoole
+2. 小程序
     

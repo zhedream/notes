@@ -4,8 +4,6 @@
 
 [angular](angular.md)
 
-[ams](ams.md)
-
 [apache2](apache2.md)
 
 [docker](docker.md)
@@ -17,6 +15,10 @@
 [ubuntu](ubuntu.md)
 
 [command](command.md)
+
+[redis](redis.md)
+
+[FRP-内网穿透](frp.md)
 
 
 
