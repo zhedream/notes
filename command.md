@@ -131,3 +131,8 @@ openssl rsa -in private.key -pubout -out public.key
 openssl req -new -key private.key -out you.csr
 
 openssl genrsa -out private2.key 2048
+
+### 证书
+openssl genrsa -out server.key 2048
+openssl req -new -key server.key -out server.csr
+openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
