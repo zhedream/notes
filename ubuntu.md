@@ -131,3 +131,31 @@ tree -L 3 -I "node_modules"
 ## 新建用户
 sudo useradd -r -m -s /bin/bash www
 passwd  user
+## 挂载磁盘&磁盘空间
+link: https://zhuanlan.zhihu.com/p/35774442
+https://www.digitalocean.com/docs/volumes/how-to/unmount/
+```bash
+## 查看磁盘
+sudo fdisk -l 
+sudo blkid ## 各种信息  type label uuid 
+
+sudo df -lh ## 查看磁盘挂载信息,与剩余空间
+sudo du -lh --max-depth=1 ./  ## 文件/文件夹 大小
+
+ls -l /dev/disk/by-uuid ## 获取硬盘(设备)的 uuid
+ls -l /dev/disk/by-label
+
+sudo mount /dev/sdb1 ~/data  ## 临时挂载
+sudo umount /dev/sdb1 ~/data  ## 卸载磁盘
+sudo lsof +f -- /dev/sdb1 ## 查看磁盘占用
+## 开机自动挂载
+sudo cp /etc/fstab /etc/fstab.bak ## 备份一下吧
+vim /etc/fstab
+UUID=ea195de6-725c-4701-98c3-1fa6a44bc102 /home/speculatecat/data ext4 defaults 0 0
+```
+
+## 网络
+```bash
+## 端口使用情况
+sudo lsof -i:3306 
+```
