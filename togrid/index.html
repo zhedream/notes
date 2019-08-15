@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>toGrid</title>
+    <script src="./jquery-3.2.0.min.js"></script>
+    <script src="./ag_localeText.js"></script>
+    <script src="./ag-grid-enterprise.min.js"></script>
+    <script src="./toGrid.js"></script>
+</head>
+
+<body>
+
+    <div id="gridID" style="height: 700px" class="ag-theme-blue"></div>
+
+    <script>
+        var columnDefs = [];
+        let url = 'dd.json'; // 数据地址 json
+        console.log(url);
+        $.get(url, function (data) {
+            let heads = {};
+                const item = data[0];
+                for (const key in item) {
+                    if (item.hasOwnProperty(key)) {
+                        const element = item[key];
+                        heads[key] = { 'headerName': key, 'field': key };
+                    }
+                }
+            columnDefs = getArray(heads);
+            new toGrid('gridID', columnDefs, data)
+
+        }).fail(function () {
+            console.log(123);
+            new toGrid('gridID', [], [])
+        })
+        /**
+         * 对象转
+        */
+        function getArray(object) {
+            var arr = [];
+            for (var i in object) {
+                arr.push(object[i]);
+            }
+            return arr;
+        }
+
+    </script>
+
+</body>
+
+</html>
