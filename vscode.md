@@ -4,7 +4,7 @@
 
 cat /proc/sys/fs/inotify/max_user_watches
 通过编辑/etc/sysctl.conf并将此行添加到文件末尾，可以将限制增加到最大值：
-
+sudo vim /etc/sysctl.conf
 fs.inotify.max_user_watches=524288
 
 ### 控制台字体

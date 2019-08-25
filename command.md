@@ -9,6 +9,8 @@ ssh -i ~/.ssh/aliserver.pem root@120.78.212.90
 sshfs  -o cache=yes root@120.78.212.90:/home/wwwroot ~/code     -- 挂载
 sshfs  -o cache=yes www@lims:/home/www/ams /home/lhz/wwwroot/ams-online/
 sshfs  -o cache=yes tcw@eyb:/home/tcw/limspro /home/lhz/wwwroot/limspro-eyb/
+sshfs  -o cache=yes liuhaozhe@115.28.51.175:/home/liuhaozhe/water /home/lhz/www/11528water/
+sshfs  -o  cache=yes lhz@zhedream.com:/home/lhz/wwwroot/water /home/lhz/www/mec219water/ -p6001
 sshfs  -o cache=yes lichenghao@192.168.2.214:/var/www/limspro /home/lhz/wwwroot/hubei/
 sshfs  -o cache=yes root@192.168.14.132:/home/limspro /home/lhz/wwwroot/hubei_limspro/ 6350cxkj8790
 sshfs  -o cache=yes root@192.168.14.132:/home/water /home/lhz/wwwroot/hubei_water/ 6350cxkj8790

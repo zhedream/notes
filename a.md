@@ -34,3 +34,8 @@ sudo mount /dev/sda3 ~/soft/
 sudo mount /dev/sda4 ~/play/
 sudo mount /dev/sda5 ~/code/
 sudo mount /dev/sda6 ~/data/
+
+# editor.md
+http://www.bowen-tech.top/articles/detail/54
+https://gitee.com/imlxp/ngx-editor.md-markdown
+https://github.com/pandao/editor.md/
