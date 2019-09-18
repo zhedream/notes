@@ -105,3 +105,13 @@ vi /etc/apache2/envvars
 
 ## 重启 apache2
 /etc/init.d/apache2 restart 
+
+## ab测试
+ab -n 2000 -c 500  http://127.0.0.1
+	-n :请求数
+	-c:   并发数
+
+## 负载均衡
+
+1. https://blog.csdn.net/kwu_ganymede/article/details/53385203
+2. http://blog.51yip.com/apachenginx/873.html

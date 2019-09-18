@@ -143,3 +143,9 @@ git tag -d vtag // 删除标签
 ## WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
 清空 known_hosts 
 vi /home/${USER}/.ssh/known_hosts
+
+## SVN & GIT
+LINK https://blog.csdn.net/u011511086/article/details/80351972
+当前仓库配置有效 不会提交到远程
+vim .git/info/exclude    忽略文件
+alias gvnc="git add . && git commit --no-verify "       -m'message'      提交不做验证   如  tslint 验证

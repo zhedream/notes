@@ -97,3 +97,24 @@ Hugo是一个用Go编写的静态HTML和CSS网站生成器 . 号称 世界上最
 ## GOPROXY
 GO 代理
 export GOPROXY=https://goproxy.cn
+
+## sudo
+
+go version 正常   sudo go version  找不到 go
+LINK https://www.cnblogs.com/chr-wonder/p/8464224.html
+
+## 学习路线
+
+1. 学习路线
+Go 语言学习路线指南
+https://learnku.com/golang/t/23429/a-guide-to-the-go-language-learning-route
+我的 Go 语言学习之路
+https://studygolang.com/topics/8550#reply18
+技术栈
+https://blog.csdn.net/Jeff_YaoJie/article/details/83855753 
+
+2.  the way to go
+https://learnku.com/docs/the-way-to-go
+
+3. studygolang
+http://docscn.studygolang.com

@@ -138,3 +138,15 @@ openssl genrsa -out private2.key 2048
 openssl genrsa -out server.key 2048
 openssl req -new -key server.key -out server.csr
 openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+
+## KILL
+```bash
+lsof -i:8080 ## 端口占用
+kill -9 11394 ## 杀进程
+```
+
+## ip
+
+ip a|grep 'dynamic noprefixroute enp3s0'|awk '{print $2}'|awk -F '/' '{print $1}'
+
+172

@@ -29,15 +29,6 @@
     60 紫色
   
 
-### 18/12/03
-1. 更改表结构{
-  表如何关联
-  sim  OR  phone
-}
-2. 弹出组件
-3. 更改 设备/SIM 数据
-
-  simKeys = { id: 'ID!', 'iccid': 'String!', 'tel': 'String!',cust:'String',code: 'String',state: 'Int',product: 'String',tab: 'String',group: 'String',g4: 'String',g3: 'String',lastTime:'DateTime',type:'String',createdAt:'DateTime',activeTime:'DateTime',site: 'Sites'};
 
 ## 2019年07月15日
 1. swoole
@@ -47,3 +38,23 @@
 
 4. 日历 地图 ag-grid antv nextcloud
     
+## 前端发展路线
+https://juejin.im/post/5d3a6d9e51882570d50f5566
+
+前端100 
+https://juejin.im/post/5d23e750f265da1b855c7bbe?utm_source=gold_browser_extension
+
+## 前端收藏
+
+https://juejin.im/post/5d5df391e51d453b1e478ad0?utm_source=gold_browser_extension
+
+## 数据结构与算法 
+https://juejin.im/post/5d5b307b5188253da24d3cd1
+http://www.conardli.top/docs/
+
+[剑指Offer 训练](https://www.nowcoder.com/ta/coding-interviews?query=&asc=true&order=&page=1 )
+
+[leetcode](https://leetcode-cn.com/)
+
+# 前端博客
+https://github.com/ljianshu/Blog?utm_source=gold_browser_extension
