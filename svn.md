@@ -55,3 +55,20 @@ vim .git/info/exclude
 alias gvnc="git add . && git commit --no-verify "
 
 ```
+
+## show log
+win10
+使用 TortoiseSVN 错误
+show log 出错 | 或者链接服务器失败
+there has been a problem contacting the server
+出现的原因： 可能使用 svn 命令行，没用 TortoiseSVN 没数据
+
+解决办法， 
+1. 右键 -> TortoiseSVN -> setting ->  saved data   clear 都点清理一下
+2. TortoiseSVN ->  Repo-browser |  Check for modifications | Revision graph
+
+注意：
+TortoiseSVN -> udpate 更新了代码
+命令行 svn log -l3  是没有最新的记录的
+所以说 命令行 svn 和 TortoiseSVN ，至少本地日志缓存是不共享的
+版本是 svn status  是一致的

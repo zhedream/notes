@@ -1,7 +1,7 @@
 
 # FQ
 
-作为一只程序猿 不能访问 谷歌 或者 范围国外非常慢等, 就跟断了一条退一样.
+作为一只程序猿 不能访问 谷歌 或者 访问国外资料非常慢等, 就跟断了一条退一样.
 
 所以我们需要一个 FQ 工具 , FQ 工具大都被墙了........ 
 
@@ -14,7 +14,14 @@ Chrome 自动切换代理
 github 下载离线版
 https://github.com/FelisCatus/SwitchyOmega/releases
 
+找不到下载的. ctrl+F 搜索 Assets , 搜索的 1/5 , 说明发布了, 5 个版本, 1 是最新的 版本, 点击
+concise: 找最新的 Assets  下载 xx.crx
 
+# chrome离线安装插件
+谷歌打开: chrome://extensions/  打开开发者模式
+谷歌打开: chrome://flags/#extensions-on-chrome-urls 把 Extensions on chrome:// URLs 改成 Enable
+把 xx.crx 改成  xx.zip , 解压
+chrome://extensions/ 加载已解压扩展程序, 选择解压的文件夹 OK
 # gfwlist
 代理规则
 https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt
@@ -41,11 +48,19 @@ reboot # 坑, 可能需要重启
 参考
 https://blog.csdn.net/mingjie1212/article/details/51814421
 
+# 资料
+
+1. socket 代理转换
+http://blog.creke.net/770.html
+2. 谷歌离线插件
+http://chromecj.com/utilities/2018-09/1525.html
+
 ## 使用
 
 proxychains4  curl google.com
 
 sudo proxychains4 curl google.com
+
 
 
 
