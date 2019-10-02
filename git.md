@@ -149,3 +149,22 @@ LINK https://blog.csdn.net/u011511086/article/details/80351972
 当前仓库配置有效 不会提交到远程
 vim .git/info/exclude    忽略文件
 alias gvnc="git add . && git commit --no-verify "       -m'message'      提交不做验证   如  tslint 验证
+
+# 相关资源
+
+1. 国内下载地址
+https://github.com/waylau/git-for-win
+
+2. GitHub DeskTop
+git 桌面工具: Simple collaboration from your desktop
+官网: https://desktop.github.com/
+linux版 :https://github.com/shiftkey/desktop/releases
+
+3. gitKraken
+重量级工具
+官网: https://www.gitkraken.com/
+
+4. tortoisegit
+win 右键工具
+https://tortoisegit.org/download/
+下面有语言包
