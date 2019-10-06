@@ -1,6 +1,5 @@
-## 
+# Angular 开发环境
 angular + apollo + prisma + gql + alain
-
 
 ng new my-project --style less
 cd my-project
