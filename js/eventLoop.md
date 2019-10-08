@@ -60,6 +60,14 @@ setTimeout(function() {
 
 */
 
-// 链接：https://juejin.im/post/5b498d245188251b193d4059
-
 ```
+
+## demo
+@demo/js/EventLoop.js
+
+## 参考
+1. JS事件循环机制（event loop）
+https://juejin.im/post/5b498d245188251b193d4059
+2. 微任务、宏任务与Event-Loop
+https://juejin.im/post/5b73d7a6518825610072b42b
+
