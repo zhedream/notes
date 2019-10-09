@@ -159,3 +159,20 @@ g++ -v 能查看过版本, 但是 变异不行, 换了了 power shell, 等 命�
 
 
 ```
+# 无法打开 *.c 
+ubuntu vscode 调试出现
+类似: 无法打开“sprintf.c”: 无法读取文件(Error: 找不到文件(/build/glibc-KRRWSm/glibc-2.29/stdio-common/sprintf.c))。
+
+```bash
+# 缺少 /build/glibc-KRRWSm/glibc-2.29/stdio-common/sprintf.c
+sudo -s 
+cd /
+mkdir /build
+wget http://ftp.gnu.org/gnu/glibc/glibc-2.29.tar.gz # 下载相应版本
+tar -zxvf glibc-2.29.tar.gz # 解压 /build/glibc-KRRWSm 文件夹
+
+```
+
+参考: 
+1. Ubuntu下Vscode调试出现[无法打开"libc-start.c"：无法读取文件...错误解决办法
+https://blog.csdn.net/weixin_39758398/article/details/101912759
