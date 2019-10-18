@@ -32,3 +32,34 @@ link: https://www.zybuluo.com/phper/note/1016714
 
 ## PHP性能优化
 https://i6448038.github.io/2017/08/13/PHP性能优化
+
+# VScode Debug
+
+1. vscode 插件
+PHP Debug , 调式必备
+PHP IntelliSense , 语言服务 智能提示
+PHP Intelephense , 格式化
+
+1. 导出php环境配置到 a.txt
+php -i > a.txt
+
+2. 官网分析下载对应版本 debug.dll 
+https://xdebug.org/wizard
+
+3. 基本配置
+更多配置自行百度 `xdebug配置`
+```php.ini
+[xdebug]
+zend_extension = D:\Visual-NMP-x64\Bin\PHP\php-7.3.0-nts-x64\ext\php_xdebug-2.7.2-7.3-vc15-nts-x86_64.dll
+xdebug.profiler_output_dir = "D:/Visual-NMP-x64/tmp"
+xdebug.trace_output_dir = "D:/Visual-NMP-x64/tmp"
+xdebug.remote_enable = on
+xdebug.remote_autostart = on
+```
+## 使用
+
+vscode -> 菜单 调试 添加配置 选择php
+
+默认生成 两个调试 模式
+Listen for XDebug , 用于 http 请求调试
+Launch currently open script , 用于本地脚本调试

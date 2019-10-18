@@ -63,5 +63,9 @@ sudo proxychains4 curl google.com
 
 
 
+# win10
 
+## 控制台
+set http_proxy=http://127.0.0.1:1080
+参考: https://blog.csdn.net/lovelyelfpop/article/details/69586366
 

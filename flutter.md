@@ -21,7 +21,7 @@ cd ~/development
 4. flutter doctor # 检测是否配置成功
 ## 安装Android Studio
 https://developer.android.com/studio/
-
+安装的失败, 重新安装, 使用管理员启动 安装包 会自动卸载
 打开Android Stuido 软件，然后找到Plugin的配置，搜索Flutter插件。
 安装AVD虚拟机
 ## 安装java
