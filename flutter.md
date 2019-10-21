@@ -22,8 +22,11 @@ cd ~/development
 ## 安装Android Studio
 https://developer.android.com/studio/
 安装的失败, 重新安装, 使用管理员启动 安装包 会自动卸载
+1. 第一次的SDK ,  翻墙下载 , 内置的socket代理,填写你的代理服务, 镜像不适用只能翻墙
+2. 插件安装国内镜像:  内置socket 代理好像没用 , 镜像有效
+https://www.jianshu.com/p/0936af70cda3
 打开Android Stuido 软件，然后找到Plugin的配置，搜索Flutter插件。
-安装AVD虚拟机
+3. 安装AVD虚拟机(可选)
 ## 安装java
 sudo apt install openjdk-11-jre-headless
 sudo apt install default-jre           

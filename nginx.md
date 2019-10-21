@@ -38,12 +38,38 @@ location / {
 反向代理
 
 ```nginx
+        server{
+                ...
+                ...
 	location /api {
                 proxy_pass http://172.16.12.72:8099/api/;
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         }
 ```
+
+## 正向代理
+nginx实现代理上网，有三个关键点必须注意，其余的配置跟普通的nginx一样
+
+1.增加dns解析resolver
+2.增加无server_name名的server
+3.proxy_pass指令
+
+```nginx
+http {
+	##增加dns解析resolver
+	resolver 8.8.8.8;
+	##增加无server_name名的server
+	server {
+		listen 8088;
+		location / {
+			##proxy_pass指令
+			proxy_pass http://$http_host$request_uri;
+		}
+	}
+}
+```
+参考:https://my.oschina.net/spinachgit/blog/2992020
 
 ## 负载均衡
 
