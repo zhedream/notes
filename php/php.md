@@ -56,6 +56,18 @@ xdebug.trace_output_dir = "D:/Visual-NMP-x64/tmp"
 xdebug.remote_enable = on
 xdebug.remote_autostart = on
 ```
+
+# ubuntu
+
+sudo apt install php-xdebug
+
+vim /etc/php/7.2/mods-available/xdebug.ini
+```
+xdebug.remote_enable = on
+xdebug.remote_autostart = on
+```
+
+
 ## 使用
 
 vscode -> 菜单 调试 添加配置 选择php
