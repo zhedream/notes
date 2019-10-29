@@ -14,6 +14,8 @@ pm2 unstartup
 
 pm2 startup
 
+pm2 resurrect
+
 链接: 
 1. 官方
 https://pm2.keymetrics.io/docs/usage/startup/#disabling-startup-system
