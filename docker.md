@@ -53,3 +53,23 @@ https://cr.console.aliyun.com/undefined/instances/mirrors
 
 ### sudo
 sudo usermod -aG docker $USER
+
+## docker 开机启动
+
+ 
+systemctl enable docker.service # /usr/lib/systemd/system/docker.service
+```out
+root@lhz:~# systemctl enable docker.service
+Synchronizing state of docker.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable docker
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /lib/systemd/system/docker.service.
+
+```
+1. 其他
+/usr/lib/systemd/system
+/lib/systemd/system/
+/etc/systemd/system
+
+# 参考
+1. 开机启动
+https://blog.csdn.net/wxb880114/article/details/82904765

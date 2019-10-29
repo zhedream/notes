@@ -45,3 +45,7 @@ set variables sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_F
 mysql -u 用户名 -p密码 -h 服务器IP地址 -P 服务器端MySQL端口号 -D 数据库名
 
 ## SQL
+
+# 连接软件
+
+dbeaver
