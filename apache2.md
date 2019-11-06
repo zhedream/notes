@@ -107,7 +107,7 @@ vi /etc/apache2/envvars
 /etc/init.d/apache2 restart 
 
 ## ab测试
-ab -n 2000 -c 500  http://127.0.0.1
+ab -n 2000 -c 500  http://127.0.0.1/
 	-n :请求数
 	-c:   并发数
 

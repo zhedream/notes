@@ -90,3 +90,4 @@ ng build --baseHref=/ngapp/ --deployUrl=/ngapp/ --outputPath=../wwwroot/ngapp  -
 ng build --watch 
 
 ng build --baseHref=/admin/ --deployUrl=/admin/ --outputPath=../admin
+ng build --baseHref=/admin/ --deployUrl=/admin/ --prod --outputPath=../admin
