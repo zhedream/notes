@@ -6,6 +6,8 @@ pm2 start ... 你的应用
 
 pm2 startup
 
+sudo pm2 startup ubuntu
+
 sudo env ... 注意空格 $PATH
 
 pm2 save
@@ -15,6 +17,10 @@ pm2 unstartup
 pm2 startup
 
 pm2 resurrect
+
+/opt/GitHub\ Desktop:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin:/home/lhz/.yarn/bin:/usr/local/go/bin:/home/lhz/development/flutter/bin
+
+sudo env PATH=/opt/GitHub\ Desktop:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin:/home/lhz/.yarn/bin:/usr/local/go/bin:/home/lhz/development/flutter/bin:/usr/local/bin /home/lhz/.config/yarn/global/node_modules/pm2/bin/pm2 startup systemd -u lhz --hp /home/lhz
 
 链接: 
 1. 官方
