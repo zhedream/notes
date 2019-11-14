@@ -32,15 +32,15 @@ svn log -l3 // 查看最近三条日志    =   git log -3 | -n3
 
 ## 忽略 .svn
 仅对这个仓库有效果, 不会提交 git 远程
-vim .git/info/exclude    
-写入  .svns
+vim .git/info/exclude
+写入  .svn
 
 ## 周期2
 
 1. svn update & gvnc -m ''  && gvnc -m'svn:493-wangsha:修改密码' // 更新 svn 版本库 , 合并好 git 版本库
 2. git checkout -b pwd & 编写代码 & gvnc -m '' // git 创建新的分之 编写代码,提交 (git版本库)
 3. git checkout master & svn update & gvnc -m '' // 回到 git 主支, 更新 svn 版本, 同步更新 到 git 版本库
-4. git rebase | merge pwd & svn commit -m'' path // 合并 pwd 到 master  [ 解决冲突 ],  更新到svn 版本库  
+4. git rebase | merge pwd & svn commit -m'' path // 合并 pwd 到 master  [ 解决冲突 ],  更新到svn 版本库
 
 
 ## gvnc

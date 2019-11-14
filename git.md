@@ -169,3 +169,7 @@ linux版 :https://github.com/shiftkey/desktop/releases
 win 右键工具
 https://tortoisegit.org/download/
 下面有语言包
+
+# 其他
+1. github 状态
+https://www.githubstatus.com
