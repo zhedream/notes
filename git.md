@@ -65,6 +65,7 @@ git branch -m old new
 ### 切换分支
 git checkout {branch}
 git checkout -b {newBranch} // 创建并且换到 新的分支
+git checkout -b {newBranch} {commint-id} // 在某次提交的基础建立一个分支
 
 ### 删除分支
 
