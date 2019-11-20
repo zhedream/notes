@@ -96,3 +96,8 @@ server {
 }
 
 ```
+
+## 一些好文章
+
+1. nginx 反向代理和负载均衡 (知乎)
+https://zhuanlan.zhihu.com/p/78354108

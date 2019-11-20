@@ -145,6 +145,14 @@ git tag -d vtag // 删除标签
 清空 known_hosts 
 vi /home/${USER}/.ssh/known_hosts
 
+## 修改提交记录 --amend
+git commit --amend --date="$(date -R)" 修改最近一次时间
+git commit --amend --date="2019-01-01T00:00:00+0800" -C edd2dbbe31fbab492f337628011119493a12a9c6
+
+link: 
+https://blog.lindexi.com/post/git-修改commit日期为之前的日期.html
+https://xkcoding.com/2019/01/21/modify-git-commit-timestamp.html  
+
 ## SVN & GIT
 LINK https://blog.csdn.net/u011511086/article/details/80351972
 当前仓库配置有效 不会提交到远程

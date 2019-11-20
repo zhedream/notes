@@ -75,3 +75,7 @@ vscode -> 菜单 调试 添加配置 选择php
 默认生成 两个调试 模式
 Listen for XDebug , 用于 http 请求调试
 Launch currently open script , 用于本地脚本调试
+
+## 发布一个 composer
+
+## 编写一个 php扩展
