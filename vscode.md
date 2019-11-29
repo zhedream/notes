@@ -10,3 +10,12 @@ fs.inotify.max_user_watches=524288
 ### 控制台字体
 控制台字体间距过大
  "terminal.integrated.fontFamily": "monospace"
+
+## 自动更新失败 
+自动出现出现类似
+C:\Program Filles(x86)\vscode\unins000.exe
+尝试在目标目录创建文件时出错
+
+或点击帮助, 检查更新的时候
+
+应该是权限问题, 点击终止, 把 vscode 以管理员的方式重新启动在更新就好了

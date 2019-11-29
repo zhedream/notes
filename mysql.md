@@ -49,3 +49,21 @@ mysql -u 用户名 -p密码 -h 服务器IP地址 -P 服务器端MySQL端口号 -
 # 连接软件
 
 dbeaver
+
+# 知识点
+
+1. 增删改查 , CRUD , create增 read查 update改 delete删
+2. 索引,sql优化. 与增删改查的影响
+3. 引擎.
+4. 分表,分库,分区
+5. 主从,读写分离
+6. 锁
+7. 事务
+8. 数据类型
+9. 存储过程和函数
+
+怎么用, 怎么实现呢
+
+# 资料
+1. 10分钟梳理MySQL核心知识点 知乎
+https://zhuanlan.zhihu.com/p/60031703
