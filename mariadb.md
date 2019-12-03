@@ -19,7 +19,7 @@ Reload privilege tables now? [Y/n]  ##  Y
 
 1. use mysql;   然后敲回车
 2. update user set authentication_string=password("pass") where user="root";  然后敲回车
-3. flush privileges  然后敲回车
+3. flush privileges ; 然后敲回车
 4. update user set authentication_string=password("pass"),plugin='mysql_native_password' where user='root';
 5. flush privileges ;
 
@@ -27,3 +27,11 @@ Reload privilege tables now? [Y/n]  ##  Y
 6. /etc/mysql/mariadb.conf.d/50-server.cnf   ## bind 
 7. update user set host = '%' where user = 'root'; // localhost
 8. flush privileges; 
+
+
+# mysql 
+
+系统版本: ubuntu 19.10
+mysql版本:  mysql8.0
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '你的新密码'

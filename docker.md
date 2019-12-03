@@ -17,7 +17,7 @@ sudo apt install  docker.io
 快速搭建docker 环境
 ## 安装
 
-sudo apt docker-compose
+sudo apt install docker-compose
 
 docker-compose up -d
 
@@ -53,6 +53,7 @@ https://cr.console.aliyun.com/undefined/instances/mirrors
 
 ### sudo
 sudo usermod -aG docker $USER
+reboot
 
 ## docker 开机启动
 

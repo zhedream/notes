@@ -67,3 +67,8 @@ dbeaver
 # 资料
 1. 10分钟梳理MySQL核心知识点 知乎
 https://zhuanlan.zhihu.com/p/60031703
+
+## ubuntu
+
+sudo apt install mysql-server
+

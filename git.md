@@ -29,6 +29,13 @@ ssh-keygen -t rsa -C "l19517863@163.com"
 ssh-keygen -t rsa -C "120.78.212.90:www"
 # 查看
 cat ~/.ssh/id_rsa.pub
+
+# 配置 
+https://github.com/settings/keys 
+
+# 测试连接
+ssh -T git@github.com
+
 ```
 **用户秘钥**
   把查看的秘钥 在用户设置-> SSH 

@@ -216,4 +216,10 @@ cat /proc/sys/vm/swappiness ## 查看数值
 
 ```
 
-##
+## ubuntu源
+
+1. 备份
+sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup
+
+2. 清华的源
+https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/
