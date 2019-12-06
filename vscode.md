@@ -19,3 +19,18 @@ C:\Program Filles(x86)\vscode\unins000.exe
 或点击帮助, 检查更新的时候
 
 应该是权限问题, 点击终止, 把 vscode 以管理员的方式重新启动在更新就好了
+
+## 拓展
+
+Chinese
+
+**PHP**
+1. PHP Debug
+2. PHP Intelephense
+3. PHP IntelliSense
+4. Debugger for Chrome 
+5. Regex Previewer 正则
+6. GitLens git
+7. Prettier 格式化
+8. vscode-icons 图标
+
