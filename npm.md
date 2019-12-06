@@ -48,3 +48,4 @@ yarn upgrade packname | packname@version
 升级 yarn
 windows msi安装包 覆盖安装即可
 
+# npx
