@@ -6,6 +6,10 @@ git push origin-coding redo
 git push orgin vtag
 git push --tags // 推送标签
 
+## 跟踪分支
+
+git branch --set-upstream-to=origin/master master
+
 ## 导出
 
 git archive --format zip --output "./output.zip" master -0

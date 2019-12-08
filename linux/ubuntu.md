@@ -223,3 +223,18 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup
 
 2. 清华的源
 https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/
+
+## 输入法
+
+1. 谷歌拼音
+https://baijiahao.baidu.com/s?id=1619306801356144376&wfr=spider&for=pc
+
+1. 优化-托盘图标
+https://www.jianshu.com/p/bb10f487f6fe
+sudo apt-get install gnome-shell-extension-top-icons-plus gnome-tweaks
+
+## 环境变量
+
+export PATH=$PATH:/home/lhz/.yarn/bin
+source ~/.bashrc
+

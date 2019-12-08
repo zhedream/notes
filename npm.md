@@ -15,6 +15,9 @@ package.json 包的 版本号, 并不是 , 说安装的包就是 这个版本,
 真正的包锁定的是在  package-lock.json 文件,
 这个文件 还保存有  包与包的依赖包的关系.
 
+对于框架来说, 一般不会提交 锁定 lock 文件, 在我们用时, 就能使用到新的包或其他依赖包
+但是一般来说, 企业中的项目开始后,是需要把 lock 文件提交到版本库中. 这是很有必要的.
+一个项目中, 如果每个成员的依赖版本不一样, 那就真的太糟糕了
 
 npm info packname version
 yarn info packname version 
