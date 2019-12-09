@@ -1,0 +1,11 @@
+```js
+$.ajax{
+    url
+    type
+    data
+    success
+    error
+    beforeSend
+    complete
+}
+```
