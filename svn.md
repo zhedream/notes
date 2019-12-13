@@ -9,7 +9,10 @@ svn revert <path> //   恢复到未修改状态 = git checkout  <path>
 
 svn add <file> // 新增文件到 版本库
 
-svn commit -m "message" <file> <file2> *.php  
+svn delete <path> // 删除文件 from 版本库
+
+svn commit -m "message" <file> <file2> *.php  // 修改, 删除, 增加的文件
+
 // 更新到 版本库 ,  svn  没有缓存区 和 本地仓库的概念,只有工作区(工作副本),  是直接 把修改提交到 中央版本库 = git push , 所以没 有  git add . & git commit -m 'message' , SO 连不到 服务器的话, 就提交不了代码了.
 
 svn log -l3 // 查看最近三条日志    =   git log -3 | -n3
