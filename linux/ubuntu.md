@@ -26,6 +26,11 @@ source /etc/bash.bashrc
 把　命令　添加到　快捷键
 flameshot gui
 
+# 录屏工具
+
+1. kazam
+2. ubuntu 系统自带 ctrl + shift + alt + r ,左上角
+
 # 桌面便签
 
 ```bash
