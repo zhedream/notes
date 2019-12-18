@@ -112,7 +112,7 @@ C-a [	进入拷贝/回滚模式
 
 ## alias 指令 别名
 
-alias clearr="printf '\033c'"
+alias cls="printf '\033c'"
 
 ## 安装使用wps
 安装包
@@ -228,6 +228,14 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup
 
 2. 清华的源
 https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/
+
+
+## 安装/更新软件
+sudo apt update # 更新软件源列表
+sudo apt install packname # 安装和更新指定 软件包
+
+1. ubuntu下升级特定软件与查看软件版本信息
+https://blog.csdn.net/l297969586/article/details/76326876
 
 ## 输入法
 
