@@ -78,8 +78,13 @@ mv frp /etc/ ## 移动到 /etc/ 下
 cd /etc/frp
 chmod  775 frpc frpc.ini  ## 修改文件权限
 cp systemd/frpc.service /etc/systemd/system/ ## 系统服务
+ln /etc/frp/frpc /usr/bin/frpc # 链接 frpc, 或修改 frpc.service 
 systemctl enable frpc.service ## 启用
 service frpc start ## 开启 frpc 服务即可
+
+## 需要开启 ssh 服务
+service ssh status # 查看
+sudo apt install ssh # 安装
 
 ## 在有网络的地方
 ssh  内网用户名@{公网IP 或 域名} -p { frpc.ini 的remote_port}
