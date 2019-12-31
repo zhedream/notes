@@ -105,3 +105,15 @@ server {
 
 1. nginx 反向代理和负载均衡 (知乎)
 https://zhuanlan.zhihu.com/p/78354108
+2. nginx windows安装、使用和配置开机启动
+https://blog.csdn.net/xiaojin21cen/article/details/84622517
+3. nginx在服务器可以通过域名可以访问，但是在外网不能访问(win)
+https://blog.csdn.net/qq_29729735/article/details/78215578
+
+# 其他
+
+1. 记事本就是个坑
+在win 服务器上部署,配置文件报错 unknown directive
+原因: 使用了记事本编辑保存后,编码不是UTF8 (复制粘贴也一样)
+解决: 卸载记事本, 使用 notepad++ 或其他编辑器
+
