@@ -250,12 +250,3 @@ sudo apt-get install gnome-shell-extension-top-icons-plus gnome-tweaks
 
 export PATH=$PATH:/home/lhz/.yarn/bin
 source ~/.bashrc
-
-## Homebrew
-https://brew.sh/index_zh-cn
-
-sudo apt-get install ruby-full
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-/home/linuxbrew/.linuxbrew/bin/brew --version
-添加环境变量
