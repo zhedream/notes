@@ -10,6 +10,7 @@
 1. 不知道没有密码 能不能启动 sshd ,为了安全也设置一个密码 
 2. 命令提示符 cmd 不好使, 就用 PowerShell
 3. 可能还需要手动配置 `防火墙` 高级设置 配置入站规则 开放 22 端口
+4. sshd 开机自启: 命令 sc config sshd start=auto. 或 任务管理器->服务->打开服务 `服务` 把 OpenSSH SSH Server 设置为自动
 
 # 拓展
 给win10 添加功能, 一般有两个地方
@@ -24,4 +25,5 @@ https://www.cnblogs.com/sparkdev/p/10166061.html
 3. nssm frpc 自启后台运行
 https://mahonex.com/2018/05/frp在windows下后台运行/
 https://www.cnblogs.com/tianfang/p/7912648.html
-
+4. windows上OpenSSH服务安装及启动 | cnblogs-听雨的人
+https://www.cnblogs.com/GoCircle/p/11461151.html

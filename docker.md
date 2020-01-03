@@ -74,3 +74,8 @@ Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /
 # 参考
 1. 开机启动
 https://blog.csdn.net/wxb880114/article/details/82904765
+
+## windows
+
+1. WSL下Docker使用踩坑小记
+https://blog.csdn.net/qinyuanpei/article/details/89792606
