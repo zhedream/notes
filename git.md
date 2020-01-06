@@ -170,6 +170,10 @@ LINK https://blog.csdn.net/u011511086/article/details/80351972
 vim .git/info/exclude    忽略文件
 alias gvnc="git add . && git commit --no-verify "       -m'message'      提交不做验证   如  tslint 验证
 
+## git count 
+
+git log --author="liuhaozhe" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -
+
 # 相关资源
 
 1. 国内下载地址
@@ -192,3 +196,6 @@ https://tortoisegit.org/download/
 # 其他
 1. github 状态
 https://www.githubstatus.com
+2. git代码统计
+https://segmentfault.com/a/1190000008542123
+
