@@ -41,9 +41,15 @@ C:\Program Filles(x86)\vscode\unins000.exe
 
 应该是权限问题, 点击终止, 把 vscode 以管理员的方式重新启动在更新就好了
 
+## 代码折叠
+
+C + K + 4 > Ctrl + k + 4
+
 ## 拓展
 
-Chinese
+Chinese 中文
+Bracket Pair Colorizer 括号颜色
+SVN  svn必备 有修改提示
 
 **PHP**
 1. PHP Debug

@@ -51,6 +51,7 @@ location / {
 -  再header 中放 token 
  1. 配置中 http 或 server 部分 增加 underscores_in_headers on; 配置
  2. 用减号 - 替代下划线符号 _ ，避免这种变态问题. nginx 默认忽略掉下划线可能有些原因.
+ 3. http://lucyhao.com/2016/02/01/ngnix配置静态资源404问题/ 
 
 ## 正向代理
 nginx实现代理上网，有三个关键点必须注意，其余的配置跟普通的nginx一样

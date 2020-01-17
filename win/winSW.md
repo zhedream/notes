@@ -33,6 +33,11 @@ nginxservice.exe 对应的配置 nginxservice.xml
 </service>
 ```
 
+1. 安装服务
+nginxservice.exe install
+2. 卸载服务
+nginxservice.exe uninstall
+
 # 参考
 1. nginx windows安装、使用和配置开机启动
 https://blog.csdn.net/xiaojin21cen/article/details/84622517
