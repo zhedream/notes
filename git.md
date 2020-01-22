@@ -6,6 +6,9 @@ git push origin-coding redo
 git push orgin vtag
 git push --tags // 推送标签
 
+git remote add origin <url>
+git push -u origin master
+
 ## 跟踪分支
 
 git branch --set-upstream-to=origin/master master

@@ -42,6 +42,7 @@ location / {
                 ...
                 ...
 	location /api {
+                add_header Access-Control-Allow-Origin *;
                 proxy_pass http://172.16.12.72:8099/api/;
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -75,6 +76,12 @@ http {
 }
 ```
 参考:https://my.oschina.net/spinachgit/blog/2992020
+
+## 跨域
+
+location xxx {
+        add_header Access-Control-Allow-Origin *;
+}
 
 ## 负载均衡
 
