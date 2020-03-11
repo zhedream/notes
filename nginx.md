@@ -78,10 +78,12 @@ http {
 参考:https://my.oschina.net/spinachgit/blog/2992020
 
 ## 跨域
-
+keys: 响应头
 location xxx {
         add_header Access-Control-Allow-Origin *;
 }
+1. Nginx配置跨域请求 Access-Control-Allow-Origin * | 思否-Developer
+https://segmentfault.com/a/1190000012550346
 
 ## 负载均衡
 
@@ -113,10 +115,18 @@ server {
 
 1. nginx 反向代理和负载均衡 (知乎)
 https://zhuanlan.zhihu.com/p/78354108
+
 2. nginx windows安装、使用和配置开机启动
 https://blog.csdn.net/xiaojin21cen/article/details/84622517
+
 3. nginx在服务器可以通过域名可以访问，但是在外网不能访问(win)
 https://blog.csdn.net/qq_29729735/article/details/78215578
+
+4. Full Example Configuration | nginx官方配置
+https://www.nginx.com/resources/wiki/start/topics/examples/full/
+
+5. nginx url特殊字符rewrite问题
+http://linux.it.net.cn/m/view.php?aid=9933
 
 # 其他
 
