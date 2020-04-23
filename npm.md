@@ -32,6 +32,12 @@ npm install -S packname // 项目依赖
 npm info packname // 最新包信息
 npm info packname // 包的锁定版本高
 
+升级 npm
+
+sudo npm install npm -g
+升级 node
+npm install -g n
+
 ## yarn
 LINK 
 https://www.kancloud.cn/shellway/yarn-notes/262504
@@ -40,7 +46,7 @@ https://www.kancloud.cn/shellway/yarn-notes/262504
 yarn 的全局安装包
 
 yarn bin // 项目级的 目录
-yarn global bin // 用户级的 yarn 全局安装目录
+yarn global bin // 用户级的 yarn sudo 全局安装目录
 sudo yarn global bin // sudo , 系统级的 全局安装目录
 
 yarn global add packname
@@ -53,8 +59,10 @@ windows msi安装包 覆盖安装即可
 
 ## npx
 
-## 版本
+使用一些脚本, 可以不需要全局安装, 只需要在 node_modules 同级目录使用
+npx ts ...
 
+## 版本
 
 1. Node.js中package.json中库的版本号详解(^和~区别)
 https://blog.csdn.net/njweiyukun/article/details/70309066

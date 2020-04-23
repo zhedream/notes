@@ -82,6 +82,10 @@ ifconfig 查看网卡
 
 # 数据库管理工具 DBeaver
 
+# typora markdown编辑器
+
+https://www.typora.io/#linux
+
 # 用户
 
 useradd www
@@ -122,6 +126,15 @@ https://blog.csdn.net/jiangshangchunjiezi/article/details/79942118
 
 ## wget 下载目录
 wget -c -r -np -k -L -p http://192.168.2.219/.git/
+
+## rdesktop 
+连接windows 桌面
+
+rdesktop -uAdministrator -plhz123 -f 127.0.0.1:6003
+
+Ctrl + Shift + Alt + Enter 全屏/退出全屏
+
+https://blog.csdn.net/zbx931197485/article/details/87273039
 
 ## nmap 端口扫描
 nmap -Pn --script vuln dandingkeji.top
@@ -250,3 +263,15 @@ sudo apt-get install gnome-shell-extension-top-icons-plus gnome-tweaks
 
 export PATH=$PATH:/home/lhz/.yarn/bin
 source ~/.bashrc
+
+## 回收站
+cd ~/.local/share/Trash
+
+https://www.cnblogs.com/wswang/p/5748615.html
+
+
+## 其他
+
+1. mount:unknown filesystem type 'exfat'
+sudo apt-get install exfat-fuse
+https://blog.csdn.net/flexitime/article/details/45486185

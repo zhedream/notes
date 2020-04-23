@@ -44,8 +44,32 @@ https://www.cnblogs.com/lovelinux199075/p/9057077.html
         gzip_http_version 1.1;
         gzip_comp_level 3;
         gzip_types text/plain application/json application/x-javascript application/css application/xml application/xml+rss text/javascript application/x-httpd-php image/jpeg image/gif image/png image/x-ms-bmp;
-	}
+        }
 ```
+
+curl -I -H "Accept-Encoding: gzip, deflate" "http://127.0.0.1/index.js"
+
+HTTP/1.1 200 OK
+Server: nginx/1.16.1
+Date: Wed, 04 Mar 2020 09:52:40 GMT
+Content-Type: application/javascript # 确保在压缩 gzip_types 里面
+Last-Modified: Wed, 04 Mar 2020 09:04:22 GMT
+Connection: keep-alive
+ETag: W/"5e5f6f16-10e7ac"
+Expires: Sat, 07 Mar 2020 09:52:40 GMT
+Cache-Control: max-age=259200 # 缓存
+Content-Encoding: gzip # 成功压缩
+
+## 缓存
+location ^~ /gis {
+        alias E:/www/gis;
+        expires      3d; # 三天缓存
+        gzip on;
+        gzip_http_version 1.1;
+        gzip_comp_level 3;
+        gzip_types text/plain application/json application/javascript application/css;
+}
+
 
 ## 重定向主入口
 
@@ -59,6 +83,14 @@ location / {
 }
 ```
 
+## 挂载文件夹/文件
+
+location /app {
+  alias /home/app;
+  try_files $uri $uri/ /index.html last;
+  index app.js;
+}
+
 ## 反向代理
 
 ```nginx
@@ -71,13 +103,27 @@ location / {
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         }
+        # ^~ 不在向下需匹配
+        location ^~ /WebApi {
+            # proxy_pass http://172.16.12.168:50045/WebApi/; # 168 接口
+            proxy_pass http://172.16.12.52:50055/WebAPI/; # 52 接口
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+        location /a{
+                proxy_pass http://HOST; # /a/x -> http:HOST/a/x;
+                proxy_pass http://HOST/; # /a/x -> http:HOST/x;
+        }
 ```
 反向代理的问题
 
 -  再header 中放 token 
  1. 配置中 http 或 server 部分 增加 underscores_in_headers on; 配置
  2. 用减号 - 替代下划线符号 _ ，避免这种变态问题. nginx 默认忽略掉下划线可能有些原因.
- 3. http://lucyhao.com/2016/02/01/ngnix 配置静态资源404问题/ 
+ 3. 代理的资源找不到, 可能是 location 穿透了. 匹配到下面的 location 了 比如, 缓存的
+
+
 
 ## 正向代理
 nginx实现代理上网，有三个关键点必须注意，其余的配置跟普通的nginx一样
@@ -161,6 +207,9 @@ https://blog.csdn.net/xiaojin21cen/article/details/84622517
 
 3. nginx在服务器可以通过域名可以访问，但是在外网不能访问(win)
 https://blog.csdn.net/qq_29729735/article/details/78215578
+4. nginx根据ip判断跳转的规则
+https://blog.mydns.vip/2549.html
+
 
 4. Full Example Configuration | nginx官方配置
 https://www.nginx.com/resources/wiki/start/topics/examples/full/
@@ -175,4 +224,22 @@ http://linux.it.net.cn/m/view.php?aid=9933
   原因: 使用了记事本编辑保存后,编码不是UTF8 (复制粘贴也一样)
   解决: 卸载记事本, 使用 notepad++ 或其他编辑器
 
-  
+2. 监听日志
+
+tail error.log -n10 -f
+
+# nginx with php
+
+```ini
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+		# With php-fpm (or other unix sockets):
+		fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;
+		# With php-cgi (or other tcp sockets):
+		# fastcgi_pass 127.0.0.1:9000;
+	}
+```
+看看装 php7.3-fpm 没有
+https://ibcomputing.com/nginx-502-bad-gateway-error/
+https://www.cloudbooklet.com/how-to-install-nginx-php-7-3-lemp-stack-on-ubuntu-18-04-google-cloud/
+

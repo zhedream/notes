@@ -9,6 +9,14 @@ Array 保证顺序
 JS 对象的 key 没有限制, 可以数字或字符串, 也`可以数字开头`的混合key
 数字或数字开头的 key 需要  obj[key]  中括号调用
 
+## 遍历
+
+var obj = {'0':'a','1':'b','2':'c'};
+Object.keys(obj).forEach(function(key){
+     console.log(key,obj[key]);
+});
+
+
 ## empty
 
 ```js
@@ -48,3 +56,4 @@ Object.create(null,{
 # 参考
 1. JS中判断空对象
 https://www.cnblogs.com/sefaultment/p/9444345.html
+

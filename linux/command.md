@@ -149,4 +149,8 @@ kill -9 11394 ## 杀进程
 
 ip a|grep 'dynamic noprefixroute enp3s0'|awk '{print $2}'|awk -F '/' '{print $1}'
 
-172
+
+
+## TOP && HTOP
+
+查看进程

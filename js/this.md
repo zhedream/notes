@@ -4,6 +4,9 @@ LINK
 https://segmentfault.com/a/1190000018696018#articleHeader9
 https://segmentfault.com/a/1190000016680885#articleHeader3
 
+1. JavaScript this 的六道坎
+https://blog.crimx.com/2016/05/12/understanding-this/
+
 匿名函数
 谁调用 指像谁
 
