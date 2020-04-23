@@ -1,6 +1,32 @@
-# NGINX
+# NGINX 使用
 
-## nginx + apache2 
+## 动静分离 nginx + apache 
+
+nginx 只用于 静态文件, 通过反向代理 让 apache 执行 php , 实现动静分离
+
+可以 nginx 绑定 80 端口, apache  绑定 81端口
+
+
+
+当然也可以 使用同一个端口, 只需要做个简单的处理
+
+```ngin
+  listen 2030; # 绑定本机所有 ipv4 地址 的 2030 端口
+  listen [::]:2030; # 绑定本机所有 ipv6 地址 的 2030 端口
+  
+  listen 192.168.12.12 2030; # 绑定本机 ipv4 地址 192.168.12.12 的 2030 端口
+  listen [fe80::1944:75e5:f926:c11d%16]:2030; # ipv6 同理
+```
+
+nginx 对外 , 将  nginx  绑定对外的 ip 
+
+而 apache 只需要服务本机, 只需绑定另一个内网的 ip 如 127.0.0.1 
+
+当然这样 就不能在本机 使用 127.0.0.1 访问应用了.
+
+可以新建一个虚拟 ip 专门给 apache 使用, 释放 127.0.0.1 让 nginx 绑定 127.0.0.1
+
+
 
 ## 没有index.html   访问 index.php
 index index.html index.php 不管用
@@ -8,7 +34,7 @@ index index.html index.php 不管用
 LINK: https://www.bbsmax.com/A/kmzL1vlBJG/
 
 
-## gzip
+## 压缩 gzip
 
 https://www.cnblogs.com/lovelinux199075/p/9057077.html
 
@@ -35,8 +61,6 @@ location / {
 
 ## 反向代理
 
-反向代理
-
 ```nginx
         server{
                 ...
@@ -48,11 +72,12 @@ location / {
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         }
 ```
-### 反向代理的问题
+反向代理的问题
+
 -  再header 中放 token 
  1. 配置中 http 或 server 部分 增加 underscores_in_headers on; 配置
  2. 用减号 - 替代下划线符号 _ ，避免这种变态问题. nginx 默认忽略掉下划线可能有些原因.
- 3. http://lucyhao.com/2016/02/01/ngnix配置静态资源404问题/ 
+ 3. http://lucyhao.com/2016/02/01/ngnix 配置静态资源404问题/ 
 
 ## 正向代理
 nginx实现代理上网，有三个关键点必须注意，其余的配置跟普通的nginx一样
@@ -82,6 +107,7 @@ keys: 响应头
 location xxx {
         add_header Access-Control-Allow-Origin *;
 }
+
 1. Nginx配置跨域请求 Access-Control-Allow-Origin * | 思否-Developer
 https://segmentfault.com/a/1190000012550346
 
@@ -111,6 +137,20 @@ server {
 
 ```
 
+##  sites-enabled
+
+ nginx 中 sites-enabled和 sites-available 文件夹的区别
+
+available: 可用的
+enabled: 启用
+
+所以呢, 标准的配置是, 
+把你的 所有站点 都配置在 sites-available 目录
+需要启用, 你就软连接  到 sites-enabled 目录.
+不启用, 删除链接 文件即可
+当然, 和配置相关的变动, 都需要重启 nginx
+就一般用,不用那么麻烦,直接在 sites-enabled 新建配置文件即可.
+
 ## 一些好文章
 
 1. nginx 反向代理和负载均衡 (知乎)
@@ -128,10 +168,11 @@ https://www.nginx.com/resources/wiki/start/topics/examples/full/
 5. nginx url特殊字符rewrite问题
 http://linux.it.net.cn/m/view.php?aid=9933
 
-# 其他
+## 其他
 
 1. 记事本就是个坑
-在win 服务器上部署,配置文件报错 unknown directive
-原因: 使用了记事本编辑保存后,编码不是UTF8 (复制粘贴也一样)
-解决: 卸载记事本, 使用 notepad++ 或其他编辑器
+  在win 服务器上部署,配置文件报错 unknown directive
+  原因: 使用了记事本编辑保存后,编码不是UTF8 (复制粘贴也一样)
+  解决: 卸载记事本, 使用 notepad++ 或其他编辑器
 
+  

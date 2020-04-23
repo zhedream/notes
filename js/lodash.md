@@ -9,9 +9,9 @@ lodash 里面的 find , 最近的 js 也有, 但是 lodash 兼容老的浏览器
 
 ## 常用 API
 
-1. groupBy # 分组
-2. 
-
+1. groupBy # 分组, 运用场景: 需要人 按 性别 分组
+2. pick(obj,keys) # 对象过滤, 取对象指定 key
+3. chunk(arr,count) # 按数量分片, 运用场景: 高德地图纠偏查询, 限制 500 个
 
 # 参考资料
 

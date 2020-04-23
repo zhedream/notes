@@ -177,6 +177,13 @@ alias gvnc="git add . && git commit --no-verify "       -m'message'      提交�
 
 git log --author="liuhaozhe" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -
 
+
+## GIT LFS
+
+大文件存储
+1. Git LFS的使用
+https://www.zhangyangjun.com/post/git-lfs-usage.html
+
 # 相关资源
 
 1. 国内下载地址

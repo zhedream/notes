@@ -45,19 +45,29 @@ C:\Program Filles(x86)\vscode\unins000.exe
 
 C + K + 4 > Ctrl + k + 4
 
-## 拓展
+## 扩展
+
+**通用**
 
 Chinese 中文
 Bracket Pair Colorizer 括号颜色
+TabNine AI提示
+Prettier 格式化
+vscode-icons 图标
+Debugger for Chrome
+Regex Previewer 正则
+TODO
+Paste JSON
+Docker
+SFTP
+Path
+
+**版本控制**
+
 SVN  svn必备 有修改提示
+GitLens git
 
 **PHP**
 1. PHP Debug
 2. PHP Intelephense
 3. PHP IntelliSense
-4. Debugger for Chrome 
-5. Regex Previewer 正则
-6. GitLens git
-7. Prettier 格式化
-8. vscode-icons 图标
-

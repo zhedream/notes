@@ -22,7 +22,7 @@ package.json 包的 版本号, 并不是 , 说安装的包就是 这个版本,
 npm info packname version
 yarn info packname version 
 
-# npm
+## npm
 
 npm i
 npm run script
@@ -32,7 +32,7 @@ npm install -S packname // 项目依赖
 npm info packname // 最新包信息
 npm info packname // 包的锁定版本高
 
-# yarn
+## yarn
 LINK 
 https://www.kancloud.cn/shellway/yarn-notes/262504
 
@@ -51,4 +51,12 @@ yarn upgrade packname | packname@version
 升级 yarn
 windows msi安装包 覆盖安装即可
 
-# npx
+## npx
+
+## 版本
+
+
+1. Node.js中package.json中库的版本号详解(^和~区别)
+https://blog.csdn.net/njweiyukun/article/details/70309066
+2. package.json文件dependencies中的各种版本号形式
+http://blog.kankanan.com/article/package.json-65874ef6-dependencies-4e2d7684540479cd7248672c53f75f625f0f.html
