@@ -7,7 +7,7 @@ commit/mutations 同步
 不直接使用 mutations 函数, 而是通过 commit 调用
 store.commit('increment', 10)
 
-dispatch/actions 异步
+dispatch/actions 异步操作, commit 的是 mutations
 
 不直接使用 actions 函数, 而是通过 dispatch 调用
 store.dispatch('increment', 10)
