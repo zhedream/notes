@@ -29,6 +29,14 @@
     <!-- mode="multiple" [{key,label}] -->
     <!-- mode="default" {key,label} -->
   </a-form-item>
+  <a-form-item label="时间间隔" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
+  <a-input-number
+    style="width: 100%"
+    placeholder="请输入时间间隔"
+    v-decorator="['TimeSpace', {initialValue: 4, rules: [{ required: true, message: '请输入时间间隔' }] }]"
+    :min="1" :max="10"
+  />
+</a-form-item>
   <a-form-item label="多个 [{key,label}]" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
     <a-select :options="options" labelInValue mode="multiple" v-decorator="[ 'many', { rules: [{ required: true, message: '请选择' }] }]"
       placeholder="请选择">

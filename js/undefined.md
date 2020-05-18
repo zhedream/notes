@@ -39,5 +39,12 @@ fn(b); // default
 
 // 结构赋值同理
 
+const data = { name: 'lisi', age: 12 };
+const { name = 'zhansang', age = 18, height = 175 } = data
+
+// undefined 和 null 不能进行解构
+//  {} 和 []  能结构
+
+
 ```
 
