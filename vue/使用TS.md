@@ -13,7 +13,11 @@
 **将 TS 打包后在引入**
 猜测, 没尝试过
 
-**配置 vue.config.js webpack**
+**babel转换TS**
+
+
+
+**配置TS vue.config.js webpack**
 
 // @ts-nocheck 忽略 这个文件 类型检查
 // @ts-ignore 忽略 下一行
