@@ -1,15 +1,17 @@
 # WinSW
 
 功能与 nssm 类似
-# 下载
+
+## 下载
+
 https://github.com/kohsuke/winsw/releases 下载最新版
 在 Assets 里下载, 对应系统版本的软件
 WinSW.NET2.exe 对应 win32
 WinSW.NET4.exe 对应 win64
 
-# 使用
+## 使用
 
-以nginx.exe 为例
+以 nginx.exe 为例
 WinSW.NET4.exe 复制到 nginx.exe 的目录
 WinSW.NET4.exe 改个名字 nginxservice.exe
 
@@ -17,7 +19,6 @@ nginxservice 这个名字想可以是其他的, 并不是固定格式
 
 当然推荐改个有意义的名字
 nginxservice.exe 对应的配置 nginxservice.xml
-
 
 ```xml
  <!-- nginxservice.xml -->
@@ -34,11 +35,15 @@ nginxservice.exe 对应的配置 nginxservice.xml
 ```
 
 1. 安装服务
-nginxservice.exe install
-2. 卸载服务
-nginxservice.exe uninstall
+   nginxservice.exe install
+2. 启动服务
+   nginxservice.exe start
+3. 停止
+   nginxservice.exe stop
+4. 卸载服务
+   nginxservice.exe uninstall
 
-# 参考
-1. nginx windows安装、使用和配置开机启动
-https://blog.csdn.net/xiaojin21cen/article/details/84622517
+## 参考
 
+1. nginx windows 安装、使用和配置开机启动
+   https://blog.csdn.net/xiaojin21cen/article/details/84622517

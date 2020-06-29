@@ -4,7 +4,7 @@
 1. 下载
 http://www.nssm.cc/download
 
-2. 解压 相应系统版本 的 nssm.exe 需要自启的 exe 统计目录
+2. 解压 相应系统版本 的 nssm.exe 需要自启的 exe 统计目录, 推荐放在 C 盘 windows 下
 
 nssm install frpc
 

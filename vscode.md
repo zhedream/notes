@@ -2,24 +2,26 @@
 
 ## code 文件过大
 
-当您看到此通知时，它表示VS Code文件观察程序的句柄用尽，因为工作区很大并且包含许多文件。可以通过运行来查看当前限制：
+当您看到此通知时，它表示 VS Code 文件观察程序的句柄用尽，因为工作区很大并且包含许多文件。可以通过运行来查看当前限制：
 
 cat /proc/sys/fs/inotify/max_user_watches
-通过编辑/etc/sysctl.conf并将此行添加到文件末尾，可以将限制增加到最大值：
+通过编辑/etc/sysctl.conf 并将此行添加到文件末尾，可以将限制增加到最大值：
 sudo vim /etc/sysctl.conf
 fs.inotify.max_user_watches=524288
 
 ## 控制台字体
+
 控制台字体间距过大
- "terminal.integrated.fontFamily": "monospace"
+"terminal.integrated.fontFamily": "monospace"
 
 ## 编辑器间距
 
 1. https://github.com/tonsky/FiraCode/releases
-  在 releases 下载最新的字体. (当前 v2)
-2. 解压压缩文件并打开ttf文件夹, 双击安装字体文件, 安装完所有的字体文件
-3. 打开VSCODE的settings.json文件
-5. 添加字体文件配置
+   在 releases 下载最新的字体. (当前 v2)
+2. 解压压缩文件并打开 ttf 文件夹, 双击安装字体文件, 安装完所有的字体文件
+3. 打开 vscode 的 settings.json 文件
+4. 添加字体文件配置
+
 ```json
   // 以下两行必须
   "editor.fontFamily": "'Fira Code'",
@@ -51,7 +53,7 @@ C + K + 4 > Ctrl + k + 4
 
 Chinese 中文
 Bracket Pair Colorizer 括号颜色
-TabNine AI提示
+TabNine AI 提示
 Prettier 格式化
 vscode-icons 图标
 Debugger for Chrome
@@ -62,12 +64,16 @@ Docker
 SFTP
 Path
 
+**node**
+import cost 包大小
+
 **版本控制**
 
-SVN  svn必备 有修改提示
+SVN svn 必备 有修改提示
 GitLens git
 
 **PHP**
+
 1. PHP Debug
 2. PHP Intelephense
 3. PHP IntelliSense

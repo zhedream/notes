@@ -1,5 +1,12 @@
 # NPM&YARN
 
+是 js  的包管理工具. 准确的说应该是 nodejs
+
+npm info packname version
+yarn info packname version
+
+## package.json
+
 package.json
 说明了 项目开发配置或依赖
 
@@ -7,7 +14,10 @@ dependencies: 项目依赖包
 
 devDependencies: 开发工具包 , 比如说 代码检查
 
-这两个 好像 写哪里都可以, 就是做一个区分 ,但是规范写的好
+devDependencies 最关键的就是你 npm publish 发布一个包
+别人 install 你的包的话 会安装 dependencies 而不会安装 devDependencies. 也是顾名思义……dev 就是你开发用的 你都 publish 了意味着对于别人来说你的包是处于 production 了
+
+不过呢, 好像写哪里都可以, 就是做一个区分 ,但是规范写的好
 
 package.json 包的 版本号, 并不是 , 说安装的包就是 这个版本,
 他的功能 是限定版本, 是锁定的包的版本范围.
