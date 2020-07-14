@@ -1,7 +1,5 @@
 # antdv 的使用
 
-
-
 ## form
 
 ```html
@@ -29,23 +27,36 @@
     <!-- mode="multiple" [{key,label}] -->
     <!-- mode="default" {key,label} -->
   </a-form-item>
-  <a-form-item label="时间间隔" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
-  <a-input-number
-    style="width: 100%"
-    placeholder="请输入时间间隔"
-    v-decorator="['TimeSpace', {initialValue: 4, rules: [{ required: true, message: '请输入时间间隔' }] }]"
-    :min="1" :max="10"
-  />
-</a-form-item>
-  <a-form-item label="多个 [{key,label}]" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
-    <a-select :options="options" labelInValue mode="multiple" v-decorator="[ 'many', { rules: [{ required: true, message: '请选择' }] }]"
-      placeholder="请选择">
+  <a-form-item
+    label="时间间隔"
+    :label-col="{ span: 5 }"
+    :wrapper-col="{ span: 12 }"
+  >
+    <a-input-number
+      style="width: 100%"
+      placeholder="请输入时间间隔"
+      v-decorator="['TimeSpace', {initialValue: 4, rules: [{ required: true, message: '请输入时间间隔' }] }]"
+      :min="1"
+      :max="10"
+    />
+  </a-form-item>
+  <a-form-item
+    label="多个 [{key,label}]"
+    :label-col="{ span: 5 }"
+    :wrapper-col="{ span: 12 }"
+  >
+    <a-select
+      :options="options"
+      labelInValue
+      mode="multiple"
+      v-decorator="[ 'many', { rules: [{ required: true, message: '请选择' }] }]"
+      placeholder="请选择"
+    >
       <a-select-option value="1">many1</a-select-option>
       <a-select-option value="2">many2</a-select-option>
     </a-select>
   </a-form-item>
 </a-form>
-
 ```
 
 ```js
@@ -76,12 +87,21 @@ this.pwdform.validateFields((err, values) => {
   this.pwdform.setFieldsValue(object)
   })
 ```
+
 ## a-table
 
 ```html
-<a-table size="middle" rowKey='ID' :columns="columns" :dataSource="dataSource" :pagination="true"
-  :pagination="{defaultPageSize:5}" :customRow="customRow"
-  :loading="isLoading" :scroll="{ x: 120*3*selectCount+240 }">
+<a-table
+  size="middle"
+  rowKey="ID"
+  :columns="columns"
+  :dataSource="dataSource"
+  :pagination="true"
+  :pagination="{defaultPageSize:5}"
+  :customRow="customRow"
+  :loading="isLoading"
+  :scroll="{ x: 120*3*selectCount+240 }"
+>
   <!-- #NameCustom 这种写法只能 用于 template 标签  -->
   <template #NameCustom="text,data,index">{{text}}</template>
   <span slot="NameCustom" slot-scope="text,data,index"></span>
@@ -145,19 +165,26 @@ const columns = [
 ```
 
 ## modal
+
 ```html
-<a-modal forceRender :afterClose="editCancel" v-model="visible" :title="formMode==='add'?'新增':'编辑'">
+<a-modal
+  forceRender
+  :afterClose="editCancel"
+  v-model="visible"
+  :title="formMode==='add'?'新增':'编辑'"
+>
   <template slot="footer">
     <a-button key="back" @click="editCancel">取消</a-button>
     <a-button key="submit" type="primary" @click="editOk">确定</a-button>
   </template>
 </a-modal>
 ```
+
 ## a-tree
 
-```html
+```txt
 
-<a-tree 
+<a-tree
   checkable - 可选
   v-model="checkedKeys" - checkable 可选的 checkedKeys
   :treeData="treeData" - 数据
@@ -165,10 +192,10 @@ const columns = [
   :checkStrictly="true" - 父子节点不关联, 全选
   :replaceFields="replaceFields" - 自定义字段
   @expand="onExpand" - 展开
-  :expandedKeys="expandedKeys" 
+  :expandedKeys="expandedKeys"
   :autoExpandParent="autoExpandParent"
   @select="onSelect" - select 选择
-  :selectedKeys="selectedKeys" 
+  :selectedKeys="selectedKeys"
 />
 ```
 
@@ -247,13 +274,13 @@ exportTable() {
 </style>
 
 ```
+
 ```js
-
-
 ```
 
 ## a-row
 
+```html
 <a-row>
   <a-col :span="12">
     col-12
@@ -262,3 +289,47 @@ exportTable() {
     col-12
   </a-col>
 </a-row>
+```
+
+## a-cascader
+
+```html
+<a-cascader
+  style="width:90px;"
+  class="selectList1"
+  :allowClear="false"
+  :show-search="{ filter }"
+  :default-value="[item.code]"
+  :options="item.detail"
+  v-model="item.paths"
+  placeholder="Please select"
+  @change="(a,b)=>cascaderChange(a,b,item)"
+>
+  <template slot="displayRender" slot-scope="{ labels, selectedOptions }">
+    <span
+      v-for="(label, index) in labels"
+      :key="selectedOptions[index].value+index"
+    >
+      <span v-if="index === labels.length - 1">{{ label }}</span>
+    </span>
+  </template>
+</a-cascader>
+```
+
+## a-tabs
+
+```html
+<a-tabs default-active-key="30" @change="callbackMapTab">
+  <a-tab-pane
+    v-for="equipment in PollutantTypeList"
+    :key="equipment.PollutantType"
+  >
+    <span slot="tab">
+      <a-badge
+        :number-style="{ backgroundColor: '#52c41a',margin: '-1px -10px' }"
+        >{{equipment.PollutantTypeName}}</a-badge
+      >
+    </span>
+  </a-tab-pane>
+</a-tabs>
+```
