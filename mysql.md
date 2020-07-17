@@ -48,7 +48,7 @@ mysql -u 用户名 -p 密码 -h 服务器 IP 地址 -P 服务器端 MySQL 端口
 
 ## SQL
 
-#@ 连接软件
+## 连接软件
 
 dbeaver
 
@@ -70,7 +70,7 @@ dbeaver
 
 mysql -uroot -p123456 < runoob.sql
 
-source /home/abc/abc.sql  # 导入备份数据库
+source /home/abc/abc.sql # 导入备份数据库
 
 ## 数据导出
 
