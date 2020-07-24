@@ -89,14 +89,30 @@ index app.js;
 
 ## 反向代理
 
+location /api # 匹配规则
+原始地址 127.0.0.1:2222/api
+匹配部分 /api
+剩余部分 空
+proxy_pass http://127.0.0.1:3333; # 原始转发
+proxy_pass http://127.0.0.1:3333/; # 剩余转发
+proxy_pass http://127.0.0.1:3333/webApi; # 剩余转发
+proxy_pass http://127.0.0.1:3333/webApi/; # 剩余转发
+
+一般配置:
+location 匹配规则 `/` 结尾
+proxy_pass 使用剩余转发, `/` 结尾
+
 ```nginx
 
 server {
          ...
          ...
+   ;location /a/	/a/
+   ;location /a/	/a/b/c?d	b/c?d
 	location /api {
       add_header Access-Control-Allow-Origin *;
       proxy_pass http://172.16.12.72:8099/api/;
+      proxy_read_timeout 120; # 反代超时时间,默认 60 (秒)
       proxy_set_header X-Real-IP $remote_addr;
       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
    }
@@ -229,11 +245,14 @@ tail error.log -n10 -f
 ```ini
 	location ~ \.php$ {
 		include snippets/fastcgi-php.conf;
-		# With php-fpm (or other unix sockets):
+		; With php-fpm (or other unix sockets):
 		fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;
-		# With php-cgi (or other tcp sockets):
-		# fastcgi_pass 127.0.0.1:9000;
+		; With php-cgi (or other tcp sockets):
+		; fastcgi_pass 127.0.0.1:9000;
 	}
+   location / {
+    try_files $uri $uri/ /index.php?\$query_string;
+   }
 ```
 
 看看装 php7.3-fpm 没有
