@@ -25,3 +25,9 @@ https://juejin.im/post/5f0f1a045188252e415f642c#heading-16
 ## BOOTCDN
 
 https://www.bootcdn.cn/all/
+
+## unpkg
+
+https://unpkg.com/vue@2.6.11/dist/vue.js
+
+

@@ -83,3 +83,41 @@ const columns = [
   { title: "操作", slot: "action", width: 200, align: "center" },
 ];
 ```
+
+# Modal
+
+http://v2.iviewui.com/components/modal#API
+
+```html
+<i-Modal
+  footer-hide
+  on-ok="ok"
+  @on-cancel="cancel"
+  v-model="visible"
+  @on-visible-change="visibleChange"
+  :title="'标题'"
+></i-Modal>
+```
+
+# Transfer
+
+http://v2.iviewui.com/components/transfer#API
+
+```html
+<i-Transfer
+  :filter-method=""
+  :titles="['源列表','目标列表']"
+  :data="bindUserData"
+  :target-keys="bindUserTargetKeys"
+  :list-style="{width: '250px',height: '300px'}"
+  :render-format="bindUserRender"
+  :operations="['加入','移除']"
+  filterable
+  @on-change="bindUserChange"
+>
+</i-Transfer>
+```
+
+```html
+
+```
