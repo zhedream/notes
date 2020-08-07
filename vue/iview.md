@@ -38,6 +38,16 @@ https://www.iviewui.com/docs/guide/iview-loader
 
 https://www.iviewui.com/components/select
 
+multiple
+
+```html
+<i-Select v-model="formValidate.DataType">
+  <i-option v-for="item in DataTypeOption" :value="item.value" :key="item.value"
+    >{{ item.label }}</i-option
+  >
+</i-Select>
+```
+
 ```html
 
 ```

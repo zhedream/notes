@@ -31,5 +31,10 @@
     display: inline-block;
     width: 80px;
   }
+  .label2 {
+    /* 固定宽度 */
+    display: inline-block;
+    width: 3em;
+  }
 }
 ```
