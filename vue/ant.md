@@ -333,3 +333,54 @@ exportTable() {
   </a-tab-pane>
 </a-tabs>
 ```
+
+## popconfirm 确定
+
+常用于 表格 删除确定
+
+```html
+<a-divider type="vertical" />
+<a-popconfirm
+  title="确定删除?"
+  okText="确定"
+  cancelText="取消"
+  @confirm="() => del2(record.DetailID,record1.GasID)"
+>
+  <a :disabled="editing==true">删除</a>
+</a-popconfirm>
+```
+
+## popover 小弹层
+
+```html
+<a-popover
+  placement="bottom"
+  v-model="visiblePopover"
+  title="因子组名称"
+  trigger="click"
+>
+  <div slot="content">
+    <a-input
+      v-model="GroupNamePopover"
+      placeholder="请输入因子组名称"
+    ></a-input>
+    <a @click="savaFactor">确定</a>
+  </div>
+  <a-button type="default">保存因子组</a-button>
+</a-popover>
+```
+
+## echarts
+
+```html
+<echart-component
+  v-if="optionData.length>0"
+  id="uniq"
+  :option="option"
+  :loading="isLoading"
+  height="750"
+></echart-component>
+<a-spin v-else :spinning="isLoading">
+  <a-empty />
+</a-spin>
+```

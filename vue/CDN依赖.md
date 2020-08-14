@@ -31,3 +31,5 @@ https://www.bootcdn.cn/all/
 https://unpkg.com/vue@2.6.11/dist/vue.js
 
 
+还有要注意, 开发需要频繁  强制刷新清缓存, 最好用 本地 jq , 太频繁可能会被屏蔽 ip
+

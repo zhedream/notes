@@ -26,8 +26,8 @@ svn log -l3 // 查看最近三条日志 = git log -3 | -n3
 
 混合使用的 生命周期
 
-0. svn co path (SVN服务器下载代码)
-   git init 初始化git仓库, 注意忽略文件/夹
+0. svn co path (SVN 服务器下载代码)
+   git init 初始化 git 仓库, 注意忽略文件/夹
    git add . && git commit -m 'svn:init'
 1. 编写代码  
    svn update & git add . & git commit -m 'svn:版本号' // 以 SVN 为主 将 svn 版本库 同步到 git 版本库
@@ -85,5 +85,8 @@ TortoiseSVN -> udpate 更新了代码
 
 使用 TortoiseSVN
 
-鼠标选中需要忽略的文件, 右键 TortoiseSVN -> Add to ignore list
+1. 鼠标选中需要忽略的文件/夹, 右键 TortoiseSVN -> Add to ignore list
+2. 右键 -> TortoiseSVN -> Properties (属性)
+   添加/编辑 svn:ignore, 没有 `svn:ignore` 属性的话, 新建一个
+
 这样 commit/add 的时候就会很快
