@@ -89,13 +89,33 @@ let map = new Map([
 
 ## 联合去重
 
+严格模式
+
 ```js
 let map = new Map();
-myRegression.points = myRegression.points.filter((e) => {
+points = points.filter((e) => {
   let key = String(e[0]) + String(e[1]);
   const v = map.get(key);
   if (v == undefined) return true;
   else map.set(key, true);
+});
+```
+
+忽略顺序
+
+```js
+let arr2 = [
+  { x: "丙烯", y: "戊烷", z: "0.99" },
+  { x: "戊烷", y: "丙烯", z: "0.99" },
+  { x: "己烷", y: "戊烯", z: "0.91" },
+  { x: "戊烯", y: "己烷", z: "0.91" },
+];
+const set = new Set();
+arr2.forEach((item) => {
+  let key = [item.x, item.y].sort().join(","); // 排序忽略顺序
+  if (set.has(key)) return;
+  set.add(key);
+  // do something
 });
 ```
 
@@ -109,6 +129,7 @@ let arr = [];
 // 构建 map 字典
 const map = new Map();
 arr.forEach((item) => {
+  let c = map.get(item);
   if (c) {
     map.set(item, c + 1);
   } else {

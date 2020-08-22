@@ -172,11 +172,14 @@ const columns = [
   :afterClose="editCancel"
   v-model="visible"
   :title="formMode==='add'?'新增':'编辑'"
+  :footer="null"
+  width="80vw"
 >
   <template slot="footer">
-    <a-button key="back" @click="editCancel">取消</a-button>
+    <a-button size="small" key="back" @click="editCancel">取消</a-button>
     <a-button key="submit" type="primary" @click="editOk">确定</a-button>
   </template>
+  <div style="height:'80vh'"> 自适应高度 <div>
 </a-modal>
 ```
 
