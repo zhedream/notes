@@ -141,3 +141,8 @@ const son = new Son(name);
 console.log(parent1);
 console.log(son);
 ```
+
+## 好文
+
+1. 轻松理解 JS 中的面向对象，顺便搞懂 prototype 和 `__proto__`
+   https://mp.weixin.qq.com/s/H3XsqXrB7uy7k8wjQ-FTIw
