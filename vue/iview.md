@@ -38,13 +38,11 @@ https://www.iviewui.com/docs/guide/iview-loader
 
 https://www.iviewui.com/components/select
 
-multiple
-
 ```html
-<i-Select multiple v-model="formValidate.DataType">
-  <i-option v-for="item in DataTypeOption" :value="item.value" :key="item.value"
-    >{{ item.label }}</i-option
-  >
+<i-Select v-model="" @on-change="" multiple clearable>
+  <template v-for="e in FK_PointGroup">
+    <i-Option :label="e.label" :value="e.value" :key="e.value"></i-Option>
+  </template>
 </i-Select>
 ```
 
@@ -109,11 +107,13 @@ http://v2.iviewui.com/components/modal#API
 <i-Modal
   width="800"
   footer-hide
-  on-ok="ok"
+  @on-ok="ok"
   @on-cancel="cancel"
-  v-model="visible"
+  @on-visible-change
   @on-visible-change="visibleChange"
+  v-model="visible"
   :mask-closable="false"
+  :closable="false"
   :title="'标题'"
 >
   <div slot="footer">
@@ -167,4 +167,35 @@ let warnFormRules = {
   ],
   "obj.name": [{ required: true, message: "请输xxx", trigger: "change" }], // 对象嵌套 验证
 };
+```
+
+# radio
+
+注意: 这里由坑 label 应该是 value
+
+```html
+<Radio-Group v-model="conditionSearch1.code" type="button" v-bind:class="theme">
+  <Radio label="a34004">PM₂.₅</Radio>
+  <Radio label="a34002">PM₁₀</Radio>
+  <Radio label="a21005">CO</Radio>
+  <Radio label="a21004">NO₂</Radio>
+  <Radio label="a21026">SO₂</Radio>
+  <Radio label="a05024">O₃</Radio>
+</Radio-Group>
+```
+
+```js
+
+```
+
+https://www.iviewui.com/components/radio#API
+
+# 模板
+
+```html
+
+```
+
+```js
+
 ```
