@@ -99,7 +99,7 @@ const columns = [
 ];
 ```
 
-# Modal
+## Modal
 
 http://v2.iviewui.com/components/modal#API
 
@@ -123,7 +123,7 @@ http://v2.iviewui.com/components/modal#API
 </i-Modal>
 ```
 
-# Transfer
+## Transfer
 
 http://v2.iviewui.com/components/transfer#API
 
@@ -146,7 +146,7 @@ http://v2.iviewui.com/components/transfer#API
 
 ```
 
-# form 表单
+## form 表单
 
 ```js
 let warnFormRules = {
@@ -169,7 +169,7 @@ let warnFormRules = {
 };
 ```
 
-# radio
+## radio
 
 注意: 这里由坑 label 应该是 value
 
@@ -182,15 +182,26 @@ let warnFormRules = {
   <Radio label="a21026">SO₂</Radio>
   <Radio label="a05024">O₃</Radio>
 </Radio-Group>
+
+<Radio-Group v-model="value" type="button" :class="theme">
+  <template v-for="e in option">
+    <Radio :key="e.value" :label="e.value">
+      <span>{{e.label}}</span>
+    </Radio>
+  </template>
+</Radio-Group>
 ```
 
 ```js
 
 ```
 
+value 只在`单独使用时有效`。可以使用 v-model 双向绑定数据 Boolean false
+label 只在组合使用时有效。指定当前选项的 value 值，组合会自动判断当前选择的项目
+
 https://www.iviewui.com/components/radio#API
 
-# 模板
+## 模板
 
 ```html
 
