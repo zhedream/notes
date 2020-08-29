@@ -63,8 +63,10 @@ v-model [1,3,4] 非空, placeholder display:none
 <i-table
   ref="iviewTable"
   row-key="bumenID"
-  v-bind:columns="columns"
-  v-bind:data="data"
+  highlight-row
+  @on-selection-change="handleSelect"
+  :columns="columns"
+  :data="data"
   border
 >
   <template slot-scope="{row,index,column}" slot="action">
@@ -76,6 +78,21 @@ v-model [1,3,4] 非空, placeholder display:none
 ```
 
 ```js
+// iview  行选中状态, 不是双向绑定, 需要手动修改 表格数据 dataTable
+function handleSelect(rows) {
+  let set = new Set();
+  rows.forEach((row) => {
+    set.add(row.PollutantCode);
+  });
+  // 更新数据 状态
+  this.dataTable.forEach((row) => {
+    if (set.has(row.PollutantCode)) {
+      Object.assign(row, { _checked: true });
+    } else {
+      Object.assign(row, { _checked: false });
+    }
+  });
+}
 const columns = [
   { title: "排序", key: "sort" },
   { title: "部门名称", key: "bumenName", tree: true },
@@ -98,6 +115,8 @@ const columns = [
   { title: "操作", slot: "action", width: 200, align: "center" },
 ];
 ```
+
+### 表格内编辑
 
 ## Modal
 
