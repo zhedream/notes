@@ -77,7 +77,20 @@ v-model [1,3,4] 非空, placeholder display:none
 </i-table>
 ```
 
+要点:
+
+1. 固定头部, x 轴-长表头, 动态表头
+2. 自定义渲染, 数据/按钮
+3. 合并单元格
+4. 高度自适应
+5. 导出表格
+
 ```js
+this.$refs["iviewTable"].exportCsv({
+  filename: "部门数据",
+  // columns: this.columns
+  // data: this.data
+});
 // iview  行选中状态, 不是双向绑定, 需要手动修改 表格数据 dataTable
 function handleSelect(rows) {
   let set = new Set();
@@ -94,7 +107,7 @@ function handleSelect(rows) {
   });
 }
 const columns = [
-  { title: "排序", key: "sort" },
+  { title: "序号", type: "index" },
   { title: "部门名称", key: "bumenName", tree: true },
   {
     title: "创建人",
@@ -108,7 +121,7 @@ const columns = [
             style: "color:red;",
           },
         },
-        "aa"
+        row.createUser
       );
     },
   },
