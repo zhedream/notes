@@ -67,6 +67,7 @@ v-model [1,3,4] 非空, placeholder display:none
   @on-selection-change="handleSelect"
   :columns="columns"
   :data="data"
+  class="box"
   border
 >
   <template slot-scope="{row,index,column}" slot="action">
@@ -129,6 +130,43 @@ const columns = [
 ];
 ```
 
+### 自适应高度和滚动条
+
+固定 数据行, 无数据提示 高度
+
+```css
+.box .ivu-table-body {
+  overflow-x: hidden;
+  height: calc(100vh - 315px);
+}
+
+.box .ivu-table-tip {
+  overflow-x: hidden;
+  height: calc(100vh - 315px);
+}
+
+/* 滚动条 start */
+.box .ivu-table-body::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: #f5f5f5;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+.box .ivu-table-body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+/*定义滑块 内阴影+圆角*/
+.box .ivu-table-body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555;
+}
+```
+
 ### 表格内编辑
 
 ## Modal
@@ -180,9 +218,14 @@ http://v2.iviewui.com/components/transfer#API
 
 ## form 表单
 
+异步校验: https://github.com/yiminghe/async-validator
+
 ```js
 let warnFormRules = {
   AlarmType: [{ required: true, message: "请输入xxx", trigger: "change" }],
+  Num: [
+    { required: true, type: "integer", message: "请选择", trigger: "change" },
+  ],
   data1: [
     {
       validator: function (rule, value, callback) {

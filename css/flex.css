@@ -2,8 +2,8 @@
     display: flex;
     
     /* 1. 主轴的方向 */
-    flex-direction: row; /*  item 一行  横轴 */
-    flex-direction: column; /*  item 一列  竖轴 */
+    flex-direction: row; /*  item 一行  横轴 水平排列 */
+    flex-direction: column; /*  item 一列  竖轴 垂直排列 */
     flex-wrap: wrap-reverse ; /* 2  换行方式: nowrap */
     /* 3. 主轴对齐方式 */
     justify-content: space-between; /* 两边环绕 */
@@ -20,7 +20,7 @@
     /* 2. item 独立的 对齐方式 */
     align-self: auto ; /* | flex-start | flex-end | center | baseline | stretch */
     flex: 1 ; /* [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ] */
-     /* 3. item 占位比例(放大)，默认值为0，即如果存在剩余空间，也不放大。*/
+     /* 3. item 占位比例(放大)，默认值为0，即如果存在剩余空间(宽度或高度)，也不放大。*/
     flex-grow: 0; 
     /* 4. item 的缩小比例，默认为1. 空间不足,item将缩小。 */
     flex-shrink:1 ;/* 项目的缩小比例 default 1 */
