@@ -47,6 +47,13 @@ C:\Program Filles(x86)\vscode\unins000.exe
 
 C + K + 4 > Ctrl + k + 4
 
+## 代码块
+
+生成代码块
+https://snippet-generator.app/
+
+
+
 ## 扩展
 
 **通用**

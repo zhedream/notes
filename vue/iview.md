@@ -63,11 +63,13 @@ v-model [1,3,4] 非空, placeholder display:none
 <i-table
   ref="iviewTable"
   row-key="bumenID"
-  highlight-row
   @on-selection-change="handleSelect"
+  :span-method="handleSpan2"
   :columns="columns"
   :data="data"
   class="box"
+  highlight-row
+  stripe
   border
 >
   <template slot-scope="{row,index,column}" slot="action">
@@ -87,6 +89,29 @@ v-model [1,3,4] 非空, placeholder display:none
 5. 导出表格
 
 ```js
+// iview table 导出csv文件错行问题
+// https://blog.csdn.net/qq_29832217/article/details/100767745
+// 字符串转义
+const handle = function (str) {
+  let handleStr = str.replace(/[\r\n]/g, "");
+  //先判断字符里是否含有逗号
+  if (str.indexOf(",") != -1) {
+    //如果还有双引号，先将双引号转义，避免两边加了双引号后转义错误
+    if (str.indexOf('"') != -1) {
+      handleStr = str.replace('"', '""');
+    }
+    //将逗号转义
+    handleStr = '"' + handleStr + '"';
+    return handleStr;
+  }
+  return '"' + handleStr + '"';
+};
+data.forEach((e) => {
+  Object.keys(e).forEach((a) => {
+    if (typeof e[a] == "string") e[a] = handle(e[a]);
+  });
+});
+
 this.$refs["iviewTable"].exportCsv({
   filename: "部门数据",
   // columns: this.columns

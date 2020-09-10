@@ -121,6 +121,25 @@ $.ajax({
 });
 ```
 
+```js
+jQuery.extend({
+  $post: function ({ url, data, successInfo = false, errorInfo = "操作失败" }) {
+    return new Promise(function (resolve, reject) {
+      jQuery.ajax({
+        url: url,
+        type: "post",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: (e) => resolve(e) || (successInfo && vm.success(successInfo)),
+        error: (e) => reject(e) || (errorInfo && vm.error(errorInfo)),
+        beforeSend: () => Loading(),
+        complete: () => CloseLoading(),
+      });
+    });
+  },
+});
+```
+
 ## 全局配置
 
 jQuery ajax 设置全局配置
