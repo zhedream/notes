@@ -35,6 +35,17 @@ Object.keys(obj).forEach((key) => {
 let a = Object.entries(obj); // [ [ 'a', 'a' ], [ 'b', 'b' ] ]
 ```
 
+## 包装方法, 继承
+
+```js
+const originPrototype = Array.prototype;
+const nextPrototype = Object.create(originPrototype);
+nextPrototype["push"] = function () {
+  originPrototype.apply(this, arguments);
+  // do something
+};
+```
+
 ## 纯对象 PureObject
 
 ```js

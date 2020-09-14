@@ -22,12 +22,13 @@ const rootComponent3 = new Vue({
 });
 
 // 创建组件的构造函数   可复用性 . 这样构造出来的 组件实例, 打印 this 自带 VueComponent
-const H1ComponentConstruct = Vue.extends({
+Vue.extend(Component);
+const H1ComponentConstruct = Vue.extend({
   render: (h) => {},
 });
 const H1Component1 = new H1ComponentConstruct();
 const H1Component2 = new H1ComponentConstruct();
-const H1Component3 = new H1ComponentConstruct();
+const H1Component3 = new H1ComponentConstruct({ propData });
 
 Vue.component(); // 注册一个 全局组件, 本质接收一个 组件名称 和 一个组件的构造函数.
 ```
