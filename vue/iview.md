@@ -39,7 +39,7 @@ https://www.iviewui.com/docs/guide/iview-loader
 https://www.iviewui.com/components/select
 
 ```html
-<i-Select v-model="" @on-change="" multiple clearable>
+<i-Select v-model="" @on-change="" multiple clearable filterable>
   <template v-for="e in FK_PointGroup">
     <i-Option :label="e.label" :value="e.value" :key="e.value"></i-Option>
   </template>
