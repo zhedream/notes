@@ -1,6 +1,6 @@
 # NPM&YARN
 
-是 js  的包管理工具. 准确的说应该是 nodejs
+是 js 的包管理工具. 准确的说应该是 nodejs
 
 npm info packname version
 yarn info packname version
@@ -66,6 +66,10 @@ yarn upgrade packname | packname@version
 
 升级 yarn
 windows msi 安装包 覆盖安装即可
+
+## cnpm
+
+坑: cnpm 不依赖/不生成 package-lock.json 文件, 可能造成 版本一致
 
 ## npx
 
