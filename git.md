@@ -46,6 +46,11 @@ https://github.com/settings/keys
 # 测试连接
 ssh -T git@github.com
 
+## to the list of known hosts
+ssh-keygen -l -f ~/.ssh/known_hosts
+ssh-keygen -R 服务器端的ip地址
+清空 ~/.ssh/known_hosts
+
 ```
 
 **用户秘钥**
