@@ -258,3 +258,15 @@ tail error.log -n10 -f
 看看装 php7.3-fpm 没有
 https://ibcomputing.com/nginx-502-bad-gateway-error/
 https://www.cloudbooklet.com/how-to-install-nginx-php-7-3-lemp-stack-on-ubuntu-18-04-google-cloud/
+
+## docker
+
+```
+docker run --name ${PWD##*/} -p 8080:80 -v $PWD:/usr/share/nginx/html nginx
+
+docker run --name ${PWD##*/} -p 8080:80 -v $PWD/www:/usr/share/nginx -v $PWD/conf.d:/etc/nginx/conf.d nginx
+```
+
+/etc/nginx
+
+/usr/share/nginx

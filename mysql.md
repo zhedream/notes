@@ -86,3 +86,15 @@ SELECT * FROM runoob_tbl INTO OUTFILE '/tmp/runoob.txt';
 ## ubuntu
 
 sudo apt install mysql-server
+
+## docker mysql
+
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=admin -d mysql
+
+/etc/mysql/mysql.conf.d/mysqld.cnf
+
+#bind_address=127.0.0.1,127.0.0.1
+
+## docker phpmyadmin
+
+docker run -d --name myadmin -d -e PMA_HOST=172.17.0.1 -p 3366:80 phpmyadmin
