@@ -1,33 +1,31 @@
-.box{
-    display: flex;
-    
-    /* 1. 主轴的方向 */
-    flex-direction: row; /*  item 一行  横轴 水平排列 */
-    flex-direction: column; /*  item 一列  竖轴 垂直排列 */
-    flex-wrap: wrap-reverse ; /* 2  换行方式: nowrap */
-    /* 3. 主轴对齐方式 */
-    justify-content: space-between; /* 两边环绕 */
-    justify-content: space-around; /* 中间环绕 */
-    flex-flow: wrap space-between; /* 4. 简写: 默认 row nowrap */
-    /* 5. 交叉轴对齐方式 */
-    align-items:flex-start ;  /* flex-end | center |baseline | stretch */
-    /* 6. 多轴对齐 */
-    align-content:space-around;
+.box {
+  display: flex;
+
+  /* 1. 主轴的方向 */
+  flex-direction: row; /*  item 一行  横轴 水平排列 */
+  flex-direction: column; /*  item 一列  竖轴 垂直排列 */
+  flex-wrap: wrap-reverse; /* 2  换行方式: nowrap */
+  flex-flow: wrap space-between; /* 4. 简写: 默认 row nowrap */
+  /* 3. 主轴对齐方式 */
+  justify-content: space-between; /* 两边环绕 */
+  justify-content: space-around; /* 中间环绕 */
+  /* 5. 交叉轴对齐方式 */
+  align-items: flex-start; /* flex-end | center |baseline | stretch */
+  /* 6. 多轴对齐 */
+  align-content: space-around;
 }
-.item{
-    /* 1. 排列顺序。数值越小，排列越靠前，默认为0 <integer> */
-    order: 0;
-    /* 2. item 独立的 对齐方式 */
-    align-self: auto ; /* | flex-start | flex-end | center | baseline | stretch */
-    flex: 1 ; /* [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ] */
-     /* 3. item 占位比例(放大)，默认值为0，即如果存在剩余空间(宽度或高度)，也不放大。*/
-    flex-grow: 0; 
-    /* 4. item 的缩小比例，默认为1. 空间不足,item将缩小。 */
-    flex-shrink:1 ;/* 项目的缩小比例 default 1 */
-    flex-basis: auto ; /*default auto*/
-    /* 5. flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。 */
+.item {
+  /* 1. 排列顺序。数值越小，排列越靠前，默认为0 <integer> */
+  order: 0;
+  /* 2. item 独立的 对齐方式 */
+  align-self: auto; /* | flex-start | flex-end | center | baseline | stretch */
+  flex: 1; /* [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ] */
+  /* 3. item 占位比例(放大)，默认值为0，即如果存在剩余空间(宽度或高度)，也不放大。*/
+  flex-grow: 0;
+  /* 4. item 的缩小比例，默认为1. 空间不足,item将缩小。 */
+  flex-shrink: 1; /* 项目的缩小比例 default 1 */
+  flex-basis: auto; /*default auto*/
+  /* 5. flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。 */
 }
 
 /* 参考: http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html */
-
-

@@ -17,6 +17,8 @@ mySet.size; // 5
 ## Set
 
 无序, 唯一. 数组去重, 判断存在, 场景: 日历中有任务的日期加个红点
+集合中的(交集，并集，差集，补集，对称差集)
+https://blog.csdn.net/wizblack/article/details/78796557
 
 ```js
 let set = new Set([]);
@@ -60,7 +62,7 @@ function symmetricDifference(setA, setB) {
   }
   return _difference;
 }
-// 差集, A 对 B 的差集, A 有 B 没有
+// 差集, A 对 B 的差集, A 不同于 B, A 有 B 没有
 function difference(setA, setB) {
   let _difference = new Set(setA);
   for (let elem of setB) {

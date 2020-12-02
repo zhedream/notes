@@ -46,6 +46,9 @@ actions , 可异步, 比如 登录 退出 类似的公共的方法, 就非常适
 混入, 或者命名空间
 
 ## 辅助函数的使用
+https://vuex.vuejs.org/zh/guide/state.html#mapstate-辅助函数
+
+数组,对象,函数, 普通函数(this)
 
 ```js
 

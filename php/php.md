@@ -10,6 +10,8 @@ echo \$error['message'];
 
 sudo apt install php-curl
 
+https://blog.csdn.net/weixin_43245095/article/details/90211099
+
 ## 打开报错提示
 
 ini_set("display_errors", "On");
