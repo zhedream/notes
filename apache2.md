@@ -1,34 +1,39 @@
 # apache2
 
 ## 安装
+
 apt install apache2
 cd /ect/apache2
+
 ## 主配置文件 apache2.conf
+
 vi /ect/apache2/apache2.conf ## 主配置文件
 line:160 左右 配置站点 推荐创建 www 用户 下面放项目
-```text
+
+```xml
 <Directory /home/www/xxx>
-        Options Indexes FollowSymLinks
-        AllowOverride None
-        Require all granted
+		Options Indexes FollowSymLinks
+		AllowOverride None
+		Require all granted
 </Directory>
 ```
 
 line:189 AccessFileName .htaccess ## 路由重写文件
 
 间这段 添加进入 配置 重要 安全
-```text
+
+```xml
 <DirectoryMatch .*\.svn|.git|_svn/.*>
-RewriteEngine On
-RewriteRule ^(.*)(\.svn|.git|_svn)(/.*)$ /index.php [R=301]
+	RewriteEngine On
+	RewriteRule ^(.*)(\.svn|.git|_svn)(/.*)$ /index.php [R=301]
 </DirectoryMatch>
 ```
 
 ## 监听端口
+
 vi /ect/apache2/ports.conf
 Listen 80
 Listen 8080
-
 
 ## 配置站点
 
@@ -78,38 +83,41 @@ Listen 8080
 
 ```
 
-
 ## 反向代理&Alias
+
 link : https://www.jianshu.com/p/47eca94680aa
 加载 模块 重启
-a2enmod proxy proxy_balancer proxy_http 
+a2enmod proxy proxy_balancer proxy_http
 
-	ProxyPass /ahgraphql http://127.0.0.1:7200
-	ProxyPassReverse /ahgraphql http://127.0.0.1:7200
+ProxyPass /ahgraphql http://127.0.0.1:7200
+ProxyPassReverse /ahgraphql http://127.0.0.1:7200
 
-	Alias /api  "/home/lhz/wwwroot/ams/webpage/api"
+Alias /api "/home/lhz/wwwroot/ams/webpage/api"
 
-	反向代理 / , Alias 将无效
-
+反向代理 / , Alias 将无效
 
 ## 运行用户
+
 link:
 https://blog.csdn.net/huangwu_188/article/details/78213153
 ubuntu 18.10
 vi /etc/apache2/envvars
 
-## gzip压缩
-	<IfModule deflate_module>
-		AddOutputFilterByType DEFLATE application/json application/javascript text/css text/html text/javascript text/plain text/xml
-	</IfModule>
+## gzip 压缩
+
+<IfModule deflate_module>
+	AddOutputFilterByType DEFLATE application/json application/javascript text/css text/html text/javascript text/plain text/xml
+</IfModule>
 
 ## 重启 apache2
-/etc/init.d/apache2 restart 
 
-## ab测试
-ab -n 2000 -c 500  http://127.0.0.1/
-	-n :请求数
-	-c:   并发数
+/etc/init.d/apache2 restart
+
+## ab 测试
+
+ab -n 2000 -c 500 http://127.0.0.1/
+-n :请求数
+-c: 并发数
 
 ## 负载均衡
 

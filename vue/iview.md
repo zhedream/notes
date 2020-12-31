@@ -39,7 +39,7 @@ https://www.iviewui.com/docs/guide/iview-loader
 https://www.iviewui.com/components/select
 
 ```html
-<i-Select v-model="" @on-change="" multiple clearable filterable>
+<i-Select v-model="" @on-change="" placeholder="" multiple clearable filterable>
   <template v-for="e in FK_PointGroup">
     <i-Option :label="e.label" :value="e.value" :key="e.value"></i-Option>
   </template>
@@ -243,10 +243,83 @@ http://v2.iviewui.com/components/transfer#API
 
 ## form 表单
 
+```html
+<Modal footer-hide v-model="modalShow" :title="title" width="700">
+  <i-form
+    v-if="modalShow"
+    ref="form"
+    :model="formData"
+    :rules="rules"
+    :label-width="100"
+  >
+    <!-- 中文名称/因子编号 -->
+    <row>
+      <i-col span="12">
+        <Form-Item label="中文名称：" prop="Describe">
+          <i-Input
+            v-model.trim="formData.Describe"
+            placeholder="请输入中文名称"
+          />
+        </Form-Item>
+      </i-col>
+      <i-col span="12">
+        <row>
+          <i-col span="17">
+            <Form-Item label="因子编号：" prop="PollutantCode">
+              <i-Input
+                v-model.trim="formData.PollutantCode"
+                placeholder="请输入因子编号"
+              />
+            </Form-Item>
+          </i-col>
+          <i-col span="5" offset="1">
+            <i-button>查询编码</i-button>
+          </i-col>
+        </row>
+      </i-col>
+    </row>
+    <row>
+      <i-col span="9" offset="15" style="text-align: right;">
+        <i-Button type="primary" @click="formSubmit">确定</i-Button>
+        <i-Button type="default" @click="formReset" style="margin-left: 5px;"
+          >重置</i-Button
+        >
+        <i-Button type="default" @click="formCancel" style="margin-left: 5px;"
+          >取消</i-Button
+        >
+      </i-col>
+    </row>
+  </i-form>
+</Modal>
+<!-- 
+v-if="modalShow" resetFields 必须新实例才能正确 重置表单
+ -->
+```
+
+表单验证问题
+
+https://github.com/yiminghe/async-validator/issues/182#issuecomment-741485886
+
+input 框, 非必选, 数据为 数值类型, 但不通过验证. 可能是 组件或库的 bug
+
+解决办法:
+
+1. type:string 转成 字符串 + v-model.trim
+2. type:number 空为 0 + v-model.number
+3. type:any input number 限制数据数值. (新版库才支持)
+
 异步校验: https://github.com/yiminghe/async-validator
 
 ```js
-let warnFormRules = {
+let defaultFormModel = {
+  name: "", // 姓名
+  age: "", // 年龄
+  user: {
+    name: "",
+    age: "",
+  },
+};
+let defaultFormRules = {
   AlarmType: [{ required: true, message: "请输入xxx", trigger: "change" }],
   Num: [
     { required: true, type: "integer", message: "请选择", trigger: "change" },
@@ -267,6 +340,12 @@ let warnFormRules = {
   ],
   "obj.name": [{ required: true, message: "请输xxx", trigger: "change" }], // 对象嵌套 验证
 };
+// 重置表单
+this.$refs["form"].resetFields();
+// 校验表单
+this.$refs["form"].validate((valid) => {
+  let data = { status: valid, data: this.formData };
+});
 ```
 
 ## radio
@@ -300,6 +379,39 @@ value 只在`单独使用时有效`。可以使用 v-model 双向绑定数据 Bo
 label 只在组合使用时有效。指定当前选项的 value 值，组合会自动判断当前选择的项目
 
 https://www.iviewui.com/components/radio#API
+
+## checkbox
+
+注:
+
+组的 v-model : **不影响用户的其他数据**, 一个数据, 可以用在多个 v-model, 如 v-for . (需注意唯一性,冲突除外)
+
+组的: 选中状态 通过 `v-model` (Checkbox-Group), `label` (Checkbox) 控制
+
+单选: `value` (v-model) 控制
+
+显示字样: 通过内容(插槽), 不通过 label 控制
+
+BUG: 响应 问题,
+
+```html
+<Checkbox-Group
+  v-for=""
+  v-model="types_a5ba_model"
+  style="display: inline-block;"
+>
+  <template v-for="e in types_a5ba">
+    <Checkbox
+      :key="e.typeName"
+      :label="e.typeName"
+      :value="e.checkAll"
+      :indeterminate="e.indeterminate"
+    >
+      <span>{{e.typeName}}</span>
+    </Checkbox>
+  </template>
+</Checkbox-Group>
+```
 
 ## 模板
 

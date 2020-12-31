@@ -9,3 +9,7 @@ set HTTP_PROXY=http://127.0.0.1:7890
 rmdir /s/q <path:dir>
 
 xcopy <path:dir|file> <path2:dir|file>
+
+## systeminfo
+查看系统信息
+虚拟内存, 内存, 补丁, Hyper-V

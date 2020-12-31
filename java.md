@@ -6,7 +6,8 @@ sudo apt install default-jre
 # sudo apt install openjdk-8-jre-headless 
 ```
 
-
+JDK与Java SE/EE/ME的区别
+https://www.cnblogs.com/easonjim/p/6181981.html
 
 
 # 协议
