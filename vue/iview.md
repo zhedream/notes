@@ -159,15 +159,16 @@ const columns = [
 
 固定 数据行, 无数据提示 高度
 
-```css
-.box .ivu-table-body {
-  overflow-x: hidden;
+```less
+/* 高度 */
+.box .ivu-table-body,
+.box .ivu-table-tip,
+.box .ivu-table-fixed-body {
   height: calc(100vh - 315px);
 }
-
-.box .ivu-table-tip {
-  overflow-x: hidden;
-  height: calc(100vh - 315px);
+/* 显示滚动条 */
+.box .ivu-table-body {
+  overflow: auto;
 }
 
 /* 滚动条 start */

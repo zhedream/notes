@@ -17,10 +17,10 @@ php -S 0.0.0.0:1111 -t ./
  * @return string 规整后的时间 - Y-m-d H:i:s
  * @example : getTimeFloor('2019-10-25 12:05:03') : 2019-10-25 12:05:00
  */
-function getTimeFloor(string $time, int $jiange = 5)
+function getTimeFloor( $time,  $jiange = 5, $offset = 0)
 {
-  $count = floor(strtotime($time) / $jiange); // 间隔
-  return date("Y-m-d H:i:s", $count * $jiange); //. '<br/>' . "\r\n";
+  $count = floor(strtotime($time) / $jiange+$offset); // 间隔
+  return date("Y-m-d H:i:s", $count * $jiange + $offset); //. '<br/>' . "\r\n";
 }
 
 // echo getTimeFloor('2019-10-25 12:05:03');
@@ -42,7 +42,7 @@ $arr = [
 $timeMap = [];
 
 foreach ($arr as $key => $value) {
-  $key = getTimeFloor($value['time']);
+  $key = getTimeFloor($value['time'],5,4);
   if (!$timeMap[$key]) {
     $timeMap[$key] = [];
     array_push($timeMap[$key], $value);
