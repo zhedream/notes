@@ -279,18 +279,15 @@ exportTable() {
 ```
 
 ```js
+
 ```
 
 ## a-row
 
 ```html
 <a-row>
-  <a-col :span="12">
-    col-12
-  </a-col>
-  <a-col :span="12">
-    col-12
-  </a-col>
+  <a-col :span="12"> col-12 </a-col>
+  <a-col :span="12"> col-12 </a-col>
 </a-row>
 ```
 
@@ -371,6 +368,91 @@ exportTable() {
   </div>
   <a-button type="default">保存因子组</a-button>
 </a-popover>
+```
+
+## select 选择器
+
+```text 组件
+  VNodes: {
+    functional: true,
+    render: (h, ctx) => ctx.props.vnodes,
+  },
+```
+
+```text 方法
+  vocsCodesFocus() {
+    this.vocsCodesOpen = true;
+    const close = () => {
+      window.onclick = null;
+      this.vocsCodesOpen = false;
+      window.onscroll = null;
+      this.vocsCodesOpen = false;
+    };
+    window.onclick = close;
+    window.onscroll = close;
+  },
+```
+
+```html
+<a-select
+  style="width: 250px"
+  mode="multiple"
+  placeholder="选择检测项"
+  :dropdownMatchSelectWidth="false"
+  :maxTagCount="2"
+  maxTagPlaceholder=".."
+  @focus="vocsCodesFocus"
+  :open="vocsCodesOpen"
+  :value="vocsCodesModel"
+>
+  <div slot="dropdownRender" slot-scope="menu">
+    <v-nodes :vnodes="menu">
+    <div
+      style="width: 500px"
+      @click.stop=""
+      @mousedown.stop="(e) => e.preventDefault()"
+    ></div>
+  </div>
+  <a-select-option
+    v-for="item in vocsCodesOption"
+    :value="item.polutantCode"
+    :key="item.polutantCode"
+  >
+    {{ item.polutantName }}
+  </a-select-option>
+</a-select>
+```
+
+## checkbox 多选框
+
+option:{label,value}
+
+```html
+<a-row
+  v-for="item in vocsCodes_filterData"
+  :key="item.typeCode"
+  style="margin: 3%; border-bottom: 1px solid #d9d9d9"
+>
+  <a-col span="5">
+    <!-- <a-checkbox
+        :indeterminate="item.indeterminate"
+        :checked="item.checkAll"
+        style="color: #1890ff; font-weight: bold"
+        @change="vocsCheckCodeAll(item)"
+      >
+        {{ item.typeName }}</a-checkbox
+      > -->
+    <span style="color: #1890ff; font-weight: bold">{{ item.typeName }}</span>
+  </a-col>
+  <a-col span="19">
+    <a-checkbox-group
+      :value="vocsCodesModel"
+      :options="item.children"
+      @change="vocsSingleCheck(item, $event)"
+    >
+    </a-checkbox-group>
+  </a-col>
+</a-row>
 ```
 
 ## echarts
