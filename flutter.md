@@ -20,6 +20,20 @@ cd ~/development
 3. source ~/.bashrc
 4. flutter doctor # 检测是否配置成功
 ## 安装Android Studio
+## 问题1
+https://stackoverflow.com/questions/59647791/tag-android-studio-not-installed-when-run-flutter-doctor-while-android
+
+flutter config --android-sdk="$HOME/Android/Sdk" // 默认 SDK 位置
+flutter config --android-studio-dir="/usr/local/android-studio" // 官网推荐
+flutter config --android-studio-dir="$HOME/development/android-studio" // 手动安装的位置
+## 问题2 插件未安装, 更新 flutter
+https://stackoverflow.com/questions/64369971/android-studio-dart-and-flutter-plugin-is-not-installed
+
+flutter channel dev
+flutter upgrade
+flutter config --android-studio-dir="C:\Program Files\Android\Android Studio"
+flutter doctor -v
+
 https://developer.android.com/studio/
 安装的失败, 重新安装, 使用管理员启动 安装包 会自动卸载
 1. 第一次的SDK ,  翻墙下载 , 内置的socket代理,填写你的代理服务, 镜像不适用只能翻墙

@@ -141,9 +141,9 @@ wget -c -r -np -k -L -p http://192.168.2.219/.git/
 
 连接 windows 桌面
 
-rdesktop -uAdministrator -plhz123 -f 127.0.0.1:6003
+rdesktop -uAdministrator -plhz123 -f 127.0.0.1:6003 // 全屏
 
-rdesktop -uAdministrator -plhz123 -f 127.0.0.1:6003 -g 1600x900 -r clipboard:PRIMARYCLIPBOARD -a 8 -P -z
+rdesktop -uAdministrator -plhz123 -f 127.0.0.1:6003 -r clipboard:PRIMARYCLIPBOARD -a 8 -P -z // 全屏 + 压缩
 
 Ctrl + Shift + Alt + Enter 全屏/退出全屏
 
@@ -298,3 +298,7 @@ https://www.cnblogs.com/wswang/p/5748615.html
 1. mount:unknown filesystem type 'exfat'
    sudo apt-get install exfat-fuse
    https://blog.csdn.net/flexitime/article/details/45486185
+
+## scrcpy
+
+连接控制手机

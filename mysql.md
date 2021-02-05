@@ -98,3 +98,4 @@ docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=admin -d mysql
 ## docker phpmyadmin
 
 docker run -d --name myadmin -d -e PMA_HOST=172.17.0.1 -p 3366:80 phpmyadmin
+docker run  --name test  ubuntu 
