@@ -52,7 +52,13 @@ C + K + 4 > Ctrl + k + 4
 生成代码块
 https://snippet-generator.app/
 
+## 自定义快捷键
 
+Ctrl + Num1 切换 禅定模式
+Ctrl + Num2 切换 状态栏
+Ctrl + Num4 切换 活动栏
+Ctrl + Num6 切换 缩略图, 滚动条
+Ctrl + Num9 保存全部
 
 ## 扩展
 

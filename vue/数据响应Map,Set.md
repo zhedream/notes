@@ -88,3 +88,10 @@ this.conditionSearch1.testSite = [];
 ## 响应顺序
 
 v-model > @change > watch > computed
+
+data > watch > create > mounted > computed
+
+$watch(): 可以指定在某个生命周期立即执行.
+
+computed: 惰性执行, 第一次在哪个生命周期调用, 就是它首次执行计算的时机.
+应该是纯函数. 不要有副作用.
