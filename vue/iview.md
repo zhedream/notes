@@ -160,6 +160,9 @@ const columns = [
 固定 数据行, 无数据提示 高度
 
 ```less
+.box {
+  height: 100%;
+}
 /* 高度 */
 .box .ivu-table-body,
 .box .ivu-table-tip,
@@ -320,12 +323,23 @@ let defaultFormModel = {
     age: "",
   },
 };
+const validateArrayLeast = (message, limitCount = 1) => (
+  rule,
+  value,
+  callback
+) => {
+  const msg = message ? message : "至少选择".concat(limitCount).concat("项");
+  if (!value || value.length < limitCount) return callback(new Error(msg));
+  else callback();
+};
+const validatePollutant = validateArrayLeast("至少选择1项 XX", 1);
+
 let defaultFormRules = {
   AlarmType: [{ required: true, message: "请输入xxx", trigger: "change" }],
   Num: [
     { required: true, type: "integer", message: "请选择", trigger: "change" },
   ],
-  data1: [
+  repwd: [
     {
       validator: function (rule, value, callback) {
         if (value === "") {
@@ -340,6 +354,15 @@ let defaultFormRules = {
     },
   ],
   "obj.name": [{ required: true, message: "请输xxx", trigger: "change" }], // 对象嵌套 验证
+  "obj.arr": [
+    {
+      required: true,
+      validator: validateArr,
+      type: "array",
+      min: 1,
+      trigger: "input",
+    },
+  ],
 };
 // 重置表单
 this.$refs["form"].resetFields();
