@@ -65,6 +65,7 @@ v-model [1,3,4] 非空, placeholder display:none
   row-key="bumenID"
   @on-selection-change="handleSelect"
   :span-method="handleSpan2"
+  :row-class-name=""
   :columns="columns"
   :data="data"
   class="box"
@@ -76,6 +77,17 @@ v-model [1,3,4] 非空, placeholder display:none
     <i-Button title="编辑" size="small" @click="edit(row,index)">
       <i-icon type="edit"></i-icon>
     </i-Button>
+    <Poptip
+      confirm
+      transfer
+      title="确定删除吗？"
+      @on-ok="del(row)"
+      @on-cancel=""
+    >
+      <i-button size="small">
+        <Icon type="android-delete"></Icon>
+      </i-button>
+    </Poptip>
   </template>
 </i-table>
 ```
@@ -132,6 +144,12 @@ function handleSelect(rows) {
     }
   });
 }
+
+var refresh_temp = {
+  props: ["data", "columns3"],
+  template:
+    '<div id="divTable"><i-table  border v-bind:columns="columns3"  v-bind:data="data"></i-table></div>',
+};
 const columns = [
   { title: "序号", type: "index" },
   { title: "部门名称", key: "bumenName", tree: true },
@@ -150,8 +168,37 @@ const columns = [
         row.createUser
       );
     },
+    // render: (h, params) => {
+    //   this.size();
+    //   return h(refresh_temp, {
+    //     props: {
+    //       data: params.row.detail,
+    //       columns3: vmFeedback.columns3,
+    //     },
+    //   });
+    // },
   },
   { title: "操作", slot: "action", width: 200, align: "center" },
+  { title: " ", align: "center" }, // 占位
+];
+const rowClassName = (row, index) => {
+  if (index === 1) {
+    return "demo-table-info-row";
+  } else if (index === 3) {
+    return "demo-table-error-row";
+  }
+  return "";
+};
+let data = [
+  {
+    name: "名字",
+    age: "18",
+    cellClassName: {
+      // cellClassName, iview table 关键字
+      key1: "selected",
+      key2: "selected2",
+    },
+  },
 ];
 ```
 
@@ -197,6 +244,24 @@ const columns = [
 ```
 
 ### 表格内编辑
+
+## 分页 page
+
+https://www.iviewui.com/components/table
+
+```js
+let page = {
+  total: 0,
+  pageIndex: 1,
+  pageSize: 1,
+  pageSizeRange: [10, 20, 50, 100],
+};
+```
+
+<Page v-bind:total="page.total" v-bind:current="page.pageIndex"
+v-bind:page-size="page.pageSize" show-sizer show-total
+v-bind:page-size-opts="page.pageSizeRange" @on-change="pageChange"
+@on-page-size-change="pageSizeChange" placement="top"></Page>
 
 ## Modal
 
@@ -296,7 +361,7 @@ http://v2.iviewui.com/components/transfer#API
   </i-form>
 </Modal>
 <!-- 
-v-if="modalShow" resetFields 必须新实例才能正确 重置表单
+  v-if="modalShow" resetFields 必须新实例才能正确 重置表单. 引用,缓存. 可能导致原数据为空
  -->
 ```
 
@@ -364,6 +429,21 @@ let defaultFormRules = {
     },
   ],
 };
+
+const add = () => {
+  this.formData = JSON.stringify(defaultFormModel);
+  this.formMode = "add";
+  this.modalShow = true;
+};
+
+const edit = (row) => {
+  this.formData = JSON.stringify(defaultFormModel);
+  Object.assign(this.formData, data);
+  this.formData.PollutantTypeCode += "";
+  this.formMode = "edit";
+  this.modalShow = true;
+};
+
 // 重置表单
 this.$refs["form"].resetFields();
 // 校验表单
@@ -435,6 +515,26 @@ BUG: 响应 问题,
     </Checkbox>
   </template>
 </Checkbox-Group>
+```
+
+## 通知
+
+```js
+// 轻量级的信息反馈组件，在顶部居中显示，并自动消失。有多种不同的提示状态可选择。
+this.$Message.error("操作失败!");
+this.$Message.warning("操作失败!");
+this.$Message.success("操作成功!");
+
+// 在界面右上角显示可关闭的全局通知
+// 通知内容带有描述信息 | 系统主动推送
+this.$Notice.success({
+  title: "Notification title",
+  desc: "The desc will hide when you set render.",
+  duration: 0, // 为 0 则不自动关闭
+  render: (h) => {
+    return h("span", ["This is created by ", h("a", "render"), " function"]);
+  },
+});
 ```
 
 ## 模板
