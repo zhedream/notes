@@ -151,7 +151,7 @@ var refresh_temp = {
     '<div id="divTable"><i-table  border v-bind:columns="columns3"  v-bind:data="data"></i-table></div>',
 };
 const columns = [
-  { title: "序号", type: "index" },
+  { title: "序号", type: "index" }, // index expand
   { title: "部门名称", key: "bumenName", tree: true },
   {
     title: "创建人",
@@ -207,21 +207,43 @@ let data = [
 固定 数据行, 无数据提示 高度
 
 ```less
+.main {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px);
+}
+.main > :nth-child(4) {
+  flex: 1;
+  overflow: hidden;
+}
+/* 容器 */
+.container {
+  // height: calc(100vh - 200px);
+  flex: 1;
+  overflow: hidden;
+}
+/* 表格 div */
 .box {
   height: 100%;
 }
 /* 高度 */
-.box .ivu-table-body,
 .box .ivu-table-tip,
+.box .ivu-table-body,
 .box .ivu-table-fixed-body {
   height: calc(100vh - 315px);
 }
 /* 显示滚动条 */
+.box .ivu-table-tip,
 .box .ivu-table-body {
   overflow: auto;
 }
+/* fixed 遮挡滚动条X */
+.box .ivu-table-fixed {
+  height: calc(100% - 8px);
+}
 
 /* 滚动条 start */
+.box .ivu-table-tip::-webkit-scrollbar,
 .box .ivu-table-body::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -229,6 +251,7 @@ let data = [
 }
 
 /*定义滚动条轨道 内阴影+圆角*/
+.box .ivu-table-tip::-webkit-scrollbar-track,
 .box .ivu-table-body::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -236,6 +259,7 @@ let data = [
 }
 
 /*定义滑块 内阴影+圆角*/
+.box .ivu-table-tip::-webkit-scrollbar-thumb,
 .box .ivu-table-body::-webkit-scrollbar-thumb {
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);

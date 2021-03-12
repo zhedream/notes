@@ -95,3 +95,26 @@ $watch(): 可以指定在某个生命周期立即执行.
 
 computed: 惰性执行, 第一次在哪个生命周期调用, 就是它首次执行计算的时机.
 应该是纯函数. 不要有副作用.
+
+不应该使用箭头函数来定义 watcher 函数
+
+this.$watch(
+  "maxSizeInParentBox",
+  function (next) {
+    console.log(next);
+    if (!next) {
+      // 取消自动计算
+      if (cancelAutoCalc) {
+        cancelAutoCalc();
+        cancelAutoCalc = null;
+      }
+    } else {
+      // 开启自动计算 父盒子宽高
+      cancelAutoCalc = this.initAutoCalcMaxSizeInParentBox();
+      const { width, height } = this.calcSizeParentBox();
+      this.maxWidthInner = width;
+      this.maxHeightInner = height;
+    }
+  },
+  { immediate: true }
+);
