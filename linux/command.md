@@ -155,3 +155,10 @@ ip a|grep 'dynamic noprefixroute wlp2s0'|awk '{print $2}'|awk -F '/' '{print $1}
 ## TOP && HTOP
 
 查看进程
+
+## bg && fg
+
+ctrl + z , 后台
+
+bg 查看, 后台任务 id
+fg [id] 

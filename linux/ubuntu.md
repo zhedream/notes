@@ -139,11 +139,20 @@ wget -c -r -np -k -L -p http://192.168.2.219/.git/
 
 ## rdesktop
 
+需要设置: 系统设置-远程设置-
+
 连接 windows 桌面
 
 rdesktop -uAdministrator -plhz123 -f 127.0.0.1:6003 // 全屏
 
-rdesktop -uAdministrator -plhz123 -f 127.0.0.1:6003 -r clipboard:PRIMARYCLIPBOARD -a 8 -P -z // 全屏 + 压缩
+// 全屏 + 压缩
+rdesktop -uAdministrator -plhz123 -f 127.0.0.1:6003 -r clipboard:PRIMARYCLIPBOARD -a 16 -P -z
+
+// aly win
+rdesktop -uAdministrator -pLhz123987... -f 127.0.0.1:6004 -r clipboard:PRIMARYCLIPBOARD -a 16 -P -z
+
+// tencent win
+rdesktop -uadministrator -pLhz123987... -f 42.194.240.96:3389 -g 1600x900 -r clipboard:PRIMARYCLIPBOARD -a 16 -P -z
 
 Ctrl + Shift + Alt + Enter 全屏/退出全屏
 
