@@ -59,6 +59,8 @@ v-model [1,3,4] 非空, placeholder display:none
 
 ## table
 
+https://www.iviewui.com/components/table
+
 ```html
 <i-table
   ref="iviewTable"
@@ -129,7 +131,7 @@ this.$refs["iviewTable"].exportCsv({
   // columns: this.columns
   // data: this.data
 });
-// iview  行选中状态, 不是双向绑定, 需要手动修改 表格数据 dataTable
+// iview  行选中状态, 是单向数据流, 不是双向绑定, 需要手动修改 表格数据 @on-selection-change
 function handleSelect(rows) {
   let set = new Set();
   rows.forEach((row) => {
@@ -144,6 +146,10 @@ function handleSelect(rows) {
     }
   });
 }
+
+// 表格多选与搜索的问题
+// 空格多选 显示选中 高亮
+// +下拉树 勾选 搜索
 
 var refresh_temp = {
   props: ["data", "columns3"],
