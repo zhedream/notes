@@ -32,6 +32,16 @@ https://www.iviewui.com/docs/guide/iview-loader
   placeholder="请选择创建时间"
   style="width: 300px"
 ></Date-Picker>
+
+<Date-Picker
+  v-model="searchData.DateTime"
+  type="datetimerange"
+  placeholder="选择时间"
+  format="yyyy-MM-dd HH:mm"
+  style="width: 70%"
+  clearable
+>
+</Date-Picker>
 ```
 
 ## select 选择器
@@ -218,11 +228,11 @@ let data = [
   flex-direction: column;
   height: calc(100vh - 60px);
 }
+/* 容器 */
 .main > :nth-child(4) {
   flex: 1;
   overflow: hidden;
 }
-/* 容器 */
 .container {
   // height: calc(100vh - 200px);
   flex: 1;
@@ -236,7 +246,8 @@ let data = [
 .box .ivu-table-tip,
 .box .ivu-table-body,
 .box .ivu-table-fixed-body {
-  height: calc(100vh - 315px);
+  /* height: calc(100vh - 315px); */
+  height: calc(100% - 42px);
 }
 /* 显示滚动条 */
 .box .ivu-table-tip,
@@ -316,6 +327,8 @@ http://v2.iviewui.com/components/modal#API
   </div>
 </i-Modal>
 ```
+
+坑: @on-ok 会关闭弹框, :value , 也不行. 解决: 使用插槽 footer
 
 ## Transfer
 
@@ -513,6 +526,25 @@ value 只在`单独使用时有效`。可以使用 v-model 双向绑定数据 Bo
 label 只在组合使用时有效。指定当前选项的 value 值，组合会自动判断当前选择的项目
 
 https://www.iviewui.com/components/radio#API
+
+## upload 上传
+
+要点: 单选 , 多选 , base64, 文件先行表单后提
+
+```html
+<Upload
+  action=""
+  :before-upload="handleUploadicon"
+  :show-upload-list="false"
+  :format="['pdf']"
+  :on-format-error="handleFormatError"
+>
+  <i-Button type="primary" icon="ios-cloud-upload-outline" style="width:100% ;"
+    >上传报告
+  </i-Button>
+</Upload>
+<span>{{ReportName}}</span>
+```
 
 ## checkbox
 

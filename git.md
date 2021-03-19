@@ -1,5 +1,10 @@
 # GIT 使用
 
+## git hub
+
+过内访问慢
+https://mp.weixin.qq.com/s/R2R76-uRuKrVYblm0qUoXw
+
 ## 推送分支/推送本地仓库
 
 https://www.cnblogs.com/bbm7/p/7308765.html
