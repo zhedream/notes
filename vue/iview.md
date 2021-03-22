@@ -167,7 +167,7 @@ var refresh_temp = {
     '<div id="divTable"><i-table  border v-bind:columns="columns3"  v-bind:data="data"></i-table></div>',
 };
 const columns = [
-  { title: "序号", type: "index" }, // index expand
+  { title: "序号", type: "index", fixed: "left" }, // type: index expand
   { title: "部门名称", key: "bumenName", tree: true },
   {
     title: "创建人",
@@ -197,6 +197,9 @@ const columns = [
   { title: "操作", slot: "action", width: 200, align: "center" },
   { title: " ", align: "center" }, // 占位
 ];
+
+if (columns.length <= 8) columns[0]["fixed"] = "";
+
 const rowClassName = (row, index) => {
   if (index === 1) {
     return "demo-table-info-row";
@@ -294,7 +297,7 @@ https://www.iviewui.com/components/table
 let page = {
   total: 0,
   pageIndex: 1,
-  pageSize: 1,
+  pageSize: 10,
   pageSizeRange: [10, 20, 50, 100],
 };
 ```
