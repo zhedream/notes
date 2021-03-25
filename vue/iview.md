@@ -26,6 +26,28 @@ https://www.iviewui.com/docs/guide/iview-loader
 
 ## DatePicker 时间选择
 
+https://www.iviewui.com/components/date-picker
+
+type: 显示类型，可选值为 date ,daterange ,datetime ,datetimerange ,year ,month
+
+value: JavaScript 的 Date , 或 [Date,date]
+
+format: yyyy-MM-dd HH:mm
+
+multiple: date 可以多选
+
+split-panels: 左右面板不联动 daterange, datetimerange
+
+没有自定义: 渲染
+
+```js
+const options = {
+  disabledDate(date) {
+    return date && date.valueOf() > Date.now();
+  },
+};
+```
+
 ```html
 <Date-Picker
   type="datetimerange"
@@ -299,13 +321,28 @@ let page = {
   pageIndex: 1,
   pageSize: 10,
   pageSizeRange: [10, 20, 50, 100],
+  pageSizeRange: [50, 100, 300, 500],
 };
+
+function pageData1() {
+  const pageIndex = this.page.pageIndex;
+  const pageSize = this.page.pageSize;
+  const data = this.data1;
+  return $.paginationFromArray(pageIndex, pageSize, data);
+}
 ```
+
+接口分页 page.total, 本地分页 data.length
 
 <Page v-bind:total="page.total" v-bind:current="page.pageIndex"
 v-bind:page-size="page.pageSize" show-sizer show-total
 v-bind:page-size-opts="page.pageSizeRange" @on-change="pageChange"
 @on-page-size-change="pageSizeChange" placement="top"></Page>
+
+<Page v-bind:total="page.total" v-bind:current="page.pageIndex"
+v-bind:page-size="page.pageSize" show-sizer show-total
+v-bind:page-size-opts="page.pageSizeRange" @on-change="page.pageIndex=$event"
+@on-page-size-change="page.pageSize=$event;page.pageIndex=1" placement="top"></Page>
 
 ## Modal
 
