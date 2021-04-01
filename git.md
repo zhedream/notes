@@ -239,6 +239,16 @@ git gc --prune=now
 
 git gc --aggressive --prune=now
 
+## sslVerify
+
+全局设置
+git config --global http.sslVerify false
+
+局部仓库设置
+git config http.sslVerify false
+
+可以先全局设置, 然后移除, 再局部设置
+
 ## GIT LFS
 
 大文件存储
