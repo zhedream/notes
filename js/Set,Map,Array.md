@@ -124,31 +124,51 @@ arr2.forEach((item) => {
 ## 数据高频 元素
 
 ```js
-let arr = [];
+let arr = ["a", "a", "d", "d", "d", "c"];
 
 // 找出 arr 中 高频元素
 
 // 构建 map 字典
-const map = new Map();
+const map = {};
 arr.forEach((item) => {
-  let c = map.get(item);
+  let c = map[item];
   if (c) {
-    map.set(item, c + 1);
+    map[item]++;
   } else {
-    map.set(item, 1);
+    map[item] = 1;
   }
 });
 
-// 找出最高频
-let maxKey,
-  count = 0;
-map.forEach((c, k) => {
-  if (c >= count) {
-    maxKey = k;
-    count = c;
-  }
+const keys = Object.keys(map);
+console.log("keys: ", keys);
+
+keys.sort((a, b) => {
+  return map[b] - map[a];
 });
-const maxCountValue = maxKey;
+
+console.log("keys: ", keys);
+
+function getTop(arr) {
+  // 找出 arr 中 高频元素
+  // 构建 map 字典
+  const map = {};
+  arr.forEach((item) => {
+    let c = map[item];
+    if (c) {
+      map[item]++;
+    } else {
+      map[item] = 1;
+    }
+  });
+
+  const keys = Object.keys(map);
+  keys.sort((a, b) => {
+    return map[b] - map[a];
+  });
+
+  console.log("keys: ", keys);
+  return keys;
+}
 ```
 
 # 参考

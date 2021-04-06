@@ -5,6 +5,13 @@
 过内访问慢
 https://mp.weixin.qq.com/s/R2R76-uRuKrVYblm0qUoXw
 
+https://fastly.net.ipaddress.com/github.global.ssl.fastly.net#ipinfo
+https://github.com.ipaddress.com/#ipinfo
+
+> hosts
+> 199.232.69.194 github.global.ssl.fastly.net
+> 140.82.112.4 github.com
+
 ## 推送分支/推送本地仓库
 
 https://www.cnblogs.com/bbm7/p/7308765.html
