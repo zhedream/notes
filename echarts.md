@@ -63,3 +63,17 @@ const options = [];
 ```
 
 ## pieOption
+
+## 主题构建
+
+https://echarts.apache.org/v4/zh/option.html#yAxis.axisLabel.color
+
+```js
+// dark.config.json 导出的 主题配置
+// dark.theme.js
+let DarkTheme = {};
+module.exports = DarkTheme;
+// 使用
+import DarkTheme from "dark.theme.js";
+echarts.init(document.getElementById(this.id), this.theme);
+```

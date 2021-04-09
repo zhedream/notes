@@ -89,4 +89,19 @@ TortoiseSVN -> udpate 更新了代码
 2. 右键 -> TortoiseSVN -> Properties (属性)
    添加/编辑 svn:ignore, 没有 `svn:ignore` 属性的话, 新建一个
 
+```
+
+选择属性名
+Property name: svn:ignore
+
+属性值: 要忽略的文件 注意换行
+Property value:
+
+.git
+.idea
+dist
+node_modules
+
+```
+
 这样 commit/add 的时候就会很快
