@@ -19,8 +19,9 @@ https://www.iviewui.com/docs/guide/iview-loader
 <i-input
   v-model="value"
   placeholder="Enter something..."
-  clearable
   style="width: 300px"
+  clearable
+  disabled
 ></i-input>
 ```
 
@@ -50,6 +51,7 @@ const options = {
 
 ```html
 <Date-Picker
+  @on-change
   type="datetimerange"
   placeholder="请选择创建时间"
   style="width: 300px"
@@ -71,7 +73,15 @@ const options = {
 https://www.iviewui.com/components/select
 
 ```html
-<i-Select v-model="" @on-change="" placeholder="" multiple clearable filterable>
+<i-Select
+  v-model=""
+  @on-change=""
+  placeholder=""
+  multiple
+  clearable
+  filterable
+  transfer
+>
   <template v-for="e in FK_PointGroup">
     <i-Option :label="e.label" :value="e.value" :key="e.value"></i-Option>
   </template>
@@ -462,6 +472,10 @@ input 框, 非必选, 数据为 数值类型, 但不通过验证. 可能是 组�
 
 异步校验: https://github.com/yiminghe/async-validator
 
+校验类型 https://github.com/yiminghe/async-validator#type
+
+type: string number boolean method integer float array object url hex email any
+
 ```js
 let defaultFormModel = {
   name: "", // 姓名
@@ -567,6 +581,19 @@ label 只在组合使用时有效。指定当前选项的 value 值，组合会�
 
 https://www.iviewui.com/components/radio#API
 
+## switch 开关
+
+https://www.iviewui.com/components/switch#API
+
+```html
+<Form-Item label="开关" prop="isXXX">
+  <i-Switch v-model="formData.isXXX" @on-change>
+    <span slot="open">开</span>
+    <span slot="close">关</span>
+  </i-Switch>
+</Form-Item>
+```
+
 ## upload 上传
 
 要点: 单选 , 多选 , base64, 文件先行表单后提
@@ -619,7 +646,7 @@ BUG: 响应 问题,
 </Checkbox-Group>
 ```
 
-## 通知
+## message 通知
 
 ```js
 // 轻量级的信息反馈组件，在顶部居中显示，并自动消失。有多种不同的提示状态可选择。

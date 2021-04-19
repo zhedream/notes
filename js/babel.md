@@ -49,3 +49,32 @@ babel 的预设. 顾名思义, 就是 babel 官方内置的语法规则.
 ## 写一个插件
 
 ...待叙
+
+## 按需引入
+
+babel import 多个插件的按需引入
+
+npm i babel-plugin-import -S
+
+```js babel.config.js
+module.exports = {
+  presets: ["@vue/app"],
+  plugins: [
+    [
+      "import",
+      {
+        libraryName: "view-design",
+        libraryDirectory: "src/components",
+      },
+      "view-design", // 多个必须指定 唯一名称
+    ],
+    [
+      "import",
+      { libraryName: "ant-design-vue", libraryDirectory: "es", style: "css" },
+      "ant-design-vue",
+    ],
+  ],
+};
+```
+
+https://www.jianshu.com/p/153437cf30ae

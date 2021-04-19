@@ -82,3 +82,21 @@ npx ts ...
    https://blog.csdn.net/njweiyukun/article/details/70309066
 2. package.json 文件 dependencies 中的各种版本号形式
    http://blog.kankanan.com/article/package.json-65874ef6-dependencies-4e2d7684540479cd7248672c53f75f625f0f.html
+
+## 修改第三方包 patch-package
+
+https://m.talkmoney.cn/blog/web/stafflw00008/articleId569
+
+npm i patch-package -D // 安装补丁工具包
+npx patch-package view-design // 对比修改的代码 保存到 patches
+npx patch-package // 手动打补丁
+
+npm i 钩子, 自动打补丁
+
+```json package.json
+{
+  "scripts": {
+    "postinstall": "patch-package"
+  }
+}
+```

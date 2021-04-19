@@ -9,14 +9,26 @@ https://vue-treeselect.js.org/
 
 ```html
 <treeselect
+  v-model="addStateFormData.StateCodeArr"
+  :limit="1"
+  :options="addStateFormStateCode"
+  :default-expand-level="1"
+  placeholder="请选择状态参数"
+  value-consists-of="LEAF_PRIORITY"
+  :normalizer="StateCodeNormalizer"
+  multiple
+>
+</treeselect>
+
+<treeselect
   v-model="formModel.PointIDs"
   :limit="3"
-  :multiple="true"
   :options="options"
   :normalizer="normalizer"
   :default-expand-level="1"
   placeholder="请选择"
   value-consists-of="LEAF_PRIORITY"
+  multiple
 >
 </treeselect>
 
@@ -39,6 +51,18 @@ https://vue-treeselect.js.org/
 ```
 
 default-expand-level="1" 默认 0 Infinity
+
+options 是一个数组, 多叉树
+
+```js options
+[
+  {
+    id,
+    label,
+    chilren,
+  },
+];
+```
 
 ```js
 function normalizer(node) {
