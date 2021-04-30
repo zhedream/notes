@@ -23,3 +23,77 @@ spawnSync("npm", ["run", "build"], {
   stdio: "inherit",
 });
 ```
+
+## watch
+
+场景 1: 取消 重置 确定 需求, 用于 innerData 中间缓存数据
+
+handler 使用普通函数, 不用箭头函数, 否则 this 将不会按照期望指向 Vue 实例.
+
+```js
+var vm = {
+  watch: {
+    data1: [],
+    "data2.name": function () {},
+    data3() {},
+    data4: {
+      handler: function (next, pre) {
+        this.innerData = next;
+      },
+      immediate: true,
+      deep: true,
+    },
+  },
+};
+```
+
+## hover
+
+```html
+<span @mouseover="hoverShow=true" @mouseleave="hoverShow=false"></span>
+```
+
+## 事件 .native.stop.prevent
+
+2021 年 4 月 28 日 15 点 31 分
+要阻止点击事件
+stopImmediatePropagation 阻止其他事件函数
+stopPropagation 阻止冒泡和捕获
+preventDefault 阻止默认行为
+普通标签 @click.stop.prevent
+组件标签 @click.native.stop.prevent
+
+对于普通标签 @ 的事件 就是原生事件
+对于组件 @ 的事件 是合成事件, 也就是 $emit
+
+有的时候 在 组件上使用 @click.stop.prevent 也能阻止 , 是因为
+是因为组件内部 $emit('click') 作用的就是 原生 click.
+
+.native 是用在组件上的, 用在普通标签上 没有意义
+用了 .native 不会用合成事件 $emit ,而是 这个组件对应的 标签的事件
+
+## 生命周期
+
+```js
+var vm = {
+  created() {},
+  mounted() {},
+  beforDestroy() {},
+};
+```
+
+## props
+
+```js
+var vm = {
+  props: {
+    value: {
+      type: String, // Number Array
+      required: true,
+      default: function () {
+        return "hello";
+      },
+    },
+  },
+};
+```

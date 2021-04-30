@@ -13,6 +13,8 @@ https://www.iviewui.com/docs/guide/iview-loader
 
 ## Input
 
+type: text、password、textarea、url、email、date、number、tel
+
 'i-input': 'Input'
 
 ```html
@@ -76,6 +78,7 @@ https://www.iviewui.com/components/select
 <i-Select
   v-model=""
   @on-change=""
+  @on-open-change=""
   placeholder=""
   multiple
   clearable
@@ -199,7 +202,7 @@ var refresh_temp = {
     '<div id="divTable"><i-table  border v-bind:columns="columns3"  v-bind:data="data"></i-table></div>',
 };
 const columns = [
-  { title: "序号", type: "index", fixed: "left" }, // type: index expand
+  { title: "序号", type: "index", fixed: "left" }, // type: index expand selection
   { title: "部门名称", key: "bumenName", tree: true },
   {
     title: "创建人",
@@ -253,6 +256,15 @@ let data = [
 ];
 ```
 
+### fixed 坑
+
+尽量不要使用 fixed
+
+使用了 fixed-left 发现 table 插槽某个组件, watch 打印了 两次的问题.
+
+使用 fixed body 会有冗余组件,fixed-right 和 fixed-left 各冗余一次
+插槽内使用 组件时 , 某个事件 change 可能多打印了一次
+
 ### 自适应高度和滚动条
 
 固定 数据行, 无数据提示 高度
@@ -271,7 +283,7 @@ let data = [
 .container {
   // height: calc(100vh - 200px);
   flex: 1;
-  overflow: hidden;
+  overflow: auto;
 }
 /* 表格 div */
 .box {
@@ -354,22 +366,34 @@ v-bind:page-size="page.pageSize" show-sizer show-total
 v-bind:page-size-opts="page.pageSizeRange" @on-change="page.pageIndex=$event"
 @on-page-size-change="page.pageSize=$event;page.pageIndex=1" placement="top"></Page>
 
+## tabs 标签页
+
+https://www.iviewui.com/components/tabs
+
+```html
+<tabs value="name1">
+  <tab-pane label="label1" name="label1">label1</tab-pane>
+  <tab-pane label="label2" name="label2">label2</tab-pane>
+</tabs>
+```
+
+##
+
 ## Modal
 
 http://v2.iviewui.com/components/modal#API
 
 ```html
 <i-Modal
-  width="800"
-  footer-hide
   @on-ok="ok"
   @on-cancel="cancel"
-  @on-visible-change
   @on-visible-change="visibleChange"
   v-model="visible"
   :mask-closable="false"
   :closable="false"
   :title="'标题'"
+  width="800"
+  footer-hide
 >
   <div slot="footer">
     <i-Button type="default" @click="warnEditCancel">取消</i-Button>
@@ -458,7 +482,7 @@ http://v2.iviewui.com/components/transfer#API
  -->
 ```
 
-表单验证问题
+## 表单验证问题
 
 https://github.com/yiminghe/async-validator/issues/182#issuecomment-741485886
 

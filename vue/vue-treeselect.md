@@ -7,6 +7,40 @@ https://www.vue-treeselect.cn/
 英文
 https://vue-treeselect.js.org/
 
+```html 普通多选,非树
+<treeselect
+  @input="input"
+  v-model="formData.BJYY"
+  :disabled="disabled"
+  :limit="3"
+  :options="options"
+  :normalizer="normalizer"
+  :default-expand-level="1"
+  placeholder="请选择"
+  value-consists-of="LEAF_PRIORITY"
+  :clearable="false"
+  :backspace-removes="false"
+  :delete-removes="false"
+  :clear-on-select="false"
+  :z-index="999"
+  append-to-body
+  multiple
+>
+</treeselect>
+
+<script>
+  var options = [{ label, value }];
+  function normalizer(node) {
+    return {
+      id: node.value,
+      label: node.label,
+      children: node.children,
+    };
+  }
+</script>
+```
+
+````html
 ```html
 <treeselect
   v-model="addStateFormData.StateCodeArr"
@@ -35,6 +69,7 @@ https://vue-treeselect.js.org/
 <treeselect
   v-model="pointList"
   :limit="0"
+  limitText="+"
   :multiple="true"
   :default-expand-level="1"
   :clearable="false"
@@ -48,16 +83,26 @@ https://vue-treeselect.js.org/
   @input=""
 >
 </treeselect>
-```
+````
 
 default-expand-level="1" 默认 0 Infinity
 
 options 是一个数组, 多叉树
 
-```js options
+```js original options
 [
   {
     id,
+    label,
+    chilren,
+  },
+];
+```
+
+```js normal options
+[
+  {
+    value,
     label,
     chilren,
   },
@@ -74,9 +119,43 @@ function normalizer(node) {
 }
 ```
 
+## 样式
+
+```css
+/* == 下拉树样式 treeselect */
+.vue-treeselect {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: initial;
+}
+
+.vue-treeselect__multi-value-item {
+  background: #f7f7f7;
+  color: #495060;
+}
+
+.vue-treeselect__value-remove {
+  color: #666;
+}
+
+/* .vue-treeselect__multi-value {
+            height: 25px;
+            overflow-y: auto;
+        } */
+```
+
 ## 坑
 
-No sub-options
+vue-treeselect 爬坑之路
+https://www.jianshu.com/p/6d20834352be
+
+### limitText
+
+and more 不生效
+
+修改源码
+
+### No sub-options
 
 https://github.com/riophae/vue-treeselect/issues/152
 

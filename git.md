@@ -1,5 +1,9 @@
 # GIT 使用
 
+https://git-scm.com/book/zh/v2
+
+https://git-reference.readthedocs.io/zh_CN/latest/Git-Tools/Rewriting-History/
+
 ## git hub
 
 过内访问慢
