@@ -98,6 +98,7 @@ computed: 惰性执行, 第一次在哪个生命周期调用, 就是它首次执
 
 不应该使用箭头函数来定义 watcher 函数
 
+```js
 this.$watch(
   "maxSizeInParentBox",
   function (next) {
@@ -118,3 +119,58 @@ this.$watch(
   },
   { immediate: true }
 );
+```
+
+```js
+// 属性的响应
+
+/* 
+
+data:{
+  obj:{
+    a:'1'
+  } // obj 会被监听.
+}
+*/
+// obj 第一次复制
+this.obj.a = 11; // 响应
+this.obj.b = 1; // 新增属性, 非响应
+this.obj.e = { bb: "1" }; // 非响应
+
+this.obj = { a: 1, b: 2, c: 3, d: { a: 1 } }; // 字面变量 , 新的地址,  vue 将会递归obj重新监听 , 并标记  _ob
+this.obj2 = { a: 1, b: 2, c: 3 }; // obj2 没有被监听, 新地址也不会被响应
+
+this.$set(this.obj, "f", data); // 响应, 给响应的属性 设置数据, 会递归处理 data
+this.$set(this.obj.e, "cc", 2); // 非响应, 在非响应对象上使用 $set 无效
+
+this.obj = JSON.parse(JSON.stringfiy(this.obj)); // 强制响应的技巧, 新地址 会重新递归 响应
+```
+
+```js
+// 扩展: Vue3 应该不存在这个问题了. proxy
+
+// 实际情景
+
+// 有问题的写法
+this.innerData = JSON.parse(JSON.stringfiy(this.propsData)); // 已经劫持过一次了
+this.innerData = this.innerData.map((v, index) => {
+  v._index = index;
+  v.FrequencyTypeList ? null : (v.FrequencyTypeList = []); // 数据类型 , 非响应
+  v.PollutantInfo ? null : (v.PollutantInfo = []); // 监测因子/设备状态参数
+  return v;
+});
+// 产生的影响
+this.innerData[0];
+this.$set(this.innerData[0], "FrequencyTypeList", data); // 响应 不生效
+this.$set(this.innerData, "0", FrequencyTypeList); // 响应 生效
+
+// 正确的写法
+let innerData = JSON.parse(JSON.stringfiy(this.propsData));
+// 新地址, 重新递归劫持
+this.innerData = innerData.map((v, index) => {
+  v._index = index;
+  v.FrequencyTypeList ? null : (v.FrequencyTypeList = []); // 数据类型
+  v.PollutantInfo ? null : (v.PollutantInfo = []); // 监测因子/设备状态参数
+  return v;
+});
+```

@@ -27,6 +27,9 @@ git push --tags // 推送标签
 git remote add origin <url>
 git push -u origin master
 
+git reset --hard
+git checkout origin/master
+
 ## 跟踪分支
 
 git branch --set-upstream-to=origin/master master

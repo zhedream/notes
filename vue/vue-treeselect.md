@@ -7,6 +7,10 @@ https://www.vue-treeselect.cn/
 英文
 https://vue-treeselect.js.org/
 
+select deselect 比 v-model 时机快一点
+
+this.$nextTick
+
 ```html 普通多选,非树
 <treeselect
   @input="input"

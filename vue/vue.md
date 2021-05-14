@@ -84,6 +84,9 @@ var vm = {
 
 ## props
 
+update:xxx
+应该先行于事件, 否则 v-model sync 数据会不一致
+
 ```js
 var vm = {
   props: {
