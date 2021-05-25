@@ -98,7 +98,7 @@ https://www.iviewui.com/components/select
 option label 不能由空格回车, 不然显示会有问题
 
 v-model 的值 和 option 是全等匹配 === , item 和 placeholder 都会 display:none
-v-model [1,3,4] 和 option ['1','2','3'] 匹配不上 没有 iem,
+v-model [1,3,4] 和 option ['1','2','3'] 匹配不上 没有 item,
 v-model [1,3,4] 非空, placeholder display:none
 会导致 选择框 塌陷
 

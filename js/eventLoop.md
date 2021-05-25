@@ -3,6 +3,15 @@
 JavaScript 是单线程的语言
 Event Loop 是 javascript 的执行机制
 
+宏任务 -> 同步代码 -> 微任务
+
+银行办理业务
+
+代码调度, 代码执行时机
+
+vue 再一个宏任务内, 不会变更视图.
+this.$nextTick()将回调延迟到下次 DOM 更新循环之后执行。是一个 宏任务
+
 # 宏任务 微任务
 
 1. 宏任务一般是：包括整体代码 script，setTimeout，setInterval、setImmediate。
@@ -74,3 +83,5 @@ setTimeout(function () {
    https://juejin.im/post/5b73d7a6518825610072b42b
 3. 从一道让我失眠的 Promise 面试题开始，深入分析 Promise 实现细节
    https://juejin.cn/post/6945319439772434469
+4. 微任务、宏任务与 Event-Loop
+   https://juejin.cn/post/6844903657264136200
