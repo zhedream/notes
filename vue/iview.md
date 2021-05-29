@@ -333,6 +333,69 @@ let data = [
 
 ### 表格内编辑
 
+### 表格样式 暗色
+
+```html
+<!-- 暗色 表格 主题 -->
+<style>
+  /* .dark-table {} */
+
+  .dark-table .ivu-table:before,
+  .dark-table .ivu-table:after {
+    background-color: #656c74;
+  }
+
+  /* 表头 */
+  .dark-table .ivu-table th {
+    background-color: #148d97;
+    color: #fff;
+    height: 32px;
+  }
+
+  /* body */
+  .dark-table .ivu-table td {
+    /* 背景色 */
+    background-color: #3e485a;
+    /* 字体色 */
+    color: #a5abb0;
+  }
+
+  /* highlight-row hover */
+  .white-table .ivu-table .ivu-table-row-highlight td,
+  .white-table .ivu-table .ivu-table-row-hover td {
+    background-color: #ebf7ff;
+  }
+
+  .dark-table .ivu-table td,
+  .dark-table .ivu-table th {
+    /* 边色 */
+    border-bottom: 1px solid #656c74;
+  }
+
+  /* fixed 样式 */
+  .dark-table .ivu-table-fixed {
+    left: 1px;
+  }
+
+  .dark-table .ivu-table-fixed-right::before,
+  .dark-table .ivu-table-fixed::before {
+    /* 背景色 */
+    background-color: #3e485a;
+  }
+
+  .dark-table.ivu-table-wrapper {
+    border: none;
+  }
+
+  .dark-table .ivu-table,
+  .dark-table .ivu-table-body {
+    border-color: #656c74;
+    /* 背景色 */
+    background-color: #3e485a;
+  }
+</style>
+```
+
 ## 分页 page
 
 https://www.iviewui.com/components/table
@@ -437,6 +500,7 @@ http://v2.iviewui.com/components/transfer#API
     :model="formData"
     :rules="rules"
     :label-width="100"
+    inline
   >
     <!-- 中文名称/因子编号 -->
     <row>
@@ -509,15 +573,13 @@ let defaultFormModel = {
     age: "",
   },
 };
-const validateArrayLeast = (message, limitCount = 1) => (
-  rule,
-  value,
-  callback
-) => {
-  const msg = message ? message : "至少选择".concat(limitCount).concat("项");
-  if (!value || value.length < limitCount) return callback(new Error(msg));
-  else callback();
-};
+const validateArrayLeast =
+  (message, limitCount = 1) =>
+  (rule, value, callback) => {
+    const msg = message ? message : "至少选择".concat(limitCount).concat("项");
+    if (!value || value.length < limitCount) return callback(new Error(msg));
+    else callback();
+  };
 const validatePollutant = validateArrayLeast("至少选择1项 XX", 1);
 
 let defaultFormRules = {
