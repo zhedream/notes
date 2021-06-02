@@ -21,6 +21,7 @@ this.$nextTick
   :normalizer="normalizer"
   :default-expand-level="1"
   placeholder="请选择"
+  no-options-text=""
   value-consists-of="LEAF_PRIORITY"
   :clearable="false"
   :backspace-removes="false"

@@ -306,6 +306,10 @@ let data = [
   height: calc(100% - 8px);
 }
 
+.box .ivu-table-fixed-right {
+  right: 6px !important;
+}
+
 /* 滚动条 start */
 .box .ivu-table-tip::-webkit-scrollbar,
 .box .ivu-table-body::-webkit-scrollbar {

@@ -179,7 +179,7 @@ const columns = [
     <a-button size="small" key="back" @click="editCancel">取消</a-button>
     <a-button key="submit" type="primary" @click="editOk">确定</a-button>
   </template>
-  <div style="height:'80vh'"> 自适应高度 <div>
+  <div style="height:'80vh'"> 自适应高度 </div>
 </a-modal>
 ```
 
