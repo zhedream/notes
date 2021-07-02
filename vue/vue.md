@@ -1,6 +1,6 @@
 https://cn.vuejs.org/v2/api/
 
-## 自定义构建配置
+# 自定义构建配置
 
 https://moe.best/gotagota/vue-build-from-specified-config.html
 
@@ -24,7 +24,7 @@ spawnSync("npm", ["run", "build"], {
 });
 ```
 
-## watch
+# watch
 
 场景 1: 取消 重置 确定 需求, 用于 innerData 中间缓存数据
 
@@ -47,7 +47,7 @@ var vm = {
 };
 ```
 
-## hover
+# hover
 
 ```html
 <span @mouseover="hoverShow=true" @mouseleave="hoverShow=false"></span>
@@ -72,7 +72,7 @@ preventDefault 阻止默认行为
 .native 是用在组件上的, 用在普通标签上 没有意义
 用了 .native 不会用合成事件 $emit ,而是 这个组件对应的 标签的事件
 
-## 生命周期
+# 生命周期
 
 ```js
 var vm = {
@@ -82,7 +82,7 @@ var vm = {
 };
 ```
 
-## props
+# props
 
 update:xxx
 应该先行于事件, 否则 v-model sync 数据会不一致
@@ -101,7 +101,12 @@ var vm = {
 };
 ```
 
-## 知识点
+# 知识点
 
 provider/inject
 不是响应式的, 异步数据, 引用
+
+`computed` 一些联动的 数据可用 前端分页 , 强耦合 , 注意递归问题
+
+
+

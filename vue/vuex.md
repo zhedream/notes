@@ -24,6 +24,13 @@ store.dispatch('increment', 10)
 
 mapActions、mapGetters、mapMutations、mapState 这几个辅助方法
 
+state 状态
+getters 计算属性
+mutaions 改变状态的纯函数 pure, 使用 commit 触发
+actions 方法 和状态相关的方法 effect, 可异步,或其他, 使用 dispatch
+
+涉及全局状态的接口调用 适合放在 actions 里面, 比如 登录
+
 ## 核心概念
 
 state: 组件中的 data
@@ -48,6 +55,7 @@ actions , 可异步, 比如 登录 退出 类似的公共的方法, 就非常适
 混入, 或者命名空间
 
 ## 辅助函数的使用
+
 https://vuex.vuejs.org/zh/guide/state.html#mapstate-辅助函数
 
 数组,对象,函数, 普通函数(this)

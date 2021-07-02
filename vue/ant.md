@@ -88,6 +88,51 @@ this.pwdform.validateFields((err, values) => {
   })
 ```
 
+If you want to set empty value, use `null` instead.
+初始化使用 null, 不用 ''
+setFieldsValue
+setFields
+
+## formModel
+
+```html
+<a-modal
+  v-bind="form.modalProps"
+  v-model="form.visible"
+  :afterClose="addCancel"
+>
+  <a-form-model
+    ref="formRef"
+    :model="form.formState"
+    :rules="form.formRules"
+    v-bind="form.formProps"
+  >
+    <a-form-model-item hidden label="项目ID" prop="ProjectID">
+      <a-input v-model="form.formState.ProjectID" />
+    </a-form-model-item>
+  </a-form-model>
+</a-modal>
+```
+
+```js
+var vm = {
+  data: {
+    form: {
+      visible: false,
+      modalProps: {
+        title: "",
+      },
+      formState: getFormState(),
+      formRules: getFormRules(),
+      formProps: {
+        labelCol: { span: 4 },
+        wrapperCol: { span: 19 },
+      },
+    },
+  },
+};
+```
+
 ## a-table
 
 ```html
@@ -105,6 +150,16 @@ this.pwdform.validateFields((err, values) => {
   <!-- #NameCustom 这种写法只能 用于 template 标签  -->
   <template #NameCustom="text,data,index">{{text}}</template>
   <span slot="NameCustom" slot-scope="text,data,index"></span>
+  <template #action="text,data,index">
+    <a-popconfirm
+      title="确定删除?"
+      ok-text="是"
+      cancel-text="否"
+      @confirm="delTaskOK(record)"
+    >
+      <a>删除</a>
+    </a-popconfirm>
+  </template>
 </a-table>
 ```
 
@@ -179,7 +234,18 @@ const columns = [
     <a-button size="small" key="back" @click="editCancel">取消</a-button>
     <a-button key="submit" type="primary" @click="editOk">确定</a-button>
   </template>
-  <div style="height:'80vh'"> 自适应高度 </div>
+  <div style="height:'80vh'">自适应高度</div>
+</a-modal>
+<!-- 表单 -->
+<a-modal
+  v-bind="form.modalProps"
+  v-model="form.visible"
+  :afterClose="addCancel"
+>
+  <template slot="footer">
+    <a-button key="back" @click="addCancel">取消</a-button>
+    <a-button key="submit" type="primary" @click="addOK">确定</a-button>
+  </template>
 </a-modal>
 ```
 
@@ -423,6 +489,48 @@ exportTable() {
 </a-select>
 ```
 
+## 多选 select
+
+```html
+<!-- 多选 -->
+<a-form-model-item label="跟车员" prop="CarOperator">
+  <a-select
+    mode="multiple"
+    :maxTagCount="3"
+    :maxTagTextLength="4"
+    maxTagPlaceholder=".."
+    show-search
+    :filter-option="filterOptionFilter"
+    :options="CarOperatorOptions"
+    v-model="form.formState.CarOperator"
+  >
+  </a-select>
+</a-form-model-item>
+<!-- 单选 -->
+<a-select :options="roleData" v-model="form.formState.role"></a-select>
+```
+
+```js
+var vm = {
+  data:{
+    CarOperatorOptions:[
+      {key:A,label:'A'}
+    ]
+  }
+  methods: {
+    filterOptionFilter(input, option) {
+      return (
+        option.componentOptions.children[0].text
+          .toLowerCase()
+          .indexOf(input.toLowerCase()) >= 0
+      );
+    },
+  },
+};
+```
+
+## 单选
+
 ## checkbox 多选框
 
 option:{label,value}
@@ -470,12 +578,10 @@ option:{label,value}
 </a-spin>
 ```
 
-
 ## icon
 
 https://antdv.com/components/icon-cn/
 
 <a-icon type="bars" />
-
 
 ## arow
