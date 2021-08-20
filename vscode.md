@@ -90,3 +90,9 @@ GitLens git
 1. PHP Debug
 2. PHP Intelephense
 3. PHP IntelliSense
+
+## emmet
+
+vue vscode 标签 tab
+
+"emmet.triggerExpansionOnTab": true

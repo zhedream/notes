@@ -101,6 +101,10 @@ setFields
   v-model="form.visible"
   :afterClose="addCancel"
 >
+  <template slot="footer">
+    <a-button key="back" @click="addCancel">取消</a-button>
+    <a-button key="submit" type="primary" @click="addOK">确定</a-button>
+  </template>
   <a-form-model
     ref="formRef"
     :model="form.formState"
@@ -120,6 +124,7 @@ var vm = {
     form: {
       visible: false,
       modalProps: {
+        footer: null,
         title: "",
       },
       formState: getFormState(),

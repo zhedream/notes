@@ -270,3 +270,55 @@ docker run --name ${PWD##*/} -p 8080:80 -v $PWD/www:/usr/share/nginx -v $PWD/con
 /etc/nginx
 
 /usr/share/nginx
+
+# 缓存
+
+Nginx 下关于缓存控制字段 cache-control 的配置说明 - 运维小结
+https://www.cnblogs.com/kevingrace/p/10459429.html
+
+面试精选之 http 缓存
+https://juejin.cn/post/6844903634002509832
+
+http 面试必会的：强制缓存和协商缓存
+https://juejin.cn/post/6844903838768431118
+
+HTTP 强缓存和协商缓存
+https://segmentfault.com/a/1190000008956069
+
+深入理解浏览器的缓存机制
+https://www.jianshu.com/p/54cc04190252
+
+## HTTP/1.0 Expires
+
+无缓存 -> 获取资源
+有缓存 -> (强)缓存时间 -> 过期则获取资源, 否则使用缓存
+
+## HTTP/1.1 Cache-Control
+
+max-age=3600 强缓存时间 ? 精确到秒
+no-cache 不使用缓存,询问服务器,也叫协商缓存
+no-store 禁用缓存
+
+Last-Modified/If-Modified-Since (协商缓存 1.0)
+
+Etag/If-None-Match (协商缓存 2.0)
+
+304 / (disk cache) / (memory cache)
+
+## disk/memory cache
+
+浏览器是根据什么决定「from disk cache」与「from memory cache」？
+https://www.zhihu.com/question/64201378
+
+浏览器的缓存策略 如 `LRU`
+比如: 热数据就会放到 memory 中
+
+## Modified Etag
+
+Modified 时间精确度只有秒级?文件系统的问题?
+
+Etag 优先级高于 Modified
+
+Etag 需要计算 hash 比 Modified 耗资源
+
+Modified,Etag 是同时期的吗, 还先后版本的?

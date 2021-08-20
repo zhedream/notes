@@ -311,3 +311,11 @@ https://www.cnblogs.com/wswang/p/5748615.html
 ## scrcpy
 
 连接控制手机
+
+## 其他系统
+
+https://segmentfault.com/q/1010000002972254
+
+centos 很多东西需要编译. ubuntu 则可以不用. 可以省很多时间
+centos 更稳定吧
+虽然我从没遇到 ubuntu 不稳定的情况,
