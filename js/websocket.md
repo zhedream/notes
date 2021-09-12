@@ -20,3 +20,6 @@ socket 登录, 服务器存 session 变量
 
 4. 画布指纹
 
+利用WebSocket和EventSource实现服务端推送
+
+https://www.jianshu.com/p/958eba34a5da
