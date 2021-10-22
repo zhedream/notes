@@ -202,7 +202,7 @@ var refresh_temp = {
     '<div id="divTable"><i-table  border v-bind:columns="columns3"  v-bind:data="data"></i-table></div>',
 };
 const columns = [
-  { title: "序号", type: "index", fixed: "left" }, // type: index expand selection
+  { title: "序号", type: "index", fixed: "left", align: "center" }, // type: index expand selection
   { title: "部门名称", key: "bumenName", tree: true },
   {
     title: "创建人",

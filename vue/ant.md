@@ -534,7 +534,49 @@ var vm = {
 };
 ```
 
-## 单选
+## radio 单选
+
+optinos: [{label,vlaue,disabled: false}]
+
+```html
+<a-radio-group
+  :options="options"
+  v-model="values"
+  :default-value="value"
+  @change="change"
+/>
+```
+
+```html
+<a-radio-group v-model="value" @change="onChange">
+  <a-radio :style="radioStyle" :value="1"> Option A </a-radio>
+  <a-radio :style="radioStyle" :value="2"> Option B </a-radio>
+  <a-radio :style="radioStyle" :value="3"> Option C </a-radio>
+  <a-radio :style="radioStyle" :value="4">
+    More...
+    <a-input v-if="value === 4" :style="{ width: 100, marginLeft: 10 }" />
+  </a-radio>
+</a-radio-group>
+
+<script>
+  let radioStyle = {
+    display: "block",
+    height: "30px",
+    lineHeight: "30px",
+  };
+</script>
+```
+
+radio 按钮组
+
+```html
+<a-radio-group default-value="c" button-style="solid">
+  <a-radio-button value="a"> Hangzhou </a-radio-button>
+  <a-radio-button value="b" disabled> Shanghai </a-radio-button>
+  <a-radio-button value="c"> Beijing </a-radio-button>
+  <a-radio-button value="d"> Chengdu </a-radio-button>
+</a-radio-group>
+```
 
 ## checkbox 多选框
 
