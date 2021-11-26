@@ -24,6 +24,7 @@ this.$nextTick
   no-options-text=""
   value-consists-of="LEAF_PRIORITY"
   :clearable="false"
+  clear-all-text="clear All"
   :backspace-removes="false"
   :delete-removes="false"
   :clear-on-select="false"

@@ -151,6 +151,16 @@ git diff --staged // 暂存区修改
 
 git checkout HEAD^ -- index.html / git checkout <指针^^commint 次数> <分之> 文件 //
 
+## rebase Or merge
+
+短平快的, 设计不广, 高内聚的, 功能模块, 使用 reabse 合并, 干净简洁
+
+持续性的, 关联性的, 使用 merge 合并.
+
+master: 开发主分支, 需要保证, 最新, 最全的代码.
+
+release: 
+
 ## LOG
 
 git log --oneline

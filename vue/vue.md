@@ -26,6 +26,8 @@ spawnSync("npm", ["run", "build"], {
 
 # watch
 
+watch 的作用, 上传下达. props
+
 场景 1: 取消 重置 确定 需求, 用于 innerData 中间缓存数据
 
 handler 使用普通函数, 不用箭头函数, 否则 this 将不会按照期望指向 Vue 实例.
@@ -120,3 +122,10 @@ provider/inject
 
 不要直接绑定对象/数组. :dataSource="{}"
 否则每次更新都是 新的地址,导致 组件重新渲染
+
+
+## 复杂逻辑 交互
+
+使用用户 直接点击的
+
+使用一手数据, 不用 watch 的数据, 

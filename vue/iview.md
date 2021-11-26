@@ -74,6 +74,9 @@ const options = {
 
 https://www.iviewui.com/components/select
 
+filterable 的坑: this.$refs.select.setQuery(null)
+https://www.cnblogs.com/victory820/p/10145485.html
+
 ```html
 <i-Select
   v-model=""
@@ -701,6 +704,80 @@ https://www.iviewui.com/components/switch#API
   </i-Button>
 </Upload>
 <span>{{ReportName}}</span>
+```
+
+```js
+function beforeUpload(file) {
+  // TODO: 文件上传 , 钩子
+  const { name, size, type } = file;
+
+  const ext = type.split("/")[1];
+  const alowType = ["jpg", "jpeg", "png"];
+  // 文件类型
+  if (alowType.indexOf(ext) == -1) {
+    this.$Message.warning("文件格式不正确，请上传 jpg 或 png 格式的图片!");
+    return;
+  }
+
+  // 文件大小
+  if (size > 1024 * 1024 * 2) {
+    this.$Message.warning("图片大小不能超过2M!");
+    return;
+  }
+
+  // 重名
+  const nameIndex = this.faultUploadList.findIndex((v) => name == v.fileName);
+  if (nameIndex > -1) {
+    this.$Message.warning("已选择该文件!");
+    return;
+  }
+
+  // 附加字段
+  let uuid;
+  if (this.formData.uuid) {
+    uuid = this.formData.uuid;
+  } else {
+    uuid = this.formData.uuid = Date.now() + "";
+  }
+  file.attachID = this.faultUploadList.length + 1;
+
+  getFileModels([file], uuid).then((arr) => {
+    this.faultUploadList.push(...arr); // ObjectURL 展示
+  });
+
+  return false;
+}
+// 获取图片数据: 文件s, uuid
+function getFileModels(files, uuid) {
+  let files_promise = [];
+  files.forEach((file, index) => {
+    files_promise.push(
+      new Promise((res, rej) => {
+        let reader = new FileReader();
+        try {
+          reader.readAsDataURL(file);
+          reader.onload = function (evt) {
+            const base64 = evt.target.result;
+            uuid = uuid || file.uid || Date.now();
+            res({
+              uuid: uuid,
+              fileName: file.name, // 文件名
+              filetype: "." + file.type.split("/")[1], // 文件类型
+              fileSize: file.size, // 文件大小
+              // 以下 为接口所需参数
+              fileFullName: file.name,
+              fileStr: base64.split(",")[1], // 文件上传流 base64.split(",")[1]
+            });
+          };
+        } catch (error) {
+          rej(error);
+        }
+      })
+    );
+  });
+
+  return Promise.all(files_promise);
+}
 ```
 
 ## checkbox

@@ -77,3 +77,9 @@ module.exports = DarkTheme;
 import DarkTheme from "dark.theme.js";
 echarts.init(document.getElementById(this.id), this.theme);
 ```
+
+## getZr
+
+https://juejin.cn/post/6904232721678073869
+
+echartInstance.getZr().on('click',callback)
