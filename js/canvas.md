@@ -11,6 +11,25 @@ gl = canvas.getContext("webgl");
 gl.getExtension("WEBGL_lose_context").loseContext();
 ```
 
+## toDataURL
+
+```js
+// 解决 canvas webgl 解决截图空白问题 https://www.py4u.net/discuss/277035
+HTMLCanvasElement.prototype.getContext = (function (origFn) {
+  return function (type, attributes) {
+    if (type === "webgl") {
+      attributes = Object.assign({}, attributes, {
+        preserveDrawingBuffer: true,
+      });
+    }
+    return origFn.call(this, type, attributes);
+  };
+})(HTMLCanvasElement.prototype.getContext);
+
+// canvas 第一次获取 context 就决定了后续的 context 的属性, 不会变更 ???
+// 会不会有很大的性能影响
+```
+
 ## 参考
 
 Too many active WebGL contexts

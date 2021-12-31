@@ -95,6 +95,8 @@ default-expand-level="1" 默认 0 Infinity
 
 options 是一个数组, 多叉树
 
+多选 value 是数组!!!
+
 ```js original options
 [
   {

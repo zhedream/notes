@@ -11,13 +11,12 @@
     keepDecimal: function(number, num) {
       if (!number) return "";
       let len = Math.pow(10, num);
-      return Math.round(number * len) / len;
+      return parseInt(number * len) / len;
     },
     subStr: function(str, start, end) {
       if (!str) return "";
       return str.substring(start,end); // [start,end)
     }
-    
 }
 
 
