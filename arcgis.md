@@ -23,6 +23,10 @@ https://tool.lu/coordinate/
 符号渲染
 小部件
 
+# api
+
+## takeScreenShot
+
 # 参考
 
 ArcGIS API for JavaScript 入门教程[1] 渊源
