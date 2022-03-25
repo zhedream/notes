@@ -7,6 +7,21 @@ chart = echarts.init(document.getElementById('container'), this.theme);
 获取 echarts 实例
 chart = echarts.getInstanceByDom(el);
 
+## dataset 数据集合
+
+https://blog.csdn.net/hwhsong/article/details/109319162
+
+数据集合 & 维度映射
+
+注意, 数据映射: 类目 category 和 time, value
+
+X轴为 time 时, 默认顺序, 但是数据不会
+
+## custom 自定义类型
+
+
+
+
 ## echarts-stat
 
 ecStat 是 ECharts 的统计和数据挖掘工具

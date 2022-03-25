@@ -11,6 +11,10 @@ gl = canvas.getContext("webgl");
 gl.getExtension("WEBGL_lose_context").loseContext();
 ```
 
+## 绘制文字
+
+https://www.twle.cn/l/yufei/canvas/canvas-basic-text-measuretext.html
+
 ## toDataURL
 
 ```js

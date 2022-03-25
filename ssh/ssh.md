@@ -18,6 +18,9 @@ Host alylhz
 
 ## 免密登录服务器
 
+
+vim ~/.ssh/authorized_keys
+
 cat id_rsa.pub[A主机的公钥] >> .ssh/authorized_keys [B主机信任列表]
 
 这样 A主机 在  链接 B 主机 的时候就不用  输入密码了

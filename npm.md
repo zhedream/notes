@@ -83,6 +83,20 @@ npx ts ...
 2. package.json 文件 dependencies 中的各种版本号形式
    http://blog.kankanan.com/article/package.json-65874ef6-dependencies-4e2d7684540479cd7248672c53f75f625f0f.html
 
+## proxy
+
+https://freesilo.com/?p=1228
+
+npm config set <key> <value> [--global]
+npm config get <key>
+npm config delete <key>
+npm config list
+npm config edit
+
+npm config list
+npm config set proxy "http://127.0.0.1:7890"
+npm config delete proxy
+
 ## 修改第三方包 patch-package
 
 https://m.talkmoney.cn/blog/web/stafflw00008/articleId569

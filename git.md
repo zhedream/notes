@@ -103,7 +103,11 @@ git commit
 
 ### 重命名
 
-git branch -m old new
+git branch -m old new 重命名分支
+
+git branch {newBranch} 在当前 commit 分支创建
+
+git branch {newBranch} {commit} 在某个 commit 创建分支
 
 ### 切换分支
 
@@ -114,7 +118,7 @@ git checkout -b {newBranch} {commint-id} // 在某次提交的基础建立一个
 ### 删除分支
 
 git branch -dr {remote} {branch} -- 本地的远程 fetch 缓存记录 并没有真的删除远程
-git branch -d {branch}
+git branch -D {branch}
 
 git push --delete {remote} {branch} -- 真正删除远程分之
 
@@ -159,7 +163,20 @@ git checkout HEAD^ -- index.html / git checkout <指针^^commint 次数> <分之
 
 master: 开发主分支, 需要保证, 最新, 最全的代码.
 
-release: 
+release: 生产环境分支
+
+merge: 准确的叫 merge into
+
+git merge master
+当前分支 合并到 master. 并生成一个 合并记录 commit.
+以 master 为主, 将当前分支. 合并到 master, 并生成一个合并记录.
+将当前分支的最后一个 commit 与 master 最后一个 commit 进行合并
+
+rebase: 准确点叫 rebase into
+
+git rebase master
+当前分支 找到与 master 共同的节点. 变基到 master 上
+当前分支 找到与 master 共同的节点. 以 master 为主, 在 master 基础上重建
 
 ## LOG
 
@@ -167,10 +184,10 @@ git log --oneline
 
 git log --oneline -5 // 最近 5 次记录
 git log --oneline --author='liuhaozhe' // 显示指定作者的提交
-git log --grep='筛选搜索' // 筛选搜索 提交记录  
-git log --before='2019-01-19 | 1 week | 1 year | 3 days' // 日期筛选  
-git log --grep='筛选搜索' --grap // 图形显示  
-git log --oneline --all // 显示所有分之 提交记录  
+git log --grep='筛选搜索' // 筛选搜索 提交记录
+git log --before='2019-01-19 | 1 week | 1 year | 3 days' // 日期筛选
+git log --grep='筛选搜索' --graph // 图形显示
+git log --oneline --all // 显示所有分之 提交记录
 git log --oneline --decorate --all --graph -10
 
 ## revert
@@ -180,7 +197,9 @@ git revert {commitID} // 丢弃的 commitID 的提交 , 如果有 后面的提�
 ## reset
 
 偏移 头部指针
-git resety {模式}
+git reset {模式 --mixed soft hard} {HEAD^}
+
+git reset {模式 --mixed soft hard} {HEAD~1}
 
 ### 模式
 
@@ -189,6 +208,7 @@ git resety {模式}
 1. 更改指针 为 commitID, 将 commitID 之后的 修改 应用/添加到缓存区
 2. 不影响工作区，不影响缓存区。 会把后面的 commit 的修改， 应用/添加到`缓存区`
    --mixed (默认)
+
 3. 更改指针 为 commitID, 将 commitID 之后的 修改和 缓存区内容 应用/添加到`工作区`
 4. 重置暂存区的的修改到 工作区 , 将后面的 commit 修改 应用到工作区 , 当行有修改 则不应用到当前行，以当前工作区修改为主
    --hard (硬重置) 直接重置 工作区与缓存区
@@ -209,6 +229,11 @@ git tag v0.0
 git tag -a {commit | 空(HEAD)} -m '注释'
 git show {vtag | HEAD | commit } // 文件详细
 git tag -d vtag // 删除标签
+
+## alias 别名
+
+git config --global alias.co checkout
+git config --global alias.graph "log --oneline --decorate --all --graph"
 
 ## WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
 
@@ -305,3 +330,9 @@ git config http.sslVerify false
    https://www.githubstatus.com
 2. git 代码统计
    https://segmentfault.com/a/1190000008542123
+
+# 教程
+
+git 是什么.
+
+初始化仓库

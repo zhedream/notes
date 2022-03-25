@@ -28,6 +28,77 @@ https://pm2.keymetrics.io/docs/usage/startup/#disabling-startup-system
 2. 常用命令
 https://www.jianshu.com/p/6b3b506f7d0a
 
+3. windows下pm2安装使用
+https://blog.csdn.net/finghting321/article/details/105563346
+
+
+# window pm2
+
+node v14.19.0
+npm 6.14.16
+
+npm install pm2 -g
+
+// 开机自启
+npm install pm2-windows-startup -g
+
+pm2 start index.js --name test
+
+pm2 ls
+
+pm2 log
+
+// 重启自启测试
+没有成功
+
+// 安装启动服务
+pm2-startup install # 重启未成功
+
+// 保存应用列表
+pm2 save # 重启后,自启成功
+
+pm2-startup uninstall # 卸载后, 自启失败
+
+pm2 resurrect # 手动启动应用列表
+
+pm2 startup # 报错 这个命令不能在 window 使用, 使用 pm2-startup
+
+
+pm2 startup  => pm2-startup install
+pm2 unstartup  => pm2-startup uninstall
+
+pm2-startup 忘记 install ,可以再执行一次, 不会多次安装, 不会玩坏.
+
+pm2-windows-service
+
+pm2-service-install
+pm2-service-uninstall
+
+# 一些命令
+
+pm2 logs / pm2 log
+
+pm2 log xxx 查看指定日志
+
+pm2 monit  命令行面板
+
+## plus 在线服务
+
+pm2 plus 
+打开链接, 使用 github 登录
+
+pm2 link <link-id> # 链接在线服务
+
+pm2 link delete # 取消链接
+
+# 启动 exe
+
+脑洞了一下, 还能启动  exe
+
+部署了一个 frpc 服务, 使用 pm2 启动
+
+重启试一试
+
 
 # 问题
 

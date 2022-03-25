@@ -23,6 +23,20 @@ https://tool.lu/coordinate/
 符号渲染
 小部件
 
+# 概念
+
+Map: 数据
+
+View: 视图
+
+layer: 图层
+
+geometry: 几何图形 => html
+symbol: 符号 颜色 => css
+attributes: 数据
+popupTemplate: 弹框
+
+
 # api
 
 ## takeScreenShot

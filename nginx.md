@@ -240,6 +240,8 @@ enabled: 启用
 
 tail error.log -n10 -f
 
+3. 配置正确, 但是重启不生效, 可能是启动了多个 nginx 进程
+
 # nginx with php
 
 ```ini
