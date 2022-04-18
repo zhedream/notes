@@ -305,6 +305,23 @@ git config http.sslVerify false
 1. Git LFS 的使用
    https://www.zhangyangjun.com/post/git-lfs-usage.html
 
+## git log 乱码
+
+win
+
+设置环境变量 LESS CHAR SET, 大写, 本次 cmd 有效
+
+或者在我的电脑设置该环境变量就不用每次单独设置了
+
+```bash
+# 大写, 本次 cmd 有效
+set LESSCHARSET=utf-8
+```
+
+git log 中文乱码 windows
+
+https://blog.csdn.net/sheqianweilong/article/details/107830593
+
 # 相关资源
 
 1. 国内下载地址
