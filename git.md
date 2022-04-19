@@ -322,6 +322,28 @@ git log 中文乱码 windows
 
 https://blog.csdn.net/sheqianweilong/article/details/107830593
 
+## github 加速
+
+git config --global url."https://".insteadOf git://
+
+https://blog.csdn.net/Scoful/article/details/124041645
+
+https://github.com/PanJiaChen/vue-element-admin/issues/3491
+
+```bash
+ ERROR  Command failed with exit code 128: C:\Program Files\Git\cmd\git.EXE ls-remote --refs git+ssh://git@github.com/nhn/raphael.git 2.2.0-c
+Connection reset by 20.205.243.166 port 22
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
+谷歌插件
+https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/ffjjnphohkfckeplcjflmgneebafggej
+
+git ls-remote -h -t https://github.91chi.fun/https://github.com/nhn/raphael.git
+
 # 相关资源
 
 1. 国内下载地址

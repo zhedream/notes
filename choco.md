@@ -1,10 +1,10 @@
 # choco
 
-https://chocolatey.org/install
+https://chocolatey.org/
 
 choco list -lo
 
-安装需要 管理员运行 cmd 或 powershell
+安装需要 `管理员运行` cmd 或 powershell
 
 choco install vim
 
@@ -12,9 +12,21 @@ choco upgrade vim
 
 choco uninstall vim
 
-## 软件
+## 软件包
+
+https://community.chocolatey.org/packages
 
 vim, wintail, mkcert
+
+nvm, git, openssl
+
+## proxy
+
+https://docs.chocolatey.org/en-us/guides/usage/proxy-settings-for-chocolatey
+
+choco config set proxy http://localhost:8888
+
+C:\ProgramData\chocolatey\config\chocolatey.config
 
 # windows 软件包管理工具
 
@@ -39,12 +51,13 @@ Chocolatey & Scoop
 # Chocolatey 安装
 
 官网
-https://chocolatey.org/install
+
+https://chocolatey.org/install#individual
 
 1. 管理员执行
 
 ```bash
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 
 参考
