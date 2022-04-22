@@ -1,6 +1,48 @@
 # vxe-table
 
-https://xuliangzhan_admin.gitee.io/vxe-table/#/table/start/install
+[官方文档](https://vxetable.cn/#/table/start/install)
+
+```js
+//  ==== 高亮
+
+// 设置高亮, 只有一行高亮行
+vmSiteList.$refs.xGrid.setCurrentRow(vmSiteList.SiteInfoList[1]);
+// 清除高亮
+vmSiteList.$refs.xGrid.clearCurrentRow();
+// 获取高亮行
+vmSiteList.$refs.xGrid.getCurrentRecord();
+// 高亮事件  current-change
+
+// ======  单选
+
+// 事件 radio-change { row }
+
+// 设置选中
+vmSiteList.$refs.xGrid.setRadioRow(vmSiteList.SiteInfoList[1]);
+// 清除选中
+vmSiteList.$refs.xGrid.clearRadioRow();
+// 获取选中
+vmSiteList.$refs.xGrid.getRadioRecord();
+
+// ==== 多选
+
+// 事件 checkbox-change  checkbox-all
+
+// 切换
+vmSiteList.$refs.xGrid.toggleCheckboxRow(vmSiteList.SiteInfoList[1]);
+// 设置
+vmSiteList.$refs.xGrid.setCheckboxRow(
+  [vmSiteList.SiteInfoList[1], vmSiteList.SiteInfoList[2]],
+  true
+);
+// 设置所有
+vmSiteList.$refs.xGrid.setAllCheckboxRow(true);
+
+// 清空
+vmSiteList.$refs.xGrid.clearCheckboxRow();
+// 获取
+vmSiteList.$refs.xGrid.getCheckboxRecords();
+```
 
 html 插槽用 vxe-table
 
