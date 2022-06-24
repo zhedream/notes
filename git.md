@@ -230,6 +230,18 @@ git tag -a {commit | 空(HEAD)} -m '注释'
 git show {vtag | HEAD | commit } // 文件详细
 git tag -d vtag // 删除标签
 
+## cherry-pick
+
+https://www.ruanyifeng.com/blog/2020/04/git-cherry-pick.html
+
+git switch A # cherry-pick into  branch-A
+git cherry-pick <HashA>
+git cherry-pick <HashA> <HashB>
+git cherry-pick <HashA>..<HashB> # A 将不会包含
+git cherry-pick A^..B # 包含A
+git cherry-pick <Branch> # 转移最后一次 commit
+
+
 ## alias 别名
 
 git config --global alias.co checkout

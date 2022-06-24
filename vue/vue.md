@@ -103,6 +103,67 @@ var vm = {
 };
 ```
 
+# extend
+
+实现继承, 并返回构造函数
+
+Vue 提供了几种提取和重用组件逻辑和状态的方法，但模板被认为是一次性的。
+
+```js
+// option extend
+let B = Vue.extend(
+  Object.assign(v, {
+    props: {
+      ...v.props, // 覆盖重写
+      text2: {
+        type: String,
+        default: "create text2",
+      },
+    },
+  })
+);
+// 二次 继承
+let D = Vue.extend({
+  extends: B,
+  props: {
+    text3: {
+      type: String,
+      default: "create text2",
+    },
+  },
+  methods: {
+    test(...params) {
+      return v.methods.test.call(this, ...params) + " in test3";
+      // return new B().test.call(this, ...params);
+    },
+  },
+});
+
+let d = new D({
+  propsData: {
+    text: "hahaha",
+    text2: "test2",
+  },
+  // 自动合并 props
+  props: {
+    text4: {
+      type: String,
+      default: "text4",
+    },
+  },
+  methods: {
+    test2() {
+      console.log("test2");
+      console.log("this.test(): ", this.test());
+    },
+  },
+}).$mount("#main-create");
+
+d.$destroy();
+```
+
+https://vuejsdevelopers.com/2020/02/24/extending-vuejs-components-templates/
+
 # 知识点
 
 provider/inject
@@ -123,9 +184,8 @@ provider/inject
 不要直接绑定对象/数组. :dataSource="{}"
 否则每次更新都是 新的地址,导致 组件重新渲染
 
-
 ## 复杂逻辑 交互
 
 使用用户 直接点击的
 
-使用一手数据, 不用 watch 的数据, 
+使用一手数据, 不用 watch 的数据,

@@ -29,6 +29,7 @@ this.$nextTick
   :delete-removes="false"
   :clear-on-select="false"
   :z-index="999"
+  @open="treeOpen"
   append-to-body
   multiple
 >
@@ -43,6 +44,23 @@ this.$nextTick
       children: node.children,
     };
   }
+  vm = {
+    treeMuneStop(e) {
+      e.stopPropagation();
+    },
+    treeOpen(instanceId, code) {
+      if (code == 1) {
+        this.alwaysOpen = true;
+      } else if (code == 2) {
+        this.alwaysOpen2 = true;
+      }
+      let dom = (this.treeMenuDom = document.querySelector(
+        `.vue-treeselect[data-instance-id='${instanceId}']`
+      ));
+      dom.removeEventListener("click", this.treeMuneStop);
+      dom.addEventListener("click", this.treeMuneStop);
+    },
+  };
 </script>
 ```
 

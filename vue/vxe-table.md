@@ -120,6 +120,38 @@ function getColumn1() {
   let that = this;
   const { sortsDataHeader, pollutantDataHeader } = this.dataHeader;
 
+  var VOCManyTableProps = {
+    columns: [],
+    data: [],
+    resizable: true,
+    border: true,
+    showOverflow: true,
+    showHeaderOverflow: true,
+    highlightHoverRow: true,
+    highlightCurrentRow: false,
+    height: "300px",
+    editConfig: { trigger: "click", mode: "row" },
+  };
+
+  const slots_default_span = ({ column, row }, h) => {
+    const property = column.property;
+    return [h("span", row[property])];
+  };
+
+  const slots_edit_input = ({ column, row }, h) => {
+    const property = column.property;
+    return [
+      h("Input", {
+        props: {
+          value: row[property],
+        },
+        on: {
+          input: (val) => (row[property] = val),
+        },
+      }),
+    ];
+  };
+
   const baseColumns = [
     {
       title: " ",
@@ -150,6 +182,11 @@ function getColumn1() {
       fixed: "left",
       width: 150,
       align: "center",
+      editRender: {},
+      slots: {
+        default: slots_default_span,
+        edit: slots_edit_input,
+      },
     },
     {
       title: "数据有效率",

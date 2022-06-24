@@ -113,6 +113,7 @@ server {
       add_header Access-Control-Allow-Origin *;
       proxy_pass http://172.16.12.72:8099/api/;
       proxy_read_timeout 120; # 反代超时时间,默认 60 (秒)
+      client_max_body_size 500m; # 客户端最大上传文件大小
       proxy_set_header X-Real-IP $remote_addr;
       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
    }
