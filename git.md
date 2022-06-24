@@ -12,6 +12,11 @@ https://mp.weixin.qq.com/s/R2R76-uRuKrVYblm0qUoXw
 https://fastly.net.ipaddress.com/github.global.ssl.fastly.net#ipinfo
 https://github.com.ipaddress.com/#ipinfo
 
+# zhlh6.cn 加速
+
+git@git.zhlh6.cn:zhedream/vue-browser-utils.git
+
+
 > hosts
 > 199.232.69.194 github.global.ssl.fastly.net
 > 140.82.112.4 github.com
