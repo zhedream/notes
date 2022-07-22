@@ -315,6 +315,16 @@ git config http.sslVerify false
 
 可以先全局设置, 然后移除, 再局部设置
 
+## git hooks
+
+背景: 使用 gitKraken 进行 commmit 速度非常慢.
+
+无论是重装还是移除 husky, 都非常慢, 后来发现在新的电脑上没有这个问题.
+
+可能的原因: npm 安装了 git hook 插件 会在 .git/hooks 创建相关hook, 但是移除该 npm 插件后, 这些 hook 不会被删除
+
+解决方案: 重新 clone 项目, 再进行 npm install 即可重置 hooks.
+
 ## GIT LFS
 
 大文件存储
