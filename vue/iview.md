@@ -107,7 +107,7 @@ v-model [1,3,4] 非空, placeholder display:none
 
 ## table
 
-https://www.iviewui.com/components/table
+http://v2.iviewui.com/components/table
 
 ```html
 <i-table
@@ -426,19 +426,19 @@ function pageData1() {
 
 接口分页 page.total, 本地分页 data.length
 
-<Page v-bind:total="page.total" v-bind:current="page.pageIndex"
-v-bind:page-size="page.pageSize" show-sizer show-total
-v-bind:page-size-opts="page.pageSizeRange" @on-change="pageChange"
+<Page :total="page.total"current="page.pageIndex"
+:page-size="page.pageSize" show-sizer show-total
+:page-size-opts="page.pageSizeRange" @on-change="pageChange"
 @on-page-size-change="pageSizeChange" placement="top"></Page>
 
-<Page v-bind:total="page.total" v-bind:current="page.pageIndex"
-v-bind:page-size="page.pageSize" show-sizer show-total
-v-bind:page-size-opts="page.pageSizeRange" @on-change="page.pageIndex=$event"
+<Page :total="page.total" :current="page.pageIndex"
+:page-size="page.pageSize" show-sizer show-total
+:page-size-opts="page.pageSizeRange" @on-change="page.pageIndex=$event"
 @on-page-size-change="page.pageSize=$event;page.pageIndex=1" placement="top"></Page>
 
 ## tabs 标签页
 
-https://www.iviewui.com/components/tabs
+http://v2.iviewui.com/components/tabs
 
 ```html
 <tabs value="name1">
@@ -647,7 +647,7 @@ this.$refs["form"].validate((valid) => {
 注意: 这里由坑 label 应该是 value
 
 ```html
-<Radio-Group v-model="conditionSearch1.code" type="button" v-bind:class="theme">
+<Radio-Group v-model="conditionSearch1.code" type="button" :class="theme">
   <Radio label="a34004">PM₂.₅</Radio>
   <Radio label="a34002">PM₁₀</Radio>
   <Radio label="a21005">CO</Radio>

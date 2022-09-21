@@ -24,15 +24,7 @@ https://www.iis.net/downloads/microsoft/application-request-routing
           关于 match:
           IIS 的 URL 匹配是用  / 之后的字符匹配的, http://localhost:8080/api , api
         -->
-        <!-- 单页应用 重写 index -->
-        <rule name="spa_index" enabled="true">
-          <match url="^((?!(api)).)*$" />
-          <action type="Rewrite" url="/" />
-          <conditions logicalGrouping="MatchAll">
-            <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
-            <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
-          </conditions>
-        </rule>
+
         <!-- 代理 api -->
         <rule name="proxy_api" enabled="true" patternSyntax="Wildcard">
           <match url="api/*" negate="false" />
@@ -44,12 +36,39 @@ https://www.iis.net/downloads/microsoft/application-request-routing
           <match url="gis/*" negate="false" />
           <action type="Rewrite" url="http://172.16.12.52:5421/gis/{R:1}" />
         </rule>
+
+        <!-- 单页应用 重写 index !!! 放在后面 -->
+        <rule name="spa_index" enabled="true">
+          <match url="^((?!(api)).)*$" />
+          <action type="Rewrite" url="/" />
+          <conditions logicalGrouping="MatchAll">
+            <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+            <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+          </conditions>
+        </rule>
         <!--
           挂载虚拟目录:
           挂载 gis 虚拟目录, 注意 是 反斜杠 `\` ,如: E:\www\gis
         -->
       </rules>
+
+      <outboundRules>
+        <rule name="Remove ETag" enabled="false">
+          <match serverVariable="RESPONSE_ETag" pattern=".+" />
+          <action type="Rewrite" value="" />
+        </rule>
+      </outboundRules>
+
     </rewrite>
+
+    <caching>
+      <profiles>
+        <add extension=".css" policy="CacheUntilChange" kernelCachePolicy="CacheUntilChange" duration="00:00:30" />
+        <add extension=".js" policy="CacheUntilChange" kernelCachePolicy="CacheUntilChange" duration="00:00:30" />
+        <add extension=".html" policy="CacheUntilChange" kernelCachePolicy="CacheUntilChange" duration="00:00:30" />
+      </profiles>
+    </caching>
+
   </system.webServer>
 </configuration>
 ```
