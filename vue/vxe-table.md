@@ -400,3 +400,59 @@ function getColumn1() {
   return heanderNext;
 }
 ```
+
+## 滚动条
+
+```less
+.vxe-table {
+  .vxe-body--column > .vxe-cell {
+    padding: 1px;
+  }
+
+  /* 滚动条 start */
+
+  .vxe-table--body-wrapper.body--wrapper {
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+      background-color: #f5f5f5;
+    }
+
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      background-color: #f5f5f5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+      background-color: #555;
+    }
+  }
+
+  // 表头字体颜色
+  .vxe-table .vxe-table--header-wrapper {
+    color: red;
+  }
+  // 表头背景色
+  .vxe-table--render-default.border--none .vxe-table--header-wrapper {
+    background-color: transparent;
+  }
+  // 表头分割线
+  .vxe-header--column .vxe-resizable.is--line:before {
+    width: 1px;
+    height: 50%;
+    background-color: #3e5059;
+  }
+
+  // 表格 body 字体颜色
+  .vxe-table--render-default {
+    color: red;
+  }
+  // 表格 body 背景色
+  .vxe-table--render-default .vxe-table--body-wrapper {
+    background-color: transparent;
+  }
+}
+```

@@ -14,7 +14,7 @@ https://www.iis.net/downloads/microsoft/application-request-routing
 
 4. 在主页 打开 ARR , 进入设置 ,启用 proxy, 保存.
 
-```xml web.config
+```XML web.config
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
   <system.webServer>
@@ -68,9 +68,13 @@ https://www.iis.net/downloads/microsoft/application-request-routing
         <add extension=".html" policy="CacheUntilChange" kernelCachePolicy="CacheUntilChange" duration="00:00:30" />
       </profiles>
     </caching>
-
+    <staticContent>
+      <mimeMap fileExtension=".vue" mimeType="text/plain" />
+    </staticContent>
   </system.webServer>
 </configuration>
+
+
 ```
 
 ## PHP 使用

@@ -189,3 +189,25 @@ provider/inject
 使用用户 直接点击的
 
 使用一手数据, 不用 watch 的数据,
+
+## mixins
+
+```js
+vm = {
+  methods: {
+    isOnce(key) {
+      const K = "_isOnce_" + key;
+      if (this[K] === undefined) {
+        this[K] = true;
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
+};
+```
+
+# sfc-simple in browser
+
+https://medium.com/js-dojo/vue-js-single-file-javascript-components-in-the-browser-c03a0a1f13b8

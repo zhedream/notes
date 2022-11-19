@@ -36,7 +36,10 @@ https://github.com/ecomfe/echarts-stat/blob/master/README.zh-CN.md
 option = {
   tooltip: {
     trigger: "axis",
-    position: function (pos, params, el, elRect, size) {
+    // triggerOn: 'click',
+    confine: true,
+    appendToBody: true,
+    position(pos, params, el, elRect, size) {
       // console.log(pos, size);
       const { contentSize, viewSize } = size;
       let isLeft = pos[0] < size.viewSize[0] / 2;
@@ -103,7 +106,21 @@ option = {
         `<table>${trList.join("")}</table>`
       );
     },
-    appendToBody: true,
+    formatter2: function (params) {
+      let item = params[0];
+      const time = item.axisValue; // trigger 为 x 轴
+      return (
+        time +
+        "<br/>" +
+        params
+          .map((item) => {
+            const { value } = item;
+            const { marker, seriesName } = item;
+            return `${marker} ${seriesName}: ${value} μg/m3`;
+          })
+          .join("<br/>")
+      );
+    },
   },
 };
 function chunk(arr, count) {

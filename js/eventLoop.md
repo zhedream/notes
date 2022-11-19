@@ -69,7 +69,17 @@ setTimeout(function () {
 */
 ```
 
+识别微任务 识别微任务所属宏任务, 识别宏任务的微任务 类似 this 指向,
+
+标记 xx 执行微任务
+
 宏任务（Macrotask）微任务（Microtask）setTimeoutrequestAnimationFrame（有争议）setIntervalMutationObserver（浏览器环境）MessageChannelPromise.[ then/catch/finally ]I/O，事件队列 process.nextTick（Node 环境）setImmediate（Node 环境）queueMicrotaskscript（整体代码块）
+
+事件循环中的任务被分为宏任务和微任务，是为了给高优先级任务一个插队的机会：微任务比宏任务有更高优先级。
+
+node 端的事件循环比浏览器更复杂，它的宏任务分为六个优先级，微任务分为两个优先级。node 端的执行规律是一个宏任务队列搭配一个微任务队列，而浏览器是一个单独的宏任务搭配一个微任务队列。但是在 node11 之后，node 和浏览器的规律趋同。
+
+https://juejin.cn/post/7073099307510923295
 
 ## demo
 

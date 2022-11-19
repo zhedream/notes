@@ -16,7 +16,6 @@ https://github.com.ipaddress.com/#ipinfo
 
 git@git.zhlh6.cn:zhedream/vue-browser-utils.git
 
-
 > hosts
 > 199.232.69.194 github.global.ssl.fastly.net
 > 140.82.112.4 github.com
@@ -42,6 +41,7 @@ git branch --set-upstream-to=origin/master master
 ## 导出
 
 git archive --format zip --output "./output.zip" master -0
+archive --format zip --output
 
 ## git 强制远程覆盖本地
 
@@ -239,18 +239,31 @@ git tag -d vtag // 删除标签
 
 https://www.ruanyifeng.com/blog/2020/04/git-cherry-pick.html
 
-git switch A # cherry-pick into  branch-A
+git switch A # cherry-pick into branch-A
 git cherry-pick <HashA>
 git cherry-pick <HashA> <HashB>
 git cherry-pick <HashA>..<HashB> # A 将不会包含
-git cherry-pick A^..B # 包含A
+git cherry-pick A^..B # 包含 A
 git cherry-pick <Branch> # 转移最后一次 commit
-
 
 ## alias 别名
 
 git config --global alias.co checkout
 git config --global alias.graph "log --oneline --decorate --all --graph"
+
+```config
+[alias]
+	st = status
+	ss = status
+	co = checkout
+	gp = log --oneline --decorate --all --graph
+	bc = branch
+	br = branch
+	sw = switch
+	sc = switch
+	fc = fetch
+	zipout = archive --format zip --output
+```
 
 ## WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
 
@@ -315,13 +328,23 @@ git config http.sslVerify false
 
 可以先全局设置, 然后移除, 再局部设置
 
+## git bisect 二分法
+
+git bisect start [endCommit] [startCommit]
+
+git bisect good
+
+git bisect bad
+
+git bisect reset
+
 ## git hooks
 
 背景: 使用 gitKraken 进行 commmit 速度非常慢.
 
 无论是重装还是移除 husky, 都非常慢, 后来发现在新的电脑上没有这个问题.
 
-可能的原因: npm 安装了 git hook 插件 会在 .git/hooks 创建相关hook, 但是移除该 npm 插件后, 这些 hook 不会被删除
+可能的原因: npm 安装了 git hook 插件 会在 .git/hooks 创建相关 hook, 但是移除该 npm 插件后, 这些 hook 不会被删除
 
 解决方案: 重新 clone 项目, 再进行 npm install 即可重置 hooks.
 

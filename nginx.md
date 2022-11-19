@@ -325,3 +325,27 @@ Etag 优先级高于 Modified
 Etag 需要计算 hash 比 Modified 耗资源
 
 Modified,Etag 是同时期的吗, 还先后版本的?
+
+## 允许访问目录
+
+https://segmentfault.com/a/1190000042235316
+
+```conf
+   underscores_in_headers  on;
+
+   access_log  logs/huling.access.log  combined;
+
+   charset utf-8,gbk;
+
+   location / {
+     # 允许访问目录
+     autoindex on;
+     # 显示出文件的大概大小，单位是kB或者MB或者GB
+     autoindex_exact_size off;
+     # 改为on后，显示的文件时间为文件的服务器时间
+     autoindex_localtime on;
+     root   /www/wwwroot/www.huling.com/html;
+     index  index.html index.htm;
+
+   }
+```

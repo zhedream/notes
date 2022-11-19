@@ -541,9 +541,9 @@ http://v2.iviewui.com/components/transfer#API
         <i-Button type="default" @click="formReset" style="margin-left: 5px;"
           >重置</i-Button
         >
-        <i-Button type="default" @click="formCancel" style="margin-left: 5px;"
-          >取消</i-Button
-        >
+        <i-Button type="default" @click="formCancel" style="margin-left: 5px;">
+          取消
+        </i-Button>
       </i-col>
     </row>
   </i-form>

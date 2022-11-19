@@ -60,3 +60,66 @@ min-height: 设置 里面的盒子好
 对于多层盒子, 如 a-table
 给 每层盒子设置 height:100%, 即可在 对应外盒子设置 min-height
 则在 对应外层盒子 设置 min-height
+
+## 大屏图片边框处理
+
+```css
+.xpanel {
+  padding: 15px;
+  height: 100%;
+  min-height: 170px;
+  background: url("../img/panel.png") center no-repeat;
+  background-size: 100% 100%;
+  box-sizing: border-box;
+}
+
+.panel_txt {
+  vertical-align: top;
+  color: #38a3f0;
+  font-size: 20px;
+  height: 40px;
+  background-image: url("../img/font_bg.png");
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+}
+```
+
+## not 选择器
+
+```less
+*:not([class*="vxe-"]) {
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px fade(#000, 30%);
+    border-radius: 6px;
+    background-color: transparent;
+    display: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    box-shadow: inset 0 0 6px fade(#000, 30%);
+    background-color: fade(#555, 60%);
+  }
+}
+
+.row3 {
+  overflow: auto;
+  display: flex;
+  > *:not(:last-child) {
+    margin-right: 5px;
+  }
+}
+.box {
+  &_item {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}
+```

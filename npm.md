@@ -114,3 +114,10 @@ npm i 钩子, 自动打补丁
   }
 }
 ```
+
+## pnpm
+
+包管理工具, 软链接 , 速度快 , 依赖管理
+
+patch-package 问题
+https://github.com/ds300/patch-package/issues/35
