@@ -372,6 +372,22 @@ git log 中文乱码 windows
 
 https://blog.csdn.net/sheqianweilong/article/details/107830593
 
+## git status 乱码
+
+git config --global core.quotepath false
+
+在使用 git log 出现乱码上面一个设置不能解决问题需要再做以下设置
+
+git config --global gui.encoding utf-8
+
+git config --global i18n.commit.encoding utf-8
+
+git config --global i18n.logoutputencoding utf-8
+
+export LESSCHARSET=utf-8 # 添加到环境变量
+
+https://www.php.cn/tool/git/485156.html
+
 ## github 加速
 
 git config --global url."https://".insteadOf git://

@@ -34,6 +34,10 @@ echo @php "%~dp0composer.phar" %* > composer.bat
 
 ```
 
+composer self-update --1
+
+composer self-update --2
+
 ## php copy(): SSL operation
 
 ```ini php.ini
