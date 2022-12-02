@@ -32,6 +32,8 @@ LINK: https://www.bbsmax.com/A/kmzL1vlBJG/
 
 ## 压缩 gzip
 
+https://tftp.top/2021/11/29/805.html
+
 https://www.cnblogs.com/lovelinux199075/p/9057077.html
 
 ```nginx
@@ -39,6 +41,7 @@ https://www.cnblogs.com/lovelinux199075/p/9057077.html
         gzip on;
         gzip_http_version 1.1;
         gzip_comp_level 3;
+        gzip_static on;
         gzip_types text/plain application/json application/x-javascript application/css application/xml application/xml+rss text/javascript application/x-httpd-php image/jpeg image/gif image/png image/x-ms-bmp;
         }
 ```
