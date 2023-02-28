@@ -208,6 +208,134 @@ vm = {
 };
 ```
 
+## 增删改
+
+```js
+vm = {
+  data: {
+    form: {
+      visible: false,
+      modalProps: {
+        title: "",
+      },
+      formData: {}, // 其他数据
+      formState: getFormState(),
+      formRules: getFormRules(this),
+      formProps: {
+        labelCol: { span: 4 },
+        wrapperCol: { span: 19 },
+      },
+    },
+  },
+  methods: {
+    addClick() {
+      this.form.formState = getFormState();
+      this.form.visible = true;
+      this.form.modalProps.title = "新增用户";
+    },
+    editClick(target) {
+      console.log("target: ", target);
+      if (!target) return;
+      this.selectRow = target;
+      const { project, role } = target;
+
+      this.form.formState = {
+        ...getFormState(),
+        ...target,
+        role: role.key,
+        project: project.key,
+      };
+      this.form.modalProps.title = "编辑用户";
+      this.form.visible = true;
+    },
+    addCancel() {
+      this.$refs.formRef.resetFields();
+      this.form.visible = false;
+    },
+    addOK() {
+      this.$refs.formRef.validate((valid) => {
+        if (!valid) return;
+
+        const formState = this.form.formState;
+
+        let userinfoKeys = [
+          "User_ID",
+          "User_Name",
+          "User_Account",
+          "User_Pwd",
+          "User_Sex",
+          "MobilePhone",
+          "Email",
+          "Remark",
+        ];
+        let params = {
+          roleId: formState.role,
+          projectId: formState.project,
+          userinfo: pick(formState, userinfoKeys),
+        };
+
+        this.isLoading = true;
+        AddEditUser(params)
+          .then((e) => {
+            this.isLoading = false;
+            let res = e.data;
+            if (res.requstresult === "1") {
+              this.$message.success("操作成功");
+              this.getData();
+              this.addCancel();
+            } else {
+              this.$message.warn(res.reason);
+            }
+          })
+          .catch((err) => {
+            console.log("err: ", err);
+            this.isLoading = false;
+          });
+      });
+    },
+    delClick(target) {
+      let params = { UserID: target.User_ID };
+      console.log(params);
+      this.isLoading = true;
+      DelUser(params)
+        .then((e) => {
+          this.isLoading = false;
+          let res = e.data;
+          if (res.requstresult === "1") {
+            const index = this.tableData.findIndex(
+              (item) => target.User_ID === item.User_ID
+            );
+            this.tableData.splice(index, 1);
+            this.$message.success("删除成功");
+          } else {
+            this.$message.warn(res.reason);
+          }
+        })
+        .catch((err) => {
+          console.log("err: ", err);
+          this.isLoading = false;
+        });
+    },
+  },
+};
+```
+
+}
+
+```
+
 # sfc-simple in browser
 
 https://medium.com/js-dojo/vue-js-single-file-javascript-components-in-the-browser-c03a0a1f13b8
+```
+
+## TypeScript
+
+```ts
+// vue中ts无法识别引入的vue文件，语法提示找不到xxx.vue 模块，解决办法
+// https://blog.csdn.net/m0_52263688/article/details/123259150
+declare module "*.vue" {
+  import Vue from "vue";
+  export default Vue;
+}
+```

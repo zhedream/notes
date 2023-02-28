@@ -70,6 +70,63 @@ gzip_comp_level 3;
 gzip_types text/plain application/json application/javascript application/css;
 }
 
+## 代理缓存
+
+```conf nginx
+   http {
+      proxy_cache_path "D:/Visual-NMP-x64/Cache/Nginx/geo_datav_aliyun_com" levels=1:2 keys_zone=geo_datav_aliyun_com:100m inactive=60m max_size=5g;
+   }
+  location /geo_datav_aliyun_com/ {
+    proxy_pass https://geo.datav.aliyun.com/;
+    proxy_cache_bypass $http_pragma; # 跳过缓存,如在强制刷新的时候, 会跳过缓存, 重新请求
+    proxy_cache_revalidate on; # 缓存则略
+    proxy_cache_valid 200 1d;
+    proxy_cache_valid 404 1m;
+    proxy_cache_valid any 1h;
+    proxy_cache_key "$scheme$request_method$host$request_uri";
+    proxy_cache geo_datav_aliyun_com;
+    add_header X-Cache-Status $upstream_cache_status;
+  }
+
+
+
+server {
+
+  # 监听端口
+  listen *:7888;
+  listen [::]:7888;
+
+  # 代理转发
+  location ^~ / {
+
+    # add_header access-control-allow-origin *;
+
+    set $target_host $http_target_host;
+    set $target_port $http_target_port;
+
+    default_type application/json;
+    return 200 "{
+    \"request_uri\":\"$request_uri\",
+    \"http_target_host\":\"$http_target_host\",
+    \"target_host\":\"$target_host\",
+    \"http_target_port\":\"$http_target_port\",
+    \"target_port\":\"$target_port\",
+    \"remote_port\":\"$remote_port\",
+    \"server_port\":\"$server_port\",
+    \"scheme\":\"$scheme\",
+    \"request_method\":\"$request_method\",
+    \"host\":\"$host\",
+    \"http_host\":\"$http_host\",
+    \"request_uri\":\"$request_uri\",
+    \"proxy_add_x_forwarded_for\":\"$proxy_add_x_forwarded_for\",
+    \"http_port\":\"$http_port\"
+    }";
+  }
+
+}
+
+```
+
 ## 重定向主入口
 
 LINK https://www.jianshu.com/p/05f889faa74b?from=timeline&isappinstalled=0
