@@ -339,3 +339,50 @@ declare module "*.vue" {
   export default Vue;
 }
 ```
+
+## vue-render-html
+
+```js
+
+/**
+ * 渲染 vue 组件为 html 字符串
+ * @param vueOption import vueOption from 'xx.vue' , 或 组件 option
+ * @param propsData 组件 props
+ */
+export function renderHTML(vueOption: any, propsData: any = {}) {
+  const V = Vue.extend(vueOption);
+  let dom: HTMLDivElement = document.createElement("div");
+  return new Promise<string>((res) => {
+    new V({
+      propsData,
+      mounted() {
+        res(this.$el.outerHTML);
+        this.$destroy();
+      },
+      beforeDestroy() {
+        if (dom) {
+          dom.remove();
+          dom = null as any;
+        }
+      },
+    }).$mount(dom);
+  });
+}
+
+/**
+ * 扩展模板
+ * @param template
+ * @param option
+ */
+export function extendTemplate(template: string, option = {}) {
+  const res = Vue.compile(template);
+  return Vue.extend({
+    // template: template,
+    render: res.render,
+    staticRenderFns: res.staticRenderFns,
+    ...option,
+  });
+}
+
+
+```

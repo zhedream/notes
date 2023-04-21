@@ -181,13 +181,14 @@ this.$refs["iviewTable"].exportCsv({
 });
 // iview  行选中状态, 是单向数据流, 不是双向绑定, 需要手动修改 表格数据 @on-selection-change
 function handleSelect(rows) {
+  let key = "DGIMN";
   let set = new Set();
   rows.forEach((row) => {
-    set.add(row.PollutantCode);
+    set.add(row[key]);
   });
   // 更新数据 状态
-  this.dataTable.forEach((row) => {
-    if (set.has(row.PollutantCode)) {
+  this.table.data.forEach((row) => {
+    if (set.has(row[key])) {
       Object.assign(row, { _checked: true });
     } else {
       Object.assign(row, { _checked: false });

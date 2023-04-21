@@ -86,6 +86,9 @@ gzip_types text/plain application/json application/javascript application/css;
     proxy_cache_key "$scheme$request_method$host$request_uri";
     proxy_cache geo_datav_aliyun_com;
     add_header X-Cache-Status $upstream_cache_status;
+    add_header Cache-Control no-store;
+    add_header Cache-Control no-cache;
+    add_header Cache-Control max-age=864000;
   }
 
 
@@ -409,3 +412,32 @@ https://segmentfault.com/a/1190000042235316
 
    }
 ```
+
+
+哈喽, 晓倩同学
+
+看你朋友圈了, 很可爱很漂亮, 优秀如你, 过年过节也有被催的烦恼啊[捂脸]
+
+对了, 介绍下自己, 我叫刘浩哲 有个速记口诀
+刘浩存没存折 = 刘浩存 - 存 + 哲 = 刘浩哲 , 好记吧[斜眼]
+
+是呀, 刚毕业,开始工作就催, 一催就三年了.
+
+听说我们同年? 你也是 97 的么.
+
+
+这样啊, 那我们可能是同一界的, 17级的么?
+你高中哪里毕业的哦.
+
+
+	location ^~ /tianditu_gov_cn/ {
+		proxy_pass https://t0.tianditu.gov.cn/;
+		proxy_read_timeout 5;
+		expires 3d;
+		proxy_cache_revalidate off;
+		proxy_cache_valid 200 30d;
+		proxy_cache_valid 404 1m;
+		proxy_cache_valid any 1m;
+		proxy_cache_key "$request_uri";
+		proxy_cache tianditu_gov_cn;
+	}

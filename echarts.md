@@ -138,6 +138,40 @@ function transpose(matrix) {
 }
 ```
 
+### tooltip-异步
+
+```js
+function formatter(params, ticket, callback) {
+  setTimeout(function () {
+    callback(ticket, params[0].name + "<br/>" + params[0].value);
+  }, 1000);
+}
+```
+
+### tooltip-table
+
+```js
+function getItem(p) {
+  return p;
+}
+function getTds_str(pList) {
+  return pList.map((p) => `<td>${getItem(p)}</td>`).join("");
+}
+function getTrs_str(arr1: string[][]) {
+  return arr1.map((v) => `<tr>${getTds_str(v)}</tr>`).join("");
+}
+function getTable_str(arr) {
+  return `<table>${getTrs_str(arr)}</table>`;
+}
+
+let arr = [
+  ["氯乙烯", "222.61"],
+  ["行业源", "液化石油"],
+  ["", "塑料制造"],
+];
+getTable_str(arr);
+```
+
 ## dataZoom
 
 ```js

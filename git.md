@@ -176,12 +176,15 @@ git merge master
 当前分支 合并到 master. 并生成一个 合并记录 commit.
 以 master 为主, 将当前分支. 合并到 master, 并生成一个合并记录.
 将当前分支的最后一个 commit 与 master 最后一个 commit 进行合并
+产生的节点记录, 会有两个父节点
+有冲突文件, 只需要合并一次, 冲突需要全部一起解决
 
 rebase: 准确点叫 rebase into
 
 git rebase master
 当前分支 找到与 master 共同的节点. 变基到 master 上
 当前分支 找到与 master 共同的节点. 以 master 为主, 在 master 基础上重建
+可能会产生冲突, 需要多次解决, 重复操作, 直到没有冲突
 
 ## LOG
 
