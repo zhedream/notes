@@ -448,7 +448,54 @@ http://v2.iviewui.com/components/tabs
 </tabs>
 ```
 
-##
+## iview-scroll-table
+
+```html
+<div style="margin-top:10px;flex:1;overflow: auto;">
+  <iview-scroll-table
+    :columns="table.columns"
+    :data="filterData"
+    v-bind="table.props"
+    @on-selection-change="handleSelect"
+  >
+  </iview-scroll-table>
+</div>
+```
+
+```js
+vm = {
+  data: {
+    table: {
+      columns: [
+        {
+          type: "selection",
+          width: 60,
+          align: "center",
+        },
+        {
+          title: "设备编号",
+          key: "PointDeviceList",
+          align: "center",
+          render(h, params) {
+            return h("div", {}, params.row.PointDeviceList.join(","));
+          },
+        },
+      ],
+      data: [],
+      props: {
+        highlightRow: true,
+        stripe: true,
+        border: true,
+        rowKey: "DGIMN",
+      },
+    },
+  },
+  computed: {
+    filterData() {},
+    pageData() {},
+  },
+};
+```
 
 ## Modal
 

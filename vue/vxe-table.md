@@ -401,6 +401,90 @@ function getColumn1() {
 }
 ```
 
+## demo
+
+```html
+<div style="margin-top:10px;flex:1;overflow: auto;">
+  <vxe-grid
+    ref="xGrid"
+    :columns="vxeGrid.columns"
+    :data="filterVxeData"
+    v-bind="vxeGrid.props"
+    @checkbox-all="checkboxAll"
+    @checkbox-change="checkboxChange"
+  ></vxe-grid>
+</div>
+```
+
+```js
+vm = {
+  data: {
+    vxeGrid: {
+      columns: [
+        {
+          type: "checkbox",
+          width: 60,
+          align: "center",
+        },
+        {
+          title: "时间",
+          field: "monitorTime",
+          align: "center",
+        },
+      ],
+      data: [],
+      props: {
+        rowConfig: {
+          height: 40,
+          isCurrent: true,
+          isHover: true,
+          resizable: true,
+        },
+        scrollX: {
+          gt: 10,
+          oSize: 2,
+        },
+        scrollY: {
+          gt: 10,
+          oSize: 2,
+        },
+        border: true,
+        height: "100%",
+        showHeaderOverflow: true,
+        showOverflow: true,
+        checkboxConfig: {
+          checkField: "_checked",
+          trigger: "row",
+        },
+      },
+    },
+  },
+  methods: {
+    checkboxAll(p) {
+      console.log(p);
+      // this.table.data.forEach((item) => {
+      //   item._checked = p.checked;
+      // });
+    },
+    checkboxChange(p) {
+      console.log(p);
+      // Object.assign(p.row, {
+      //   _checked: p.checked,
+      // });
+    },
+    resetTable() {
+      this.vxeGrid.data.forEach((item) => {
+        item._checked = false;
+      });
+    },
+  },
+  computed: {
+    filterVxeData() {},
+    pageVxedata() {},
+  },
+};
+```
+
 ## 滚动条
 
 ```less
