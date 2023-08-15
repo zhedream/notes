@@ -126,9 +126,29 @@ var vm = {
       modalProps: {
         footer: null,
         title: "",
+        dialogStyle: {
+          top: "60px",
+        },
+        width: "90%",
       },
       formState: getFormState(),
       formRules: getFormRules(),
+      formRules: {
+        checkPass: [
+          {
+            validator: (rule, value, callback) => {
+              if (value === '') {
+                callback(new Error('Please input the password again'));
+              } else if (value !== this.ruleForm.pass) {
+                callback(new Error("Two inputs don't match!"));
+              } else {
+                callback();
+              }
+            },
+            trigger: 'change',
+          }
+        ],
+      }
       formProps: {
         labelCol: { span: 4 },
         wrapperCol: { span: 19 },
@@ -136,39 +156,50 @@ var vm = {
     },
   },
 };
+vm.$refs.form.clearValidate();
+vm.$refs.form.validate((valid) => {
+  if (valid) {
+    console.log("submit!");
+  } else {
+    console.log("error submit!!");
+    return false;
+  }
+});
 ```
 
 ## a-table
 
 ```html
-<a-table
-  size="middle"
-  rowKey="ID"
-  :columns="columns"
-  :dataSource="dataSource"
-  :pagination="true"
-  :pagination="{defaultPageSize:5}"
-  :customRow="customRow"
-  :loading="isLoading"
-  :scroll="{ x: 120*3*selectCount+240 }"
->
-  <!-- #NameCustom 这种写法只能 用于 template 标签  -->
-  <template #NameCustom="text,data,index">{{text}}</template>
-  <span slot="NameCustom" slot-scope="text,data,index"></span>
-  <template #action="text,data,index">
-    <a-popconfirm
-      title="确定删除?"
-      ok-text="是"
-      cancel-text="否"
-      @confirm="delTaskOK(record)"
-    >
-      <a>删除</a>
-    </a-popconfirm>
-  </template>
-</a-table>
+<div class="table-box" style="flex:1;overflow:auto;">
+  <a-table
+    size="middle"
+    rowKey="ID"
+    :columns="columns"
+    :dataSource="dataSource"
+    :pagination="true"
+    :pagination="{defaultPageSize:5}"
+    :customRow="customRow"
+    :loading="isLoading"
+    :scroll="{ x: 120*3*selectCount+240 }"
+  >
+    <!-- #NameCustom 这种写法只能 用于 template 标签  -->
+    <template #NameCustom="text,data,index">{{text}}</template>
+    <span slot="NameCustom" slot-scope="text,data,index"></span>
+    <template #action="text,data,index">
+      <a-popconfirm
+        title="确定删除?"
+        ok-text="是"
+        cancel-text="否"
+        @confirm="delTaskOK(record)"
+      >
+        <a>删除</a>
+      </a-popconfirm>
+    </template>
+  </a-table>
+</div>
 ```
 
-```js
+```ts
 const customRow = (record, index) => {
   console.log(123);
   return {
@@ -222,6 +253,110 @@ const columns = [
   }
 ];
 
+
+
+
+```
+
+```ts
+const table = reactive<{
+  columns: Readonly<Partial<Column>[]>;
+  data: Readonly<GetPathPlanResItem[]>;
+  props: {
+    rowKey: (r: GetPathPlanResItem, index: number) => string;
+    pagination: false;
+    size: "small";
+    [key: string]: any;
+  };
+}>({
+  columns: Object.freeze(columns),
+  data: [],
+  props: {
+    rowKey: (r: GetPathPlanResItem) => r.PlanID,
+    pagination: false,
+    size: "small",
+    scroll: { y: true, x: true },
+    // scroll: { y: 260 },
+  },
+});
+```
+
+自适应高度
+
+```less
+/deep/ .table-box {
+  .ant-table-wrapper,
+  .ant-spin-nested-loading,
+  .ant-spin-container,
+  .ant-table,
+  .ant-table-content,
+  .ant-table-scroll {
+    height: 100%;
+  }
+
+  .ant-spin-container {
+    display: flex;
+    flex-direction: column;
+
+    & > .ant-table {
+      flex: 1;
+      overflow: auto;
+    }
+
+    & > .ant-table-pagination {
+      align-self: flex-end;
+    }
+  }
+
+  // tbody
+  .ant-table-scroll {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ant-table-content .ant-table-body {
+    overflow: auto;
+    flex: 1;
+  }
+
+  // fixed-right
+  .ant-table-fixed-right {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 20px);
+  }
+
+  .ant-table-body-outer {
+    overflow: auto;
+    flex: 1;
+  }
+
+  // fixed-left
+  .ant-table-fixed-left {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 20px);
+
+    .ant-table-body-outer {
+      overflow: hidden;
+      flex: 1;
+    }
+  }
+
+  .ant-table-empty {
+    .ant-table-content .ant-table-body {
+      flex: 0;
+    }
+  }
+}
+
+// /deep/.table-box {
+//   .ant-table-content .ant-table-body {
+//     height: calc(100vh - 400px);
+//     min-height: 330px;
+//     max-height: 730px;
+//   }
+// }
 ```
 
 ## modal

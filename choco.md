@@ -3,6 +3,9 @@
 https://chocolatey.org/
 
 choco list -lo
+choco list --local-only
+
+choco upgrade chocolatey
 
 安装需要 `管理员运行` cmd 或 powershell
 
@@ -14,11 +17,12 @@ choco uninstall vim
 
 ## 软件包
 
+
 https://community.chocolatey.org/packages
 
 vim, wintail, mkcert
 
-nvm, git, openssl
+nvm, git, openssl, ffmpeg
 
 ## proxy
 

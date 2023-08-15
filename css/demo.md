@@ -1,8 +1,14 @@
 # asd
-```css
 
-.a{
-    word-break: break-all; /* 自动换行 */
+```css
+.a {
+  word-break: break-all; /* 自动换行 */
+}
+.ellipsis {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 /* 一行显示否则省略号 */
 .line-clamp1 {
@@ -41,8 +47,6 @@
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
-
-
 ```
 
 # 参考
