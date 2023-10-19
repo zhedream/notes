@@ -75,6 +75,44 @@ https://cr.console.aliyun.com/undefined/instances/mirrors
 sudo usermod -aG docker $USER
 reboot
 
+## 运行
+
+```DockerFile
+
+# 使用 Node.js 官方镜像
+FROM node:14
+
+# 设置工作目录
+WORKDIR /usr/src/app
+
+# 将依赖文件拷贝到工作目录
+COPY package*.json ./
+
+# 安装应用程序依赖
+RUN npm install
+
+# 将应用程序代码拷贝到工作目录
+COPY . .
+
+# 暴露应用程序运行的端口
+EXPOSE 3000
+
+# 定义默认的启动命令
+CMD ["node", "app.js"]
+
+
+```
+
+```bash
+
+docker build -t my-image .
+
+docker run -d -p 80:80 my-image
+
+docker exec -it container_id /bin/bash
+
+```
+
 ## docker 开机启动
 
 systemctl enable docker.service # /usr/lib/systemd/system/docker.service

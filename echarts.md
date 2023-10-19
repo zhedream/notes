@@ -253,3 +253,44 @@ option 中 animation: false, animationDurationUpdate: 0
 在使用 使用抽稀算法, 自定义
 
 在非 category X 轴时, 仍需要显示部分 symbol, 可手动抽稀算法
+
+## 时间轴的处理
+
+```
+    xAxis: {
+      type: "category", // time category
+      splitNumber: 24,
+      axisLabel: {
+        // interval: function(value, index) {
+        //   // 将时间戳转换为日期对象
+        //   var date = new Date(value);
+        //   // 如果当前小时为整点，则显示刻度
+        //   return date.getHours() % 1 === 0;
+        // },
+        formatter: function(value) {
+          // console.log(value)
+          // 将时间戳转换为日期对象
+          const date = new Date(value);
+
+          // 年
+          if (date.getMonth() === 0 && date.getDate() === 1 && date.getHours() === 1) {
+            return date.getFullYear() + "年";
+          }
+
+          // 月
+          if (date.getDate() === 1) {
+            return date.getMonth() + 1 + "月";
+          }
+
+          // 日
+          if (date.getHours() === 0) {
+            return date.getDate() + "日";
+          }
+
+          // 返回小时数
+          return date.getHours() + "点";
+        },
+      },
+      // data: ["0", "1", "2", "3", "4", "5", "6"],
+    },
+```

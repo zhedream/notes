@@ -111,3 +111,32 @@ npm_mirror: https://npmmirror.com/mirrors/npm/
 # node_mirror: https://npm.taobao.org/mirrors/node/
 # npm_mirror: https://npm.taobao.org/mirrors/npm/
 ```
+# ubuntu 最新 nvm
+
+https://github.com/nvm-sh/nvm
+
+```bash
+
+# 选择一个方式安装 nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+
+# 刷新环境变量
+source ~/.bashrc 
+
+nvm -v  # nvm 版本 0.39.5
+
+nvm install --lts
+
+nvm use --lts
+
+nvm install 16
+
+nvm use 16
+
+nvm cache clear
+
+# 推荐使用 16  18 往上的版本变更比较大, 还需要 ubuntu 18 版本, 可能还有其他问题
+nvm alias default 16 
+
+```

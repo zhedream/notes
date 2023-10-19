@@ -319,3 +319,33 @@ https://segmentfault.com/q/1010000002972254
 centos 很多东西需要编译. ubuntu 则可以不用. 可以省很多时间
 centos 更稳定吧
 虽然我从没遇到 ubuntu 不稳定的情况,
+
+## 用户和权限
+
+```bash
+# 添加用户
+adduser www
+
+# 修改密码
+passwd www
+
+# 添加用户到 sudo 组
+usermod -aG sudo www
+
+# 查看用户组
+groups www
+
+# 查看用户
+cat /etc/passwd
+
+# 修改文件所有者
+chown -R www:www /home/www
+# 修改文件组
+chgrp -R www /home/www
+
+# 修改文件权限1
+chmod -R 755 /home/www
+# 修改文件权限(字母)
+chmod -R u=rwx,g=rx,o=rx /home/www
+
+```
