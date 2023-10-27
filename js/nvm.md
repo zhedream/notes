@@ -52,7 +52,7 @@ nvm uninstall 14.19.1
 
 ## 安装
 
-建议以 `管理员` 身份运行 
+建议以 `管理员` 身份运行
 
 安装 nvm 前, 卸载之前安装的 nodejs
 
@@ -84,7 +84,7 @@ Installation complete. If you want to use this version, type
 nvm use 12.22.12
 ```
 
-```bash 
+```bash
 C:\Users\Administrator>nvm uninstall 16.14.2
 Uninstalling node v16.14.2... done
 ```
@@ -111,9 +111,10 @@ npm_mirror: https://npmmirror.com/mirrors/npm/
 # node_mirror: https://npm.taobao.org/mirrors/node/
 # npm_mirror: https://npm.taobao.org/mirrors/npm/
 ```
+
 # ubuntu 最新 nvm
 
-https://github.com/nvm-sh/nvm
+https://github.com/nvm-sh/nvm#installing-and-updating
 
 ```bash
 
@@ -122,7 +123,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 
 # 刷新环境变量
-source ~/.bashrc 
+source ~/.bashrc
 
 nvm -v  # nvm 版本 0.39.5
 
@@ -137,6 +138,10 @@ nvm use 16
 nvm cache clear
 
 # 推荐使用 16  18 往上的版本变更比较大, 还需要 ubuntu 18 版本, 可能还有其他问题
-nvm alias default 16 
+nvm alias default 16
+
+# 国内镜像
+export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node/
+export NVM_NPM_ORG_MIRROR=https://npmmirror.com/mirrors/npm/
 
 ```

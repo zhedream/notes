@@ -10,6 +10,37 @@ ubuntu 18.10
 
 sudo apt install docker.io
 
+## centos7
+
+https://cloud.tencent.com/developer/article/1701451
+
+```bash
+
+yum remove docker  docker-common docker-selinux docker-engine
+
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+# yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo（阿里仓库）
+
+sudo yum install docker-ce docker-ce-cli containerd.io
+
+sudo systemctl start docker
+
+sudo systemctl enable docker
+
+# 安装 docker-compose
+
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+# sudo curl -L "https://get.daocloud.io/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+docker-compose --version
+
+
+```
+
 ## 镜像
 
 镜像是 生成容器的模板, 是只读的, 就像是代码里的 `class`

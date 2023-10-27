@@ -62,6 +62,10 @@ proxychains4  curl google.com
 sudo proxychains4 curl google.com
 
 
+# x-ui
+
+https://v2rayssr.com/teach-vless.html
+https://www.youtube.com/watch?v=Stdj6U568S0&list=LL&index=6&t=1693s
 
 # win10
 
