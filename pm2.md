@@ -69,6 +69,8 @@ pm2 unstartup  => pm2-startup uninstall
 
 pm2-startup 忘记 install ,可以再执行一次, 不会多次安装, 不会玩坏.
 
+作为服务启动
+
 pm2-windows-service
 
 pm2-service-install

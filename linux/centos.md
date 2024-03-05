@@ -7,9 +7,9 @@ yum update -y
 # 安装 git
 yum install git -y
 # zip 解压
-yum instatll unzip -y
+yum install unzip -y
 # 安装 screen
-yum screen -y
+yum install screen -y
 
 # 安装 clash
 
