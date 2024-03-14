@@ -34,30 +34,34 @@ chmod 755 ./tools/install.sh
 make # 编译
 make install # 安装
 make install-config # 生成配置文件
-proxychains4 curl google.com # 测试
+
 vim /etc/proxychains.conf # 编辑配置文件
 vim /usr/local/etc/proxychains.conf # 编辑配置文件  config file found: /usr/local/etc/proxychains.conf
 # socks5  127.0.0.1 7891
 
+proxychains4 curl google.com # 测试
+
 
 # 安装 docker
 
-yum remove docker docker-common docker-selinux docker-engine
-yum install -y yum-utils device-mapper-persistent-data lvm2
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-yum install docker-ce docker-ce-cli containerd.io
+yum remove docker docker-common docker-selinux docker-engine -y
+yum install -y yum-utils device-mapper-persistent-data lvm2 -y
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo -y
+yum install docker-ce docker-ce-cli containerd.io -y
 systemctl start docker
 systemctl enable docker
 
 usermod -aG docker $USER
 
 # 安装 docker-compose
-
+proxy_on
 curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 chmod +x /usr/local/bin/docker-compose
 
 docker-compose --version
+proxy_off
+
 
 ```
 
@@ -69,8 +73,17 @@ docker-compose --version
 
 adduser www
 
+proxy_on
+
 # nvm https://github.com/nvm-sh/nvm#installing-and-updating
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 source ~/.bashrc
 nvm -v  # nvm 版本 0.39.5
 nvm install --lts
+
+nvm install 16
+
+nvm use 16
+
+proxy_off

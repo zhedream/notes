@@ -541,6 +541,96 @@ vm = {
 }
 ```
 
+
+## setup
+
+
+```html
+<vxe-grid ref="xGrid" :columns="columns" :data="props.dataSource" v-bind="table.props">
+  <template #action="{ row }">
+    <a-button :disabled="row.State!==1" size="small" type="link" @click="action('start', row)">开始</a-button>
+    <a-button :disabled="row.State!==4" size="small" type="link" @click="action('download', row)">下载</a-button>
+    <a-popconfirm cancel-text="否" ok-text="是" title="确定删除?" @confirm="action('del', row)">
+      <a-button size="small" type="link">删除</a-button>
+    </a-popconfirm>
+  </template>
+</vxe-grid>
+```
+
+```ts
+
+
+import { reactive, ref } from "vue";
+import { columns } from "./columns";
+
+import type { PushHistoryTableActionData } from "./type";
+
+type Row = PushHistoryTableActionData["row"];
+type Type = PushHistoryTableActionData["type"];
+
+const props = defineProps<{
+  dataSource: Row[]
+}>();
+
+const table = reactive({
+  // data: props.dataSource,
+  props: {
+    rowConfig: {
+      height: 40,
+      isCurrent: true,
+      isHover: true,
+      resizable: true,
+    },
+    checkboxConfig: {
+      // checkField: "_checked",
+      trigger: "cell",
+    },
+    scrollX: {
+      gt: 10,
+      oSize: 2,
+    },
+    scrollY: {
+      gt: 10,
+      oSize: 2,
+    },
+    border: true,
+    height: "100%",
+    showHeaderOverflow: true,
+    showOverflow: true,
+    resizable: true,
+    // showHeaderOverflow: true,
+    // showOverflow: true,
+
+  },
+});
+
+
+const emit = defineEmits<{
+  (event: "action", data: PushHistoryTableActionData)
+}>();
+
+function action(type: Type, row: Row) {
+  emit("action", { row, type });
+}
+
+const xGrid = ref<any>(null);
+
+function getChecked() {
+  return xGrid.value.getCheckboxRecords() as Row[];
+}
+
+function clearChecked() {
+  xGrid.value.clearCheckboxRow();
+}
+
+defineExpose({
+  getChecked,
+  clearChecked,
+});
+
+
+```
+
 ## 拖动排序
 
 https://jsrun.net/wKzKp

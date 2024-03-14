@@ -444,3 +444,8 @@ git ls-remote -h -t https://github.91chi.fun/https://github.com/nhn/raphael.git
 git 是什么.
 
 初始化仓库
+
+
+git reset --hard origin/master && git stash apply
+
+

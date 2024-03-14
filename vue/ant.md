@@ -167,6 +167,81 @@ vm.$refs.form.validate((valid) => {
 });
 ```
 
+## form model setup
+- useForm.ts
+```ts
+
+const defaultFormConfig = {
+  datum: {},
+  temState: {},
+  attrs: {
+    // 关闭自动提示
+    autoComplete: "off",
+  },
+  state: {},
+  rules: {},
+};
+
+interface Form<F, D, T> {
+  datum: D;
+  temState: T;
+  state: F;
+  rules: Partial<Record<keyof F, Rule[]>>;
+  attrs: typeof defaultFormConfig.attrs & FormProps;
+}
+
+interface InForm<F, D, T> extends Omit<Form<F, D, T>, "attrs"> {
+  attrs: Partial<typeof defaultFormConfig.attrs> & FormProps;
+
+}
+
+export function useForm<F, D = any, T = any>
+(config: Partial<InForm<F, D, T>>): UnwrapRef<Form<F, D, T>> {
+
+  let form: Form<F, D, T> = {
+    datum: Object.assign({}, defaultFormConfig.datum, config.datum),
+    temState: Object.assign({}, defaultFormConfig.temState, config.temState),
+    state: Object.assign({}, defaultFormConfig.state, config.state),
+    rules: Object.assign({}, defaultFormConfig.rules, config.rules),
+    attrs: Object.assign({}, defaultFormConfig.attrs, config.attrs),
+  };
+  return reactive(form);
+}
+
+export function useFormRef(): Ref<any> {
+  return ref();
+}
+```
+- MainForm.vue
+```vue
+<template>
+  <a-form-model ref="formRef" :model="form.state" :rules="form.rules" v-bind="form.attrs">
+    <a-form-model-item label="时间" prop="time">
+      <a-input v-model:value="form.state.time" />
+    </a-form-model-item>
+  </a-form-model>
+</template>
+
+<script lang="ts" setup>
+// form
+const formRef = ref<any>(null);
+const form = useForm({
+  state: {
+    time: "2024-03-06 11:11",
+    location: "40.1524 , 117.1542",
+    address: "太阳系地球北京昌平",
+    remark: "",
+    fileList: [] as UploadFile[],
+  },
+  attrs: {
+    labelCol: { span: 4 },
+    wrapperCol: { span: 20 },
+  },
+});
+</script>
+
+```
+
 ## a-table
 
 ```html
@@ -387,6 +462,94 @@ const table = reactive<{
     <a-button key="submit" type="primary" @click="addOK">确定</a-button>
   </template>
 </a-modal>
+
+```
+
+## modal setup
+- useForm.ts
+```ts
+export function useModal<A extends object>(modalProps: A) {
+
+  let target = {
+    visible: false,
+    title: "标题",
+    cancelText: "取消",
+    okText: "确定",
+    maskClosable: false,
+    destroyOnClose: true,
+    footer: true,
+  };
+
+  let defaultAttrs: typeof target & A = Object.assign(target, modalProps);
+
+  return reactive({
+    // visible: false, // 把 open 从 attrs 中提取出,来, 以便 v-model , 或者有什么办法 在 v-bind 也能有 v-model 的效果
+    attrs: defaultAttrs,
+  });
+
+}
+```
+- type.ts
+```ts
+// type.ts
+// ====== ShowModal
+type ShowModalOkData = {
+  row: any
+};
+
+export type ShouModalOnOk = (data: ShowModalOkData) => void;
+
+export type ShowModalOpenData = {
+  row: any;
+  onOk: ShouModalOnOk;
+  onCancel: () => void;
+}
+
+```
+- ShowModal.vue
+```vue
+<template>
+  <a-modal
+    v-bind="modal.attrs"
+    @cancel="modalCancel"
+    @ok="modalOk"
+  >
+    <div>
+      内容
+    </div>
+  </a-modal>
+</template>
+
+
+<script lang="ts" setup>
+
+
+import { useModal } from "@/hooks/useForm";
+import type { ShowModalOpenData } from "@/views/pushHistory/type";
+
+const modal = useModal({
+  title: "推送详情",
+  footer: false,
+});
+
+function modalOpen(data: ShowModalOpenData) {
+  modal.attrs.visible = true;
+}
+
+function modalCancel() {
+  modal.attrs.visible = false;
+}
+
+function modalOk() {
+  modal.attrs.visible = false;
+}
+
+defineExpose({
+  modalOpen,
+});
+
+</script>
+
 ```
 
 ## a-tree
