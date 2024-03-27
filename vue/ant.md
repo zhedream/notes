@@ -651,6 +651,55 @@ exportTable() {
 
 ```
 
+## BaseSearch
+
+```vue base-search.vue
+<template>
+  <div class="base_search">
+    <slot></slot>
+  </div>
+</template>
+
+<style lang="less">
+
+.base_search {
+  border: 1px solid #e8e8e8;
+  background-color: #fefefe;
+  position: relative;
+  //overflow: auto;
+  padding: 15px 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>
+```
+
+```vue base-search-item
+<template>
+  <div class="base_search_item">
+    <slot></slot>
+  </div>
+</template>
+
+<style lang="less">
+
+.base_search_item {
+  padding: 5px;
+
+  & > * {
+    width: max-content;
+  }
+}
+</style>
+```
+
+```ts index.ts
+import BaseSearch from "./base-search.vue";
+import BaseSearchItem from "./base-search-item.vue";
+
+export { BaseSearch, BaseSearchItem };
+```
+
 ## a-row
 
 ```html

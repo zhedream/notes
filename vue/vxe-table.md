@@ -485,7 +485,7 @@ vm = {
 };
 ```
 
-## 滚动条
+## 滚动条 vue2
 
 ```less
 .vxe-table {
@@ -540,14 +540,67 @@ vm = {
   }
 }
 ```
+## setup vue2
+
+## vxe-grid setup vue3
+```ts ./type.ts TableActionData
+export type TableActionType = "edit" | "del";
+export type TableActionData = { type: TableActionType, row: TaskTypeGetTaskTypeListItem; };
+```
+
+```ts data.ts columns
+import type { VxeColumns } from "@/types";
+import type { TableActionData } from "./type";
+
+export const columns: VxeColumns<TableActionData["row"]> = [
+  {
+    title: "类型编码",
+    field: "code",
+    align: "center",
+  },
+  {
+    title: "类型名称",
+    field: "name",
+    align: "center",
+  },
+  {
+    fixed: "right",
+    width: 250,
+    title: "操作",
+    align: "center",
+    slots: {
+      default: "action",
+      // default: ({ row, column }) => {
+      //   column.field;
+      // },
+    },
+  },
+];
+```
+
+```ts @types/index.ts VxeSlotParams VxeColumns
+import type { VxeGridSlots, VxeTableDataRow, VxeTableDefines } from "vxe-table";
+
+// vxe-table 的 column 配置项
+
+// VxeGridProps["columns"]
+// VxeGridPropTypes.Columns<FormTableItem>
+
+export interface VxeColumn<D = VxeTableDataRow, K extends string = never> extends VxeTableDefines.ColumnOptions<D> {
+  field?: (keyof D extends string ? keyof D : string) | K;
+}
+
+export type VxeColumns<D = VxeTableDataRow, F extends string = never> = VxeColumn<D, F>[];
 
 
-## setup
+// vxe-table 的 slots
+type VxeSlotFn<D = VxeTableDataRow> = VxeGridSlots<D>[string];
+export type VxeSlotParams<D = VxeTableDataRow> = Parameters<VxeSlotFn<D>>[0];
+```
 
-
-```html
+```html vxe-grid
 <vxe-grid ref="xGrid" :columns="columns" :data="props.dataSource" v-bind="table.props">
-  <template #action="{ row }">
+  <template #action="{ row }:SlotParams">
     <a-button :disabled="row.State!==1" size="small" type="link" @click="action('start', row)">开始</a-button>
     <a-button :disabled="row.State!==4" size="small" type="link" @click="action('download', row)">下载</a-button>
     <a-popconfirm cancel-text="否" ok-text="是" title="确定删除?" @confirm="action('del', row)">
@@ -556,23 +609,25 @@ vm = {
   </template>
 </vxe-grid>
 ```
+MainTable.vue - setup
+```ts setup
 
-```ts
-
-
+import type { VxeSlotParams } from "@/types";
+import type { TableActionData } from "./type";
 import { reactive, ref } from "vue";
-import { columns } from "./columns";
+import { columns } from "./data";
 
-import type { PushHistoryTableActionData } from "./type";
+type Row = TableActionData["row"];
+type Type = TableActionData["type"];
 
-type Row = PushHistoryTableActionData["row"];
-type Type = PushHistoryTableActionData["type"];
+type SlotParams = VxeSlotParams<Row>;
 
 const props = defineProps<{
-  dataSource: Row[]
+  dataSource: Row[];
 }>();
 
 const table = reactive({
+  // columns: columns,
   // data: props.dataSource,
   props: {
     rowConfig: {
@@ -592,6 +647,7 @@ const table = reactive({
     scrollY: {
       gt: 10,
       oSize: 2,
+      enabled: false,
     },
     border: true,
     height: "100%",
@@ -605,8 +661,10 @@ const table = reactive({
 });
 
 
+// 方法
+
 const emit = defineEmits<{
-  (event: "action", data: PushHistoryTableActionData)
+  (event: "action", data: TableActionData)
 }>();
 
 function action(type: Type, row: Row) {
@@ -630,6 +688,60 @@ defineExpose({
 
 
 ```
+
+## vxe-pager setup vue3
+
+- .vue
+```vue
+
+<vxe-pager v-bind="pageState"></vxe-pager>   
+
+<script lang="ts" setup> 
+const pageState = usePageState({
+  onPageChange:(e) => {
+    if (e.type === "current") {
+      search();
+    } else {
+      pageState.currentPage = 1;
+      search();
+    }
+  }
+});
+</script>
+```
+- userPageState
+```ts useForm.ts usePageState
+import type { VxePagerEvents } from "vxe-table";
+interface PageState {
+  currentPage: number;
+  pageSize: number;
+  pageSizes: number[];
+  total: number;
+  onPageChange?: VxePagerEvents.PageChange;
+}
+
+export function usePageState(conf?: Partial<PageState>): UnwrapRef<PageState> {
+  let defaultState: PageState = {
+    currentPage: 1,
+    pageSize: 20,
+    pageSizes: [10, 20, 50, 100],
+    total: 0,
+  };
+  return reactive(Object.assign(defaultState, conf));
+}
+
+type R<T> = Ref<T> | UnwrapRef<T> | T;
+
+export function usePageData(data: R<unknown[]>, pageState: R<PageState>) {
+  return computed(() => {
+    const state = unref(pageState);
+    return unref(data).slice((state.currentPage - 1) * state.pageSize, state.currentPage * state.pageSize);
+  });
+}
+
+```
+
+
 
 ## 拖动排序
 

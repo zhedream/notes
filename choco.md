@@ -28,7 +28,7 @@ nvm, git, openssl, ffmpeg
 
 https://docs.chocolatey.org/en-us/guides/usage/proxy-settings-for-chocolatey
 
-choco config set proxy http://localhost:8888
+choco config set proxy http://127.0.0.1:7890
 
 C:\ProgramData\chocolatey\config\chocolatey.config
 
