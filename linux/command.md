@@ -162,3 +162,7 @@ ctrl + z , 后台
 
 bg 查看, 后台任务 id
 fg [id] 
+
+## lsb_release -a
+
+查看发行版本
