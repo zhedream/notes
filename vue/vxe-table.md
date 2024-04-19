@@ -543,11 +543,14 @@ vm = {
 ## setup vue2
 
 ## vxe-grid setup vue3
+
+- table action 
+
 ```ts ./type.ts TableActionData
 export type TableActionType = "edit" | "del";
 export type TableActionData = { type: TableActionType, row: TaskTypeGetTaskTypeListItem; };
 ```
-
+- columns
 ```ts data.ts columns
 import type { VxeColumns } from "@/types";
 import type { TableActionData } from "./type";
@@ -577,7 +580,7 @@ export const columns: VxeColumns<TableActionData["row"]> = [
   },
 ];
 ```
-
+- Vxe types
 ```ts @types/index.ts VxeSlotParams VxeColumns
 import type { VxeGridSlots, VxeTableDataRow, VxeTableDefines } from "vxe-table";
 
@@ -597,7 +600,7 @@ export type VxeColumns<D = VxeTableDataRow, F extends string = never> = VxeColum
 type VxeSlotFn<D = VxeTableDataRow> = VxeGridSlots<D>[string];
 export type VxeSlotParams<D = VxeTableDataRow> = Parameters<VxeSlotFn<D>>[0];
 ```
-
+- vxe-grid
 ```html vxe-grid
 <vxe-grid ref="xGrid" :columns="columns" :data="props.dataSource" v-bind="table.props">
   <template #action="{ row }:SlotParams">
@@ -609,7 +612,7 @@ export type VxeSlotParams<D = VxeTableDataRow> = Parameters<VxeSlotFn<D>>[0];
   </template>
 </vxe-grid>
 ```
-MainTable.vue - setup
+- MainTable.vue - setup
 ```ts setup
 
 import type { VxeSlotParams } from "@/types";

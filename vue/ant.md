@@ -216,6 +216,10 @@ export function useFormRef(): Ref<any> {
 ```vue
 <template>
   <a-form-model ref="formRef" :model="form.state" :rules="form.rules" v-bind="form.attrs">
+    <!-- 支持嵌套验证 -->
+    <a-form-model-item label="用户名" prop="userinfo.User_Name">
+      <a-input v-model:value="form.state.userinfo.User_Name" placeholder="用户名" />
+    </a-form-model-item>
     <a-form-model-item label="时间" prop="time">
       <a-input v-model:value="form.state.time" />
     </a-form-model-item>
@@ -237,6 +241,18 @@ const form = useForm({
     labelCol: { span: 4 },
     wrapperCol: { span: 20 },
   },
+  rules: {
+    time: [
+      { required: true, message: "请输入时间", trigger: "blur" },
+    ],
+    // 嵌套规则
+    userinfo: {
+      User_Name: [
+        { required: true, message: "请输入用户名", trigger: "blur" },
+      ],
+    },
+  },
+
 });
 </script>
 
