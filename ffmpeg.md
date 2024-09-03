@@ -37,3 +37,7 @@ youtube-dl  https://www.youtube.com/watch?v=VTvaZnJ9XuY
 
 1. 阮一峰
    https://ruanyifeng.com/blog/2020/01/ffmpeg.html
+
+
+ffmpeg -i a.mp4 -ss 00:01:26 -to 00:10:22 -c:v copy -c:a copy b.mp4
+ffmpeg -i 22729-sc-720p.mp4 -ss 00:01:26 -to 00:10:22 -c:v copy -c:a copy b.mp4

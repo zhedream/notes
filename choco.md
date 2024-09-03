@@ -67,3 +67,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 参考
 
 路径 https://www.jianshu.com/p/f5f4efd04cab
+
+## 2.x
+
+choco list 

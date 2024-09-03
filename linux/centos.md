@@ -47,6 +47,8 @@ proxychains4 curl google.com # 测试
 yum remove docker docker-common docker-selinux docker-engine -y
 yum install -y yum-utils device-mapper-persistent-data lvm2 -y
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo -y
+# 阿里云
+yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -y
 yum install docker-ce docker-ce-cli containerd.io -y
 systemctl start docker
 systemctl enable docker

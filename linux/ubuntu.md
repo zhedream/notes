@@ -126,6 +126,10 @@ C-a [ 进入拷贝/回滚模式
 
 alias cls="printf '\033c'"
 
+## cat    
+
+cat  x.conf
+
 ## 安装使用 wps
 
 安装包
@@ -212,6 +216,8 @@ UUID=1CC22D8CC22D6B6A /data ntfs defaults 0 0
 ```bash
 # 端口使用情况
 sudo lsof -i:3306
+netstat -ntpl 
+netstat -ntpl  | grep :22
 ```
 
 # 交换空间 swap

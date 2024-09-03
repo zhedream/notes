@@ -166,3 +166,88 @@ fg [id]
 ## lsb_release -a
 
 查看发行版本
+
+
+## getenforce
+
+## firewall
+
+## cat
+
+cat vsftpd.conf | grep -v "^#"
+
+## ftp
+
+vsftp
+
+cat xferlog
+cat /var/log/vsftpd.log
+
+lcd /var/
+put a.txt
+get b.txt
+
+ftp+quota
+
+```bash ftp 脚本
+#/bin/bash
+ftp -n<<!
+ open 192.1688.31.135
+ user testuser 123
+ binary
+ cd /home/data
+ lcd /home/data
+ prompt
+ mget *
+ close
+ bye
+!
+```
+
+## samba 网上邻居
+
+与 windows 兼容
+
+yum install samba
+yum install "samba*"
+
+```ini 
+[data]
+ path = /home/data
+ comment = /home/data
+ public = no
+ valid users = @testuser
+ write list = @testuser
+```
+
+增加账号
+
+useradd smbuser -s /bin/fase; passwd smbuser
+
+smbpasswd -a sbmuser
+
+
+smbclient -L //192.168.31.135
+
+mount -t cifs -o username=smbuser,password=456 //192.168.31.135/data /mnt2
+
+
+
+testparm
+
+/etc/smb.conf
+
+service smb status
+
+systemctl enable smb.service
+
+
+## netstat
+
+```bash
+
+netstat -ntpl
+
+netstat -ntpl | grep :21
+
+```
