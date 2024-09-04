@@ -491,6 +491,7 @@ vm = {
 .vxe-table {
   .vxe-body--column > .vxe-cell {
     padding: 1px;
+    width: 100% !important;
   }
 
   /* 滚动条 start */
@@ -744,6 +745,81 @@ export function usePageData(data: R<unknown[]>, pageState: R<PageState>) {
 
 ```
 
+
+```css
+
+.dark-vxe-grid {
+    background-color: #303a4e;
+
+    .vxe-header--gutter {
+      background-image: unset !important;
+    }
+
+    .vxe-table--render-default {
+      color: #a5abb0;
+    }
+
+    .vxe-table .vxe-table--header-wrapper {
+      color: #a5abb0;
+    }
+
+    th, td {
+      background-color: #303a4e;
+    }
+
+    .vxe-table--render-default.border--default .vxe-body--column {
+      background-image: unset;
+    }
+
+    .vxe-table--border-line {
+      display: none;
+    }
+
+    .vxe-table--header-wrapper .vxe-table--header-border-line {
+      display: none;
+    }
+
+    .vxe-header--column .vxe-resizable.is--line:before {
+      background-color: #404f57;
+    }
+
+    /* 隔行换色 */
+
+    .vxe-body--row:nth-child(2n) td {
+      background-color: #3e485a;
+    }
+
+
+    /* 滚动条 start */
+
+    .vxe-table--body-wrapper.body--wrapper::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+      background-color: #555;
+    }
+
+    /*定义滚动条轨道 内阴影+圆角*/
+
+    .vxe-table--body-wrapper.body--wrapper::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      background-color: #555;
+    }
+
+    /*定义滑块 内阴影+圆角*/
+
+    .vxe-table--body-wrapper.body--wrapper::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #f5f5f5;
+    }
+
+    .vxe-table--body-wrapper {
+      background-color: transparent;
+    }
+  }
+
+```
 
 
 ## 拖动排序

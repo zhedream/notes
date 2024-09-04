@@ -211,6 +211,10 @@ const columns = [
   {
     title: "创建人",
     key: "createUser",
+    render: ()=> [h(),h(),h()],
+    render: ()=> h(),
+    remder: ()=> [1,2],
+    render: ()=> '不支持返回一个字符或数字',
     render: (h, params) => {
       const { row, index, column } = params;
       return h(
@@ -683,10 +687,23 @@ const edit = (row) => {
 };
 
 // 重置表单
+// https://v2.iviewui.com/components/form#Form_methods
 this.$refs["form"].resetFields();
 // 校验表单
 this.$refs["form"].validate((valid) => {
   let data = { status: valid, data: this.formData };
+});
+// 校验一个字段
+phoneFormRef.value.validateField("User_Account", async (err) => {
+  if (!err) {
+    phoneFormData.temState.sendCodeLoading = true;
+    const res = await sendCodeApi(phoneFormData.state.User_Account);
+    iview.Message.success("验证码已发送，请注意查收！");
+    if (res) {
+      startCountdown();
+    }
+    phoneFormData.temState.sendCodeLoading = false;
+  }
 });
 ```
 

@@ -20,23 +20,94 @@ git@git.zhlh6.cn:zhedream/vue-browser-utils.git
 > 199.232.69.194 github.global.ssl.fastly.net
 > 140.82.112.4 github.com
 
-## 推送分支/推送本地仓库
 
-https://www.cnblogs.com/bbm7/p/7308765.html
-git push 仓库 分支
-git push origin-coding redo
+## cherry-pick
+
+挑选 commit 到当前分支，工作区不能有更改，可以使用 stash 暂存。
+
+git cherry-pick fb7f7a
+
+## 不切换分支，更新并推送
+
+
+```bash
+
+git fetch origin  # 确保获取最新的远程分支信息
+
+git update-ref refs/heads/master 24aace
+
+git push origin master --force
+
+```
+
+## 推送分支/推送本地仓库
+```bash
+
+# https://www.cnblogs.com/bbm7/p/7308765.html
+git push 远程 分支:远程分支
+git push 远程 分支
 git push orgin vtag
 git push --tags // 推送标签
 
+# 添加一个远程仓库
 git remote add origin <url>
-git push -u origin master
+
+# 推送到远程分支
+
+git push origin master:master
+git push origin master # 简写
+git push origin master:master-test # 推送到非对应分支，一般不会这么做。
+
+# 设置分支默认跟踪的远程仓库分支
+git branch -u origin/master master
+git push master # 设置跟踪分支后，可以省略 origin
+
+# 把 master 推送到 origin/master ， -u 顺便设置一下跟踪的远程分支，存在则覆盖。
+git push origin master -u
+
+# 查看本地分支、跟踪的远程分支信息
+git branch -vv
 
 git reset --hard
 git checkout origin/master
 
+```
+
+## 增改仓库
+
+```bash
+# 查看远程仓库
+git remote -v
+# 添加远程仓库
+git remote add origin2 <url>
+# 删除远程仓库
+git remote remove origin
+# 修改远程仓库
+git remote set-url origin https://newurl.com/user/repo.git
+# 查看修改后的
+git remote -v
+# 同步，获取更新
+get fetch # 获取 origin 仓库的更新
+git fetch --all # 获取 所有仓库的更新
+```
+
 ## 跟踪分支
 
-git branch --set-upstream-to=origin/master master
+```bash
+
+# 设置本地分支对应的远程分支（跟踪分支）
+git branch --set-upstream-to=origin/menu menu
+git branch -u origin/menu menu # 简写
+
+# 推送并设置跟踪分支
+git push -u origin master
+
+# 取消跟踪分支
+git branch --unset-upstream menu
+
+```
+
+
 
 ## 导出
 

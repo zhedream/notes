@@ -121,3 +121,12 @@ npm i 钩子, 自动打补丁
 
 patch-package 问题
 https://github.com/ds300/patch-package/issues/35
+
+### pnpm-patch
+
+https://juejin.cn/post/7159169143323754503
+
+## 镜像
+npm config get registry
+npm config set registry https://registry.npmmirror.com/
+npm config delete registry
