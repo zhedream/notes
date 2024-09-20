@@ -100,6 +100,7 @@ docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}
 ### docker 阿里云加速
 
 https://cr.console.aliyun.com/undefined/instances/mirrors
+https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors
 
 ### sudo
 
@@ -170,3 +171,57 @@ Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /
 
 1. WSL 下 Docker 使用踩坑小记
    https://blog.csdn.net/qinyuanpei/article/details/89792606
+
+# 代理
+
+window 下使用 tun 模式。
+
+linux 需要配置
+
+https://neucrack.com/p/286
+
+https://cloud.tencent.com/developer/article/1806455
+
+
+```bash
+sudo mkdir -p /etc/systemd/system/docker.service.d
+sudo touch /etc/systemd/system/docker.service.d/proxy.conf
+```
+
+```yaml 配置文件
+
+[Service]
+Environment="HTTP_PROXY=http://proxy.example.com:8080/"
+Environment="HTTPS_PROXY=http://proxy.example.com:8080/"
+Environment="NO_PROXY=localhost,127.0.0.1,.example.com"
+
+```
+
+```bash
+# Docker Build 代理
+docker build . \
+    --build-arg "HTTP_PROXY=http://proxy.example.com:8080/" \
+    --build-arg "HTTPS_PROXY=http://proxy.example.com:8080/" \
+    --build-arg "NO_PROXY=localhost,127.0.0.1,.example.com" \
+    -t your/image:tag
+```
+
+```json 容器代理 ~/.docker/config.json
+{
+ "proxies":
+ {
+   "default":
+   {
+     "httpProxy": "http://proxy.example.com:8080",
+     "httpsProxy": "http://proxy.example.com:8080",
+     "noProxy": "localhost,127.0.0.1,.example.com"
+   }
+ }
+}
+```
+
+```bash
+# 重启 docker
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```

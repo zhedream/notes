@@ -825,3 +825,40 @@ export function usePageData(data: R<unknown[]>, pageState: R<PageState>) {
 ## 拖动排序
 
 https://jsrun.net/wKzKp
+
+
+## 行转列
+
+```js
+// --run--
+const headInfo = [
+  { title: "id", key: "id" },
+  { title: "name", key: "name" },
+  { title: "age", key: "age" },
+];
+
+const data = [
+  { id: 0, name: "张0", age: 20 },
+  { id: 1, name: "张1", age: 21 },
+  { id: 2, name: "张2", age: 22 },
+  { id: 3, name: "张3", age: 23 },
+];
+
+// 生成表头信息
+const idHeadInfo = data.map((item, index) => ({
+  title: item.id,
+  key: `_${index}`,
+}));
+
+// 行转列操作
+const data2 = headInfo.map(({ key }) =>
+  data.reduce((acc, row, index) => {
+    acc[`_${index}`] = row[key];
+    return acc;
+  }, {}),
+);
+
+console.log(idHeadInfo);
+console.log(data2);
+
+```

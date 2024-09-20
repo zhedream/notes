@@ -28,4 +28,4 @@ cat id_rsa.pub[A主机的公钥] >> .ssh/authorized_keys [B主机信任列表]
 ssh alylhz 即可连接
 
 
-ssh-keygen -f "/home/lhz/.ssh/known_hosts" -R "[zhedream.com]:6002"
+ssh-keygen -f "/home/lhz/.ssh/known_hosts" -R "[zhedream.com]:6002" 
