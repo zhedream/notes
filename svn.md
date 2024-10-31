@@ -105,3 +105,7 @@ node_modules
 ```
 
 这样 commit/add 的时候就会很快
+
+## 命令行
+
+安装 TortoiseSVN 的时， 勾选命令行选项。

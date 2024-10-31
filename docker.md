@@ -77,7 +77,8 @@ docker-compose up -d
 ## 图形管理 web
 
 docker pull portainer/portainer
-docker run -d --name portkainerUI -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer
+~~docker run -d --name portkainerUI -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer~~
+docker run -d --name portainerUI -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer-ce
 
 ## 网卡/网桥
 
