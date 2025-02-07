@@ -58,3 +58,16 @@ treee -I "node_modules" -L 3
 treee -I "node_modules" -L 2 -d
 treee -I "node_modules" -L 3 > tree.txt
 ```
+
+## 文件夹权限
+
+重装系统后文件夹或文件存在权限问题
+
+要将Windows 11系统中的文件夹所有者更改为Administrator，可以使用以下命令：
+
+```bash
+# 这条命令会将d:* 下所有文件的所有者更改为Administrator，并递归应用于所有子文件夹。
+takeown /F d:\*\ /R /A  
+# 处理 E:\www\AirOps-App
+takeown /F "E:\www\AirOps-App" /R /A  
+```

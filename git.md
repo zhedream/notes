@@ -462,6 +462,18 @@ export LESSCHARSET=utf-8 # 添加到环境变量
 
 https://www.php.cn/tool/git/485156.html
 
+## git fatal: detected dubious ownership in repository
+
+不安全目录，文件夹权限问题，比如：重装系统
+
+```bash
+# 方式1
+git config --global --add safe.directory E:/www/VoyageCar
+# 方式2：命令行修改成管理员
+takeown /F "E:\www\VoyageCar" /R /A
+# 方式3：删除重新拉取
+```
+
 ## github 加速
 
 git config --global url."https://".insteadOf git://

@@ -70,4 +70,4 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 
 ## 2.x
 
-choco list 
+choco list
