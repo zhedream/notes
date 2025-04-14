@@ -77,6 +77,27 @@ Docker
 SFTP
 Path
 
+**File Watcher**
+
+settings.json
+
+```json 
+{
+  "filewatcher.commands": [
+    {
+      // appulate.filewatcher 插件，监听 .ts 变动。执行 babel 编译 ts/tsx
+      // babel a.tsx --out-file a.js --presets babel-preset-typescript --plugins babel-plugin-transform-vue-jsx
+      // npx babel ${fileDirname}\\${fileBasename} --out-file ${fileDirname}\\${fileBasenameNoExt}.js --presets babel-preset-typescript
+      "match": "\\.ts*",
+      "isAsync": true,
+      "cmd": "cd /d ${currentWorkspace} && npx babel ${fileDirname}\\${fileBasename} --out-file ${fileDirname}\\${fileBasenameNoExt}.js --presets babel-preset-typescript",
+      "event": "onFileChange"
+    }
+  ]
+}
+```
+
+
 **node**
 import cost 包大小
 

@@ -76,6 +76,17 @@ windows msi 安装包 覆盖安装即可
 使用一些脚本, 可以不需要全局安装, 只需要在 node_modules 同级目录使用
 npx ts ...
 
+
+## link
+
+再需要 link 的项目的 package.json 同级别，执行 npm link  会把这个项目，链接到 全局依赖里去
+
+npm unlink  取消链接 npm unlink package-name
+
+再其他项目  npm link  package-name ，可以安装该包
+
+npm ls -g --depth=0 --link=true  查看有哪些 link 的项目
+
 ## 版本
 
 1. Node.js 中 package.json 中库的版本号详解(^和~区别)
