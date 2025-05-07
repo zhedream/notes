@@ -29,3 +29,11 @@ ssh alylhz 即可连接
 
 
 ssh-keygen -f "/home/lhz/.ssh/known_hosts" -R "[zhedream.com]:6002" 
+
+# 自签名证书
+
+可在 vite server https 使用
+
+```bash
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
+```
