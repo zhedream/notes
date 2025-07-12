@@ -81,7 +81,7 @@ Path
 
 settings.json
 
-```json 
+```json
 {
   "filewatcher.commands": [
     {
@@ -97,6 +97,18 @@ settings.json
 }
 ```
 
+**Code runner**
+
+```json
+{
+  "code-runner.executorMap": {
+    // "javascript": "bun run",
+  },
+  "code-runner.runInTerminal": false,
+  "code-runner.saveFileBeforeRun": false,
+  "code-runner.clearPreviousOutput": true
+}
+```
 
 **node**
 import cost 包大小
@@ -121,3 +133,35 @@ vue vscode 标签 tab
 ## 任务系统 task
 
 https://juejin.cn/post/7035448197883363359
+
+## vscode 配置
+
+```json
+
+{
+  "files.autoSave": "onWindowChange",
+  "editor.tabSize": 2,
+  // 默认控制台
+  "terminal.integrated.defaultProfile.windows": "Command Prompt"
+  // 排除文件夹
+  "files.exclude": {
+    "**/.git": false
+  },
+  // 折叠文件树
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "tsconfig.json": "tsconfig.*.json, env.d.ts",
+    "vite.config.*": "jsconfig*, vitest.config.*, cypress.config.*, playwright.config.*",
+    "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .prettier*, prettier*, .editorconfig",
+    "*.ts": "$(capture).m.js,$(capture).m.js.map,$(capture).js",
+  },
+  // 编辑器选项卡配置
+  "workbench.editor.pinnedTabsOnSeparateRow": true,
+  "workbench.editor.wrapTabs": true,
+  "workbench.editor.tabActionCloseVisibility": false,
+  "workbench.editor.tabActionUnpinVisibility": false,
+  "workbench.editor.editorActionsLocation": "default",
+  "workbench.editor.pinnedTabSizing": "shrink",
+}
+
+```
