@@ -11,6 +11,10 @@ ipconfig /all
 # ip 连接 路由表
 route print
 
+# arp 显示系统已知的 IP 地址和对应的 MAC 地址（物理地址）映射关系
+
+arp -a
+
 # 活动连接 可查看接入点 IF
 netstat -ano
 
@@ -36,3 +40,9 @@ ForceBindIP
 
 win + r resmon 
 win + r ncpa.cpl
+
+## Stateful Firewall
+
+为什么我开启了防火墙， 但是聊天 app 还可以通信呢？ 发现会有些随机大端口。
+
+主要是 连接状态跟踪的作用 Stateful Firewall， 入站没有开启端口， 但是出站没有做限制， 那么有我发起的连接，那么这个端口入站是允许通信的。

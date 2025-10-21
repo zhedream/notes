@@ -93,7 +93,7 @@ Uninstalling node v16.14.2... done
 
 查看安装路径
 
-```baash
+```bash
 PS E:\www\note> nvm root
 Current Root: C:\ProgramData\nvm
 ```
