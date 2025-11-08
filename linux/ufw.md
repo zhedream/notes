@@ -16,6 +16,10 @@ ufw enable
 ufw disable
 ufw status verbose
 
+ufw show added
+ufw show listening
+ufw show raw
+
 ufw allow 22
 ufw allow 80
 ufw allow 443
