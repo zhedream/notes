@@ -1,5 +1,33 @@
 # volta
 
+https://docs.volta.sh/guide/
+
+https://docs.volta.sh/advanced/uninstall
+
+```bash
+# 干净的环境，卸载 node 或 nvm 等环境，nvm 卸载与 volta 卸载同理
+# 安装 volta
+# linux 
+curl https://get.volta.sh | bash
+# windows
+winget install Volta.Volta
+```
+
+```bash
+# linx 卸载 volta
+# 1.移除 volta 目录
+rm -rf ~/.volta
+# 2.移除环境变量 如：~/.bashrc 等
+# 3.刷新环境变量 source ~/.bashrc
+```
+
+```bash
+# windows 卸载 volta
+# 1.卸载
+winget uninstall Volta.Volta
+# 2.检查环境变量 和 ~/.volta
+```
+
 是一个 node npm/yarn/pnpm 管理器
 
 全局安装
