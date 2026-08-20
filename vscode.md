@@ -77,6 +77,25 @@ Docker
 SFTP
 Path
 
+Remote Development 远程开发包
+
+- wsl
+- dev containers
+- remote - ssh
+- remote - tunnels
+
+Docker Docker 扩展包装
+docker DX
+
+C# Dev Kit 开发包
+
+Database Client / MySQL 数据库连接扩展 database-client.com
+
+Nginx
+
+- ahmadalli.vscode-nginx-conf
+- hangxingliu.vscode-nginx-conf-hint
+
 **File Watcher**
 
 settings.json

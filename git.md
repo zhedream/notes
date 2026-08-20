@@ -20,7 +20,6 @@ git@git.zhlh6.cn:zhedream/vue-browser-utils.git
 > 199.232.69.194 github.global.ssl.fastly.net
 > 140.82.112.4 github.com
 
-
 ## cherry-pick
 
 挑选 commit 到当前分支，工作区不能有更改，可以使用 stash 暂存。
@@ -28,7 +27,6 @@ git@git.zhlh6.cn:zhedream/vue-browser-utils.git
 git cherry-pick fb7f7a
 
 ## 不切换分支，更新并推送
-
 
 ```bash
 
@@ -41,6 +39,7 @@ git push origin master --force
 ```
 
 ## 推送分支/推送本地仓库
+
 ```bash
 
 # https://www.cnblogs.com/bbm7/p/7308765.html
@@ -106,8 +105,6 @@ git push -u origin master
 git branch --unset-upstream menu
 
 ```
-
-
 
 ## 导出
 
@@ -528,7 +525,29 @@ git 是什么.
 
 初始化仓库
 
-
 git reset --hard origin/master && git stash apply
 
+## 增改某次 commit fixup + autosquash
 
+git add file1.ts
+
+git commit --fixup=xx100 # 需要合并的 commit=xx100
+
+git add file2.ts
+git commit --fixup=xx98 # 需要合并的 commit=xx98
+
+git stash
+
+git rebase -i --autosquash xx97 # 从 commit=xx97 开始处理，不包含 xx97
+
+git rebase --autostash --committer-date-is-author-date xx97
+
+git rebase -i --autostash --autosquash --committer-date-is-author-date xx97
+
+# 先打 fixup（可多次）
+
+git commit --fixup=<commit>
+
+# 一条收尾
+
+git rebase -i --autostash --autosquash --committer-date-is-author-date <父提交>
