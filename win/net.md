@@ -2,7 +2,7 @@
 
 ## 防火墙
 
-## route print 
+## route print
 
 ```bash
 
@@ -15,13 +15,13 @@ route print
 
 arp -a
 
-# 活动连接 可查看接入点 IF
+# 活动连接：本机 IP:端口、对端、状态、PID。看不到 IF
+# 本地地址是哪块网卡的 IP，对照 ipconfig / Get-NetAdapter 才能对上接口
 netstat -ano
-
 netstat -ano | findstr 3389
 
-# 网卡
-Get-NetAdapter | Select-Object Name, InterfaceDescription, MacAddress, Status
+# 网卡：Name、ifIndex（就是 route ADD 的 IF）、MAC、状态
+Get-NetAdapter | Select-Object Name, ifIndex, InterfaceDescription, MacAddress, Status
 
 # 进程 PID 会话列表
 tasklist
@@ -35,10 +35,9 @@ route ADD 172.16.12.0 MASK 255.255.255.0 172.16.9.254  IF 13 METRIC 5
 
 ```
 
+ForceBindIP
 
-ForceBindIP 
-
-win + r resmon 
+win + r resmon
 win + r ncpa.cpl
 
 ## Stateful Firewall

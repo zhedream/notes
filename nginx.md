@@ -76,6 +76,9 @@ gzip_types text/plain application/json application/javascript application/css;
    http {
       proxy_cache_path "D:/Visual-NMP-x64/Cache/Nginx/geo_datav_aliyun_com" levels=1:2 keys_zone=geo_datav_aliyun_com:100m inactive=60m max_size=5g;
    }
+
+server {
+
   location /geo_datav_aliyun_com/ {
     proxy_pass https://geo.datav.aliyun.com/;
     proxy_cache_bypass $http_pragma; # 跳过缓存,如在强制刷新的时候, 会跳过缓存, 重新请求
@@ -91,7 +94,36 @@ gzip_types text/plain application/json application/javascript application/css;
     add_header Cache-Control max-age=864000;
   }
 
+  location ^~ /tianditu_gov_cn/ {
+    add_header X-Cache-Status $upstream_cache_status always;
+    add_header X-Upstream-Status $upstream_status always;
+    proxy_pass https://t0.tianditu.gov.cn/;
+    proxy_read_timeout 20s;
+    expires 3d;
+    # proxy_set_header Referer "";
+    # proxy_set_header X-Forwarded-For 127.0.0.1;
+    # proxy_set_header X-Forwarded-Host 127.0.0.1:8888;
+    # proxy_set_header X-Forwarded-Port 8888;
+    proxy_cache_bypass $http_cache_control $http_pragma;
+    proxy_ignore_headers X-Accel-Expires Cache-Control Expires;
+    proxy_cache_revalidate off;
+    proxy_cache_valid 200 365d;
+    proxy_cache_valid 404 1m;
+    proxy_cache_valid any 30s;
+    proxy_cache_key "$request_uri";
+    proxy_cache_lock on;
+    proxy_cache tianditu_gov_cn;
+	}
 
+  location ^~ /tianditu_gov_cn2/ {
+    proxy_pass http://127.0.0.1:5421/tianditu_gov_cn/;
+
+    # 不向第一层转发浏览器缓存控制请求头
+    proxy_set_header Cache-Control "";
+    proxy_set_header Pragma "";
+  }
+
+}
 
 server {
 
@@ -412,32 +444,3 @@ https://segmentfault.com/a/1190000042235316
 
    }
 ```
-
-
-哈喽, 晓倩同学
-
-看你朋友圈了, 很可爱很漂亮, 优秀如你, 过年过节也有被催的烦恼啊[捂脸]
-
-对了, 介绍下自己, 我叫刘浩哲 有个速记口诀
-刘浩存没存折 = 刘浩存 - 存 + 哲 = 刘浩哲 , 好记吧[斜眼]
-
-是呀, 刚毕业,开始工作就催, 一催就三年了.
-
-听说我们同年? 你也是 97 的么.
-
-
-这样啊, 那我们可能是同一界的, 17级的么?
-你高中哪里毕业的哦.
-
-
-	location ^~ /tianditu_gov_cn/ {
-		proxy_pass https://t0.tianditu.gov.cn/;
-		proxy_read_timeout 5;
-		expires 3d;
-		proxy_cache_revalidate off;
-		proxy_cache_valid 200 30d;
-		proxy_cache_valid 404 1m;
-		proxy_cache_valid any 1m;
-		proxy_cache_key "$request_uri";
-		proxy_cache tianditu_gov_cn;
-	}

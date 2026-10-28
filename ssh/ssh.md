@@ -1,13 +1,10 @@
-
-
-
 ## 管理多个私钥
 
 https://blog.csdn.net/u012416928/article/details/83783215
 
 vim ~/.ssh/config
 
-```config
+```confiq
 Host alylhz
     HostName zhedream.com
     IdentityFile ~/.ssh/id_rsa # 指定使用的私钥
@@ -18,17 +15,15 @@ Host alylhz
 
 ## 免密登录服务器
 
-
 vim ~/.ssh/authorized_keys
 
 cat id_rsa.pub[A主机的公钥] >> .ssh/authorized_keys [B主机信任列表]
 
-这样 A主机 在  链接 B 主机 的时候就不用  输入密码了
+这样 A主机 在 链接 B 主机 的时候就不用 输入密码了
 
 ssh alylhz 即可连接
 
-
-ssh-keygen -f "/home/lhz/.ssh/known_hosts" -R "[zhedream.com]:6002" 
+ssh-keygen -f "/home/lhz/.ssh/known_hosts" -R "[zhedream.com]:6002"
 
 # 生成 RSA 密钥对
 
@@ -47,14 +42,13 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -node
 
 # 三种常用转发模式
 
-| 模式                       | 命令示例                                     | 适用场景                       |
-| ------------------------ | ---------------------------------------- | -------------------------- |
-| **本地转发** (Local)         | `ssh -L 8080:内网IP:80 user@server`        | 访问服务器**内网**的服务（如内网数据库、Web） |
-| **远程转发** (Remote)        | `ssh -R 9090:localhost:3000 user@server` | 让服务器访问**你本地**的服务（内网穿透）     |
-| **动态转发** (Dynamic/SOCKS) | `ssh -D 1080 user@server`                | 把服务器当跳板，代理访问任意内网资源         |
+| 模式                         | 命令示例                                 | 适用场景                                      |
+| ---------------------------- | ---------------------------------------- | --------------------------------------------- |
+| **本地转发** (Local)         | `ssh -L 8080:内网IP:80 user@server`      | 访问服务器**内网**的服务（如内网数据库、Web） |
+| **远程转发** (Remote)        | `ssh -R 9090:localhost:3000 user@server` | 让服务器访问**你本地**的服务（内网穿透）      |
+| **动态转发** (Dynamic/SOCKS) | `ssh -D 1080 user@server`                | 把服务器当跳板，代理访问任意内网资源          |
 
 -N 表示不执行远程命令，仅做端口转发
-
 
 ## 跳板机1
 
@@ -77,7 +71,7 @@ Host server-a
 
 ## 跳板机2
 
-本地连接 A , 再用 A 的身份代理连接 B， 需要 B 授权 A , A 能连接 B. 
+本地连接 A , 再用 A 的身份代理连接 B， 需要 B 授权 A , A 能连接 B.
 
 ssh -A -J userA@A公网IP userB@B内网IP
 
@@ -92,4 +86,3 @@ Host server-b
     User userB
     ProxyJump jump-a
 ```
-

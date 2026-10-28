@@ -74,6 +74,10 @@ docker-compose up -d
 重新 docker-compose build
 然后 docker-compose up -d
 
+检查配置是否正确
+
+docker compose config -q
+
 ## 图形管理 web
 
 docker pull portainer/portainer
@@ -84,6 +88,27 @@ docker run -d --name portainerUI -p 9000:9000 -v /var/run/docker.sock:/var/run/d
 
 // 移除无用网卡
 docker network prune //Remove all unused networks
+
+查看网络连接
+
+docker inspect -f '{{range $name, $config := .NetworkSettings.Networks}}{{$name}} {{end}}' station-house-web
+
+查看两个容器连接的网络
+docker inspect -f '{{.Name}}: {{range $name, $config := .NetworkSettings.Networks}}{{$name}} {{end}}' station-house-web stationhouseapi
+
+## 接入网络
+
+```
+networks:
+- default
+- station-api
+
+networks:
+   station-api:
+      external: true
+      name: station-house-api_default
+
+```
 
 ### redis
 
@@ -183,7 +208,6 @@ https://neucrack.com/p/286
 
 https://cloud.tencent.com/developer/article/1806455
 
-
 ```bash
 sudo mkdir -p /etc/systemd/system/docker.service.d
 sudo touch /etc/systemd/system/docker.service.d/proxy.conf
@@ -209,15 +233,13 @@ docker build . \
 
 ```json 容器代理 ~/.docker/config.json
 {
- "proxies":
- {
-   "default":
-   {
-     "httpProxy": "http://proxy.example.com:8080",
-     "httpsProxy": "http://proxy.example.com:8080",
-     "noProxy": "localhost,127.0.0.1,.example.com"
-   }
- }
+  "proxies": {
+    "default": {
+      "httpProxy": "http://proxy.example.com:8080",
+      "httpsProxy": "http://proxy.example.com:8080",
+      "noProxy": "localhost,127.0.0.1,.example.com"
+    }
+  }
 }
 ```
 
